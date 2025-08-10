@@ -18,13 +18,13 @@
        
 
     </head>
-    <body class="font-sans antialiased bg-black ">
-        <div class="min-h-screen ">
+    <body class="font-sans antialias bg-[#ebe7df]">
+        <div class="min-h-screen  ">
            
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-white  shadow">
+                <header class="  shadow">
                    @include('layouts.header')
 
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -34,7 +34,7 @@
             @endisset
 
             <!-- Page Content -->
-            <main>
+            <main class="bg=bg-[#FFF8E7]">
                @yield('content')
             </main>
             <footer>

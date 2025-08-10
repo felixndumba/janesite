@@ -1,9 +1,9 @@
-<footer class="bg-white text-gray-700 border-t pt-10">
+<footer class=" text-gray-700 border-t pt-10">
     <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-4 gap-10">
         <!-- Logo & Message -->
         <div>
             <div class="flex items-center space-x-3 mb-4">
-                <img src="{{ asset('images/1.jpg') }}" alt="Logo" class="w-12 h-12 object-contain rounded-full">
+                <img src="{{ asset('images/jane20.jpg') }}" alt="Logo" class="w-12 h-12 object-contain rounded-full">
                 <span class="text-xl font-bold text-[#a04f3f]">Financial Advisor</span>
             </div>
             <p class="text-sm text-gray-600">
@@ -36,11 +36,12 @@
         <div>
             <h3 class="text-md font-semibold text-[#a04f3f] mb-3">Follow Me on Social</h3>
             <div class="flex space-x-4 text-[#a04f3f] text-xl">
-                <a href="#"><i class="fab fa-facebook-f hover:text-[#6b3b31] transition"></i></a>
-                <a href="#"><i class="fab fa-twitter hover:text-[#6b3b31] transition"></i></a>
+                
+                
                
                 <a href="#"><i class="fab fa-instagram hover:text-[#6b3b31] transition"></i></a>
                  <a href="#"><i class="fab fa-tiktok hover:text-[#6b3b31] transition"></i></a>
+                 <a href="#"><i class="fab fa-linkedin hover:text-[#6b3b31] transition"></i></a>
             </div>
         </div>
     </div>
@@ -48,5 +49,6 @@
     <!-- Bottom -->
     <div class="mt-10 border-t text-center text-sm py-6 text-gray-500">
         © {{ now()->year }} Jane Ndichu. All rights reserved.
+        Powered by feltechnologies.
     </div>
 </footer>
