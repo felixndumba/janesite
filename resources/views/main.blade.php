@@ -12,6 +12,9 @@
         @include('partials.about')
     </div>
     <div>
+        @include('partials.partner')
+    </div>
+    <div>
         @include('partials.reviews')
     </div>
     <div>

@@ -1,7 +1,7 @@
 <section class=" py-16" data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     <div class="max-w-7xl mx-auto px-4">
        
-         <h2 class="text-5xl font-extrabold text-center mb-10" style="color: #E2B287;">What Our Clients Say</h2>
+         <h2 class="text-5xl font-extrabold text-center mb-10" style="color: #E2B287;">What our clients say</h2>
 
         <div class="relative">
          <!-- Arrows -->
@@ -13,6 +13,7 @@
                     
                     <!-- Review 1 -->
                     <div class="bg-white rounded-xl shadow-lg p-6 relative">
+                    
                         <span class="absolute top-4 left-4 text-6xl text-gray-300 leading-none">&ldquo;</span>
                         <p class="mt-10 text-gray-700">
                         I’ve worked with Jane since 2019, and her financial advice
