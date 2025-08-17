@@ -12,6 +12,12 @@
         @include('partials.about')
     </div>
     <div>
+        @include('partials.servicessupport')
+    </div>
+     <div>
+        @include('partials.services')
+    </div>
+    <div>
         @include('partials.partner')
     </div>
     <div>

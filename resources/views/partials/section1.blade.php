@@ -19,7 +19,7 @@
             </p>
             <a href="{{ url('/services') }}"
                class="inline-block bg-[#8D3405] text-white font-semibold px-8 py-3 rounded-full shadow-md hover:scale-105 hover:bg-gray-100 transition-all duration-300 ease-in-out">
-                View Our Services
+                Book Free Consoltation
             </a>
         </div>
 

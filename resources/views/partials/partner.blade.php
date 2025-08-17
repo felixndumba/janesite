@@ -6,7 +6,7 @@
         <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 px-4">
             <!-- Partner 1 -->
             <div class="flex justify-center items-center">
-                <img src="{{ asset('images/thedi.jpg') }}" alt="Thedi Advisors" class="h-16 md:h-20 max-h-20 object-contain">
+                <img src="{{ asset('images/Thedi.png') }}" alt="Thedi Advisors" class="h-16 md:h-20 max-h-20 object-contain">
             </div>
             <!-- Partner 2 -->
             <div class="flex justify-center items-center">

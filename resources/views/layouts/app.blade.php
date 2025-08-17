@@ -47,10 +47,12 @@
         once: true,
     });
 </script>
-<a href="/services"
+<a href="{{ route('services') }}"
    class="fixed bottom-6 right-6 bg-[#a04f3f] text-white font-semibold px-5 py-3 rounded-full shadow-lg hover:bg-[#8b3f30] transition-all z-50">
-   Book Now
+   View Our Services
 </a>
 
-    </body>
+@include('partials.paymentmodal')
+
+        
 </html>
