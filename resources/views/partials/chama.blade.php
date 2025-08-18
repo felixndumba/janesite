@@ -34,8 +34,19 @@
         <button class="w-1/2 bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817] transition duration-300" onclick="openPaymentModal('Chama Small Group Package', '9500')">
             Book for Small Group (<10)
         </button>
-        <button class="w-1/2 bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817] transition duration-300" onclick="openPaymentModal('Chama Large Group Package', '1500')">
+        <div class="w-1/2">
+        <input 
+            id="groupSizeInput"
+            type="number" 
+            min="11" 
+            placeholder="Enter number of people (≥11)" 
+            class="border rounded-lg p-2 w-full mb-2 focus:ring-2 focus:ring-orange-400 focus:border-orange-500 outline-none shadow-sm"
+        />
+        <button 
+            class="w-full bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817] transition duration-300"
+            onclick="handleLargeGroupBooking()">
             Book for Large Group (>10)
         </button>
+    </div>
     </div>
 </div>

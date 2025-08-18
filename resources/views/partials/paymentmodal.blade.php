@@ -90,6 +90,23 @@
         card.classList.remove('scale-100', 'opacity-100');
         setTimeout(() => modal.classList.add('hidden'), 200);
     }
+    function handleLargeGroupBooking() {
+    const input = document.getElementById('groupSizeInput');
+    const people = parseInt(input.value);
+
+    if (isNaN(people) || people < 11) {
+        alert("Please enter a valid number of people (minimum 11).");
+        input.focus();
+        return;
+    }
+
+    const pricePerPerson = 1500;
+    const total = people * pricePerPerson;
+
+    // Send the calculated total into your modal
+    openPaymentModal(`Chama Large Group Package (${people} people)`, total);
+}
+
     
    
 </script>
