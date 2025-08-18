@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto px-6 bg-[#f9f7f4] rounded-lg shadow-lg">
+<div class=" h-fumax-w-7xl mx-auto px-6 bg-[#f9f7f4] rounded-lg shadow-lg">
     <h3 class="text-2xl font-bold text-[#924c2e]">Chama Package</h3>
     <p class="text-gray-600 mt-2">Specialized financial guidance for investment groups and chamas.</p><br>
 
@@ -31,10 +31,10 @@
     </div>
 
     <div class="mt-4 flex space-x-4">
-        <button class="w-1/2 bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817] transition duration-300" onclick="openPaymentModal(9500)">
+        <button class="w-1/2 bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817] transition duration-300" onclick="openPaymentModal('Chama Small Group Package', '9500')">
             Book for Small Group (<10)
         </button>
-        <button class="w-1/2 bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817] transition duration-300" onclick="openPaymentModal(1500)">
+        <button class="w-1/2 bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817] transition duration-300" onclick="openPaymentModal('Chama Large Group Package', '1500')">
             Book for Large Group (>10)
         </button>
     </div>

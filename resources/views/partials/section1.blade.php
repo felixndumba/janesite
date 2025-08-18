@@ -1,4 +1,5 @@
 <section 
+   data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200"
     class="relative py-24 px-6 bg-cover bg-center" 
     style="background-image: url('{{ asset('images/2.jpg') }}');"
 >
@@ -18,14 +19,14 @@
                 Discover the power of smart financial planning. With tailored advice and hands-on mentorship, we empower individuals and businesses to thrive.
             </p>
             <a href="{{ url('/services') }}"
-               class="inline-block bg-[#8D3405] text-white font-semibold px-8 py-3 rounded-full shadow-md hover:scale-105 hover:bg-gray-100 transition-all duration-300 ease-in-out">
+               class="inline-block bg-[#a04f3f] text-white font-semibold px-8 py-3 rounded-full shadow-md hover:scale-105 hover:bg-gray-100 transition-all duration-300 ease-in-out">
                 Book Free Consoltation
             </a>
         </div>
 
         <!-- Right Image (Circular) -->
-        <div class="flex justify-center" data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
-            <div class="relative w-80 h-80 md:w-96 md:h-96 overflow-hidden rounded-full shadow-xl border-[10px] border-[#f8dab2]">
+        <div class="flex justify-center" >
+            <div class="relative w-80 h-80 md:w-96 md:h-96 overflow-hidden rounded-full shadow-xl border-[10px] border-[#f9f7f4]">
                 <img src="{{ asset('images/2.jpg') }}" alt="Hero Image" class="object-cover w-full h-full" />
             </div>
         </div>

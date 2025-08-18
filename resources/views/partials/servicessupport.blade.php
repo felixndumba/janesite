@@ -1,4 +1,4 @@
-<section class="py-12 bg-[#f9f7f4]">
+<section class="py-12 bg-[#f9f7f4] data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000"">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         
         <!-- Left Side -->
@@ -53,7 +53,7 @@
                     <p class="text-sm text-gray-600">Initial Consultation</p>
                 </div>
                 <div class="bg-white px-6 py-4 rounded-lg shadow text-center w-40">
-                    <p class="text-xl font-bold text-blue-600">24/7</p>
+                    <p class="text-xl font-bold text-[#c89b52]">24/7</p>
                     <p class="text-sm text-gray-600">Support Available</p>
                 </div>
             </div>

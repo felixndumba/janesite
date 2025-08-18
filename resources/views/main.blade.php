@@ -8,22 +8,22 @@
    <div>
     @include('partials.section1')
    </div>
-    <div>
+    <div id="about">
         @include('partials.about')
     </div>
-    <div>
+    <div data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
         @include('partials.servicessupport')
-    </div>
-     <div>
+    </div data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
+     <div id="services">
         @include('partials.services')
     </div>
-    <div>
+    <div id="partners">
         @include('partials.partner')
     </div>
-    <div>
+    <div id="reviews">
         @include('partials.reviews')
     </div>
-    <div>
+    <div id="faqs">
         @include('partials.faqs')
     </div>
 </main>

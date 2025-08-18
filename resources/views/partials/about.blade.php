@@ -58,7 +58,7 @@
 
 <!-- STATS SECTION -->
 <section class=" py-16 px-6 md:px-12" data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center bg-[#f6f3ef] rounded-2xl shadow-sm p-8 ">
     <div>
       <span class="text-5xl font-bold text-[#a04f3f]" data-count="2000">0</span>
       <p class="text-lg font-medium text-black">Individuals</p>
@@ -82,7 +82,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const counters = document.querySelectorAll("[data-count]");
-    const speed = 20; // lower = faster
+    const speed = 60; // lower = faster
 
     const countUp = (counter) => {
       const target = +counter.getAttribute("data-count");

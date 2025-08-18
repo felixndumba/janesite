@@ -18,7 +18,7 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Employee benefits package design</li>
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Available online and physical</li>
             </ul>
-            <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]">
+            <button class="mt-6 w-full bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]">
                 Select Package
             </button>
         </div>
@@ -37,7 +37,7 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Available online and physical</li>
             </ul>
             <button onclick="openPaymentModal('Premium Package', '30000')" 
-            class="w-full bg-orange-600 hover:bg-orange-700 text-white font-medium py-3 px-6 rounded-lg transition">
+            class="w-full bg-[#a04f3f] hover:bg-orange-700 text-white font-medium py-3 px-6 rounded-lg transition">
             Select Package
         </button>
         </div>
