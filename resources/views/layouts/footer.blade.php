@@ -3,7 +3,7 @@
         <!-- Logo & Message -->
         <div>
             <div class="flex items-center space-x-3 mb-4">
-                <img src="{{ asset('images/jane20.jpg') }}" alt="Logo" class="w-12 h-12 object-contain rounded-full">
+                <img src="{{ asset('images/jn.png') }}" alt="Logo" class="w-12 h-12 object-contain rounded-full">
                 <span class="text-xl font-bold text-[#a04f3f]">Financial Advisor</span>
             </div>
             <p class="text-sm text-gray-600">

@@ -2,7 +2,7 @@
 <section class="grid grid-cols-1 md:grid-cols-4 min-h-screen" 
    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000" >
   <!-- 01 Meet Jane -->
-  <div class="relative bg-cover bg-center" style="background-image: url('/images/2.jpg');">
+  <div class="relative bg-cover bg-center" style="background-image: url('/images/.jpg');">
     <div class="bg-black/50 h-full p-6 flex flex-col justify-center">
       <span class="text-4xl font-extrabold text-white mb-4">01</span>
       <h3 class="text-2xl font-bold text-white mb-4">Meet Jane</h3>
@@ -12,7 +12,7 @@
         with a friendly, results-driven approach to savings, investments, wealth building, 
         and protection.
       </p>
-      <a href="/about-jane" class="mt-6 inline-block bg-black text-white font-bold px-4 py-2 rounded shadow">
+      <a href="/about-jane" class="mt-6 inline-block bg-[#a04f3f] text-white font-bold px-4 py-2 rounded shadow">
         Learn More
       </a>
     </div>
@@ -21,7 +21,7 @@
   <!-- 02 My Certifications & Awards -->
   <div class="bg-[#a04f3f] p-6 flex flex-col justify-center">
     <span class="text-4xl font-extrabold text-white mb-4">02</span>
-    <h3 class="text-2xl font-bold mb-4">My Certifications & Awards</h3>
+    <h3 class="text-2xl text-white font-bold mb-4">My Certifications & Awards</h3>
     <p class="text-gray-800 leading-relaxed">
       Certified by IRA, CMA, and RBA. Recognized with 4 Top-Awards in the financial 
       sector for excellence and outstanding client results.
@@ -29,11 +29,12 @@
   </div>
 
   <!-- 03 My Portfolio -->
-  <div class="relative bg-cover bg-center" style="background-image: url('/images/2.jpg');">
-    <div class="bg-black/50 h-full p-6 flex flex-col justify-center">
+    <div class="bg-[#a04f3f] p-6 flex flex-col justify-center">
+  
+    <div class=" h-full p-6 flex flex-col justify-center">
       <span class="text-4xl font-extrabold text-white mb-4">03</span>
       <h3 class="text-2xl font-bold text-white mb-4">My Portfolio</h3>
-      <p class="text-white leading-relaxed">
+      <p class="text-gray-800 leading-relaxed">
         Worked with 2000+ individuals, 10+ companies, 5+ businesses, and 10+ chamas, 
         delivering measurable financial growth and security.
       </p>
@@ -42,16 +43,19 @@
   </div>
 
   <!-- 04 My Videos & Podcasts -->
-  <div class="bg-[#a04f3f] p-6 flex flex-col justify-center">
-    <span class="text-4xl font-extrabold text-white mb-4">04</span>
-    <h3 class="text-2xl font-bold mb-4">My Videos & Podcasts</h3>
-    <p class="text-gray-800 leading-relaxed">
-      Explore a variety of videos and podcasts focused on financial literacy, 
+
+    <div class="relative bg-cover bg-center" style="background-image: url('/images/.jpg');">
+    <div class="bg-black/50 h-full p-6 flex flex-col justify-center">
+      <span class="text-4xl font-extrabold text-white mb-4">04</span>
+      <h3 class="text-2xl font-bold text-white mb-4">My Videos & Podcasts</h3>
+      <p class="text-white leading-relaxed">
+     Explore a variety of videos and podcasts focused on financial literacy, 
       investment strategies, and wealth protection tips.
-    </p>
-    <a href="https://youtube.com" target="_blank" class="mt-6 inline-block bg-black text-white font-bold px-4 py-2 rounded shadow">
+      </p>
+       <a href="https://youtube.com" target="_blank" class="mt-6 inline-block bg-[#a04f3f] text-white font-bold px-4 py-2 rounded shadow">
       Watch on YouTube
     </a>
+    </div>
   </div>
 </section>
 
