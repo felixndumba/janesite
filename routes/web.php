@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MpesaController;
+
 
 Route::get('/', function () {
     return view('main');
@@ -9,12 +9,4 @@ Route::get('/', function () {
 Route::get('/services', function () {
     return view('partials.services');
 })->name('services');
-
-
-Route::post('/mpesa/stk/initiate', [MpesaController::class, 'stkPush'])->name('mpesa.stk.initiate');
-Route::post('/mpesa/stk/callback', [MpesaController::class, 'stkCallback'])->name('mpesa.stk.callback');
-
-// (Optional C2B) if you’ll register till URLs later
-Route::post('/mpesa/c2b/validation', [MpesaController::class, 'c2bValidation'])->name('mpesa.c2b.validation');
-Route::post('/mpesa/c2b/confirmation', [MpesaController::class, 'c2bConfirmation'])->name('mpesa.c2b.confirmation');
 
