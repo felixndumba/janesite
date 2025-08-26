@@ -31,7 +31,7 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> New business model recommendations</li>
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Available online and physical</li>
             </ul>
-           <button class="mt-6 w-full bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" onclick="openPaymentModal(`Basic Package`, `10000`)">
+           <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" onclick="openPaymentModal(`Basic Package`, `10000`)">
                 Select Package
             </button>
         </div>
@@ -48,7 +48,7 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Goal setting & target planning</li>
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> 1 FREE accountability session</li>
             </ul>
-           <button class="mt-6 w-full bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" onclick="openPaymentModal(`Premium Package`, `25500`)">
+           <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" onclick="openPaymentModal(`Premium Package`, `25500`)">
                 Select Package
             </button>
         </div>

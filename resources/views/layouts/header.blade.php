@@ -4,7 +4,7 @@
             
             <!-- Logo -->
             <div class="flex-shrink-0">
-                <img src="{{ asset('images/jn.png') }}" alt="Logo" class="h-14 w-auto"> <!-- slightly bigger logo -->
+                <img src="{{ asset('images/jnn.png') }}" alt="Logo" class="h-14 w-auto"> <!-- slightly bigger logo -->
             </div>
 
             <!-- Navigation -->

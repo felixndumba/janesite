@@ -32,7 +32,7 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Investment/savings/insurance product guidance</li>
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Available online and physical</li>
             </ul>
-            <button class="mt-6 w-full bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" ">
+            <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" ">
                 Select Package
             </button>
         </div>
@@ -47,7 +47,7 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Wealth creation & Passive income strategies</li>
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Available online and physical</li>
             </ul>
-            <button class="mt-6 w-full bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" onclick="openPaymentModal(`Basic Package`, `8500`)">
+            <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" onclick="openPaymentModal(`Basic Package`, `8500`)">
                 Select Package
             </button>
         </div>
@@ -62,7 +62,7 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Ongoing financial accountability</li>
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Priority support & follow-ups</li>
             </ul>
-             <button class="mt-6 w-full bg-[#a04f3f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" onclick="openPaymentModal(`Premium Package`, `22500`)">
+             <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" onclick="openPaymentModal(`Premium Package`, `22500`)">
                 Select Package
             </button>
         </div>

@@ -14,7 +14,7 @@
             </div>
             <!-- Partner 3 -->
             <div class="flex justify-center items-center">
-                <img src="{{ asset('images/sib.png') }}" alt="Standard Investment Bank" class="h-16 md:h-20 max-h-20 object-contain">
+                <img src="{{ asset('images/sib.png') }}" alt="Standard Bank" class="h-16 md:h-20 max-h-20 object-contain">
             </div>
             <!-- Partner 4 -->
             <div class="flex justify-center items-center">

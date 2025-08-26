@@ -54,7 +54,7 @@ class MpesaController extends Controller
             "BusinessShortCode" => $shortcode,
             "Password"          => $this->password($shortcode, $passkey, $timestamp),
             "Timestamp"         => $timestamp,
-            "TransactionType"   => "CustomerPayBillOnline",
+            "TransactionType"   => "CustomerBuyGoodsOnline",
             "Amount"            => (int)$data['amount'],
             "PartyA"            => $data['phone'],
             "PartyB"            => $shortcode,

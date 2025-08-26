@@ -107,7 +107,7 @@
                 body: JSON.stringify({
                     phone: phone,
                     amount: Number(amount),
-                    account_reference: "ORDER123",
+                    account_reference: "ORDER",
                     description: "Online Payment"
                 })
             });

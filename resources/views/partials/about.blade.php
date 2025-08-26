@@ -12,7 +12,7 @@
         with a friendly, results-driven approach to savings, investments, wealth building, 
         and protection.
       </p>
-      <a href="/about-jane" class="mt-6 inline-block bg-[#a04f3f] text-white font-bold px-4 py-2 rounded shadow">
+      <a href="/about-jane" class="mt-6 inline-block bg-[#c45b1f] text-white px-4 py-2 rounded shadow">
         Learn More
       </a>
     </div>
@@ -52,7 +52,7 @@
      Explore a variety of videos and podcasts focused on financial literacy, 
       investment strategies, and wealth protection tips.
       </p>
-       <a href="https://youtube.com" target="_blank" class="mt-6 inline-block bg-[#a04f3f] text-white font-bold px-4 py-2 rounded shadow">
+       <a href="https://youtube.com" target="_blank" class="mt-6 inline-block bg-[#c45b1f] text-white  px-4 py-2 rounded shadow">
       Watch on YouTube
     </a>
     </div>
