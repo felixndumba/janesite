@@ -11,9 +11,9 @@ class MpesaController extends Controller
 {
     private function baseUrl(): string
     {
-        return config('app.mpesa_base_url', env('MPESA_ENV') === 'sandbox'
+        return env('MPESA_ENV') === 'sandbox'
             ? 'https://sandbox.safaricom.co.ke'
-            : 'https://api.safaricom.co.ke');
+            : 'https://api.safaricom.co.ke';
     }
 
     private function accessToken(): string
@@ -24,7 +24,10 @@ class MpesaController extends Controller
         $res = Http::withBasicAuth($key, $secret)
             ->get($this->baseUrl().'/oauth/v1/generate?grant_type=client_credentials');
 
-        if (!$res->ok()) abort(500, 'Failed to get access token');
+        if (!$res->ok()) {
+            Log::error('M-PESA Token Error', $res->json());
+            abort(500, 'Failed to get access token');
+        }
 
         return $res->json()['access_token'];
     }
@@ -34,27 +37,30 @@ class MpesaController extends Controller
         return base64_encode($shortcode.$passkey.$timestamp);
     }
 
-    /** STEP A: Initiate STK Push (called by your Pay button) */
+    /** STEP A: Initiate STK Push (from frontend) */
     public function stkPush(Request $request)
     {
-        // Validate input from front-end
         $data = $request->validate([
             'amount' => ['required','numeric','min:1'],
-            // MPesa requires phone in 2547XXXXXXXX format
             'phone'  => ['required','regex:/^2547\d{8}$/'],
             'account_reference' => ['nullable','string','max:20'],
             'description'       => ['nullable','string','max:60'],
         ]);
 
         $shortcode = env('MPESA_SHORTCODE');
-        $passkey   = env('MPESA_PASSKEY');
-        $timestamp = now('Africa/Nairobi')->format('YmdHis');
+        $password   = env('MPESA_PASSKEY');
+    $timestamp = env('MPESA_TIMESTAMP');
+   
+
 
         $payload = [
             "BusinessShortCode" => $shortcode,
-            "Password"          => $this->password($shortcode, $passkey, $timestamp),
+            "Password"          => $password,
             "Timestamp"         => $timestamp,
-            "TransactionType"   => "CustomerBuyGoodsOnline",
+            // 🔑 Sandbox paybill requires this
+            "TransactionType"   => env('MPESA_ENV') === 'sandbox' 
+                                    ? "CustomerPayBillOnline" 
+                                    : "CustomerBuyGoodsOnline",
             "Amount"            => (int)$data['amount'],
             "PartyA"            => $data['phone'],
             "PartyB"            => $shortcode,
@@ -67,22 +73,20 @@ class MpesaController extends Controller
         $res = Http::withToken($this->accessToken())
             ->post($this->baseUrl().'/mpesa/stkpush/v1/processrequest', $payload);
 
-        Log::info('STK Push request', $payload);
-        Log::info('STK Push response', $res->json());
+        Log::info('STK Push Request', $payload);
+        Log::info('STK Push Response', $res->json());
 
-        // Return response to front-end (you can show “Prompt sent to phone”)
         return response()->json($res->json(), $res->status());
     }
 
-    /** STEP B: Handle STK Callback from Safaricom */
+    /** STEP B: Handle STK Callback */
     public function stkCallback(Request $request)
     {
         $body = $request->json('Body');
         Log::info('STK Callback', [$body]);
 
-        // Defensive checks
         if (!$body || !isset($body['stkCallback'])) {
-            return response()->json(['ResultCode'=>0, 'ResultDesc'=>'OK']); // ack anyway
+            return response()->json(['ResultCode'=>0, 'ResultDesc'=>'OK']);
         }
 
         $cb = $body['stkCallback'];
@@ -94,8 +98,7 @@ class MpesaController extends Controller
 
         $amount = $receipt = $phone = $transTime = null;
 
-        // On success, CallbackMetadata holds entries
-        if (isset($cb['CallbackMetadata']['Item']) && is_array($cb['CallbackMetadata']['Item'])) {
+        if (isset($cb['CallbackMetadata']['Item'])) {
             foreach ($cb['CallbackMetadata']['Item'] as $item) {
                 $name = $item['Name'] ?? '';
                 $val  = $item['Value'] ?? null;
@@ -118,20 +121,6 @@ class MpesaController extends Controller
             'raw_payload'         => $request->all(),
         ]);
 
-        // MUST ack with HTTP 200 and any JSON (Daraja ignores body here)
         return response()->json(['ResultCode'=>0,'ResultDesc'=>'Processed']);
-    }
-
-    /** (Optional) C2B for Till/Paybill push-to-you flows */
-    public function c2bValidation(Request $request)
-    {
-        Log::info('C2B Validation', $request->all());
-        return response()->json(["ResultCode"=>0, "ResultDesc"=>"Accepted"]);
-    }
-    public function c2bConfirmation(Request $request)
-    {
-        Log::info('C2B Confirmation', $request->all());
-        // Save to DB if you use C2B
-        return response()->json(["ResultCode"=>0, "ResultDesc"=>"OK"]);
     }
 }

@@ -98,7 +98,7 @@
         }
 
         try {
-            const res = await fetch("{{ route('mpesa.stk.initiate') }}", {
+            const res = await fetch("{{ route('mpesa.initiate') }}", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
