@@ -16,7 +16,7 @@
                 <a href="#partners" class="hover:text-green-600">Partners</a>
                 <a href="#faqs" class="hover:text-green-600">Faqs</a>
                 <a href="#reviews" class="hover:text-green-600">Reviews</a>
-                <a href="#contact" class="hover:text-green-600">Contact Me</a>
+                <a href="{{ route('contact') }}" class="hover:text-green-600">Contact Me</a>
             </nav>
         </div>
     </div>
