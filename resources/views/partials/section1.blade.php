@@ -18,9 +18,9 @@
             <p class="text-lg mb-8 leading-relaxed text-white">
                 Discover the power of smart financial planning. With tailored advice and hands-on mentorship, we empower individuals and businesses to thrive.
             </p>
-            <a href="{{ url('/services') }}"
+            <a href="{{ url('/contact') }}"
                class="inline-block bg-white text-black font-semibold px-8 py-3 rounded-full shadow-md hover:scale-105 hover:bg-gray-100 transition-all duration-300 ease-in-out">
-                Book Free Consoltation
+                ENQUIRIES
             </a>
         </div>
 
