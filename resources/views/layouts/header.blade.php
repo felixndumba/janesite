@@ -26,27 +26,27 @@
         Home
         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full {{ request()->is('/') ? 'w-full' : '' }}"></span>
     </a>
-    <a href="#about" 
+    <a href="{{ url('/#about') }}" 
        class="relative group text-gray-800 hover:text-[#a04f3f]">
         Meet Jane
         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full"></span>
     </a>
-    <a href="#services" 
+    <a href="{{ url('/#services') }}" 
        class="relative group text-gray-800 hover:text-[#a04f3f]">
         Services
         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full"></span>
     </a>
-    <a href="#partners" 
+    <a href="{{ url('/#partners') }}" 
        class="relative group text-gray-800 hover:text-[#a04f3f]">
         Partners
         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full"></span>
     </a>
-    <a href="#faqs" 
+    <a href="{{ url('/#faqs') }}" 
        class="relative group text-gray-800 hover:text-[#a04f3f]">
         Faqs
         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full"></span>
     </a>
-    <a href="#reviews" 
+    <a href="{{ url('/#reviews') }}" 
        class="relative group text-gray-800 hover:text-[#a04f3f]">
         Reviews
         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full"></span>
@@ -87,11 +87,11 @@
         class="fixed inset-y-0 left-0 w-2/3 md:w-1/3 bg-white shadow-2xl z-40 flex flex-col items-start justify-center space-y-6 px-12 text-2xl font-bold text-gray-800"
     >
         <a href="{{ route('contact') }}" @click="menuOpen=false">Contact Me</a>
-        <a href="#reviews" @click="menuOpen=false">Reviews</a>
-        <a href="#faqs" @click="menuOpen=false">Faqs</a>
-        <a href="#partners" @click="menuOpen=false">Partners</a>
-        <a href="#services" @click="menuOpen=false">Services</a>
-        <a href="#about" @click="menuOpen=false">Meet Jane</a>
+        <a href="{{ url('/#reviews') }}" @click="menuOpen=false">Reviews</a>
+        <a href="{{ url('/#faqs') }}" @click="menuOpen=false">Faqs</a>
+        <a href="{{ url('/#partners') }}" @click="menuOpen=false">Partners</a>
+        <a href="{{ url('/#services') }}" @click="menuOpen=false">Services</a>
+        <a href="{{ url('/#about') }}" @click="menuOpen=false">Meet Jane</a>
         <a href="/" @click="menuOpen=false">Home</a>
     </div>
 
