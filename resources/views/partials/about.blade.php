@@ -2,7 +2,8 @@
 <section class="grid grid-cols-1 md:grid-cols-4 min-h-screen" 
    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000" >
   <!-- 01 Meet Jane -->
-  <div class="relative bg-cover bg-center" style="background-image: url('/images/.jpg');">
+  <div class="relative bg-cover bg-center" style="background-image: url('/images/.jpg');" 
+  data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     <div class="bg-black/50 h-full p-6 flex flex-col justify-center">
       <span class="text-4xl font-extrabold text-white mb-4">01</span>
       <h3 class="text-2xl font-bold text-white mb-4">Meet Jane</h3>
@@ -19,7 +20,8 @@
   </div>
 
   <!-- 02 My Certifications & Awards -->
-  <div class="bg-[#a04f3f] p-6 flex flex-col justify-center">
+  <div class="bg-[#a04f3f] p-6 flex flex-col justify-center"
+  data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     <span class="text-4xl font-extrabold text-white mb-4">02</span>
     <h3 class="text-2xl text-white font-bold mb-4">My Certifications & Awards</h3>
     <p class="text-gray-800 leading-relaxed">
@@ -29,7 +31,8 @@
   </div>
 
   <!-- 03 My Portfolio -->
-    <div class="bg-[#a04f3f] p-6 flex flex-col justify-center">
+    <div class="bg-[#a04f3f] p-6 flex flex-col justify-center"
+    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
   
     <div class=" h-full p-6 flex flex-col justify-center">
       <span class="text-4xl font-extrabold text-white mb-4">03</span>
@@ -44,7 +47,8 @@
 
   <!-- 04 My Videos & Podcasts -->
 
-    <div class="relative bg-cover bg-center" style="background-image: url('/images/.jpg');">
+    <div class="relative bg-cover bg-center" style="background-image: url('/images/.jpg');"
+    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="10000">
     <div class="bg-black/50 h-full p-6 flex flex-col justify-center">
       <span class="text-4xl font-extrabold text-white mb-4">04</span>
       <h3 class="text-2xl font-bold text-white mb-4">My Videos & Podcasts</h3>

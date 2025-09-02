@@ -12,6 +12,14 @@ Route::get('/services', function () {
     return view('partials.services');
 })->name('services');
 
+Route::get('/explore-more', function () {
+    return view('contact');
+})->name('explore');
+
+Route::get('/services', function () {
+    return view('services');
+})->name('services');
+
 
 Route::get('/contact', function () {
     return view('contact');

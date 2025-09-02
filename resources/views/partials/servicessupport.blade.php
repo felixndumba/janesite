@@ -48,14 +48,20 @@
             <p class="text-gray-600 mb-6">Take the first step towards financial freedom with a free consultation</p>
 
             <div class="flex justify-center gap-6">
-                <div class="bg-white px-6 py-4 rounded-lg shadow text-center w-40">
-                    <p class="text-xl font-bold text-[#c89b52]">FREE</p>
-                    <p class="text-sm text-gray-600">Initial Consultation</p>
-                </div>
-                <div class="bg-white px-6 py-4 rounded-lg shadow text-center w-40">
-                    <p class="text-xl font-bold text-[#c89b52]">24/7</p>
-                    <p class="text-sm text-gray-600">Support Available</p>
-                </div>
+        <a href="https://calendly.com/janendichu1/financial-planning" target="_blank" class="block">
+           <div class="bg-white px-6 py-4 rounded-lg shadow text-center w-40 cursor-pointer hover:shadow-lg transition">
+             <p class="text-xl font-bold text-[#c89b52]">BOOK FREE</p>
+             <p class="text-sm text-gray-600">Initial Consultation</p>
+           </div>
+         </a>
+         
+                <a href="{{ route('contact') }}" class="block">
+    <div class="bg-white px-6 py-4 rounded-lg shadow text-center w-40 cursor-pointer hover:shadow-lg transition">
+        <p class="text-xl font-bold text-[#c89b52]">24/7</p>
+        <p class="text-sm text-gray-600">Support Available</p>
+    </div>
+</a>
+
             </div>
         </div>
     </div>

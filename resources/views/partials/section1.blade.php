@@ -2,6 +2,7 @@
    data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200"
     class="relative py-24 px-6 bg-cover bg-center" 
     style="background-image: url('{{ asset('images/.jpg') }}');" 
+    
 >
     <!-- Gradient Overlay - Using #a04f3f with opacity to dim background image -->
     <div class="absolute inset-0 bg-gradient-to-r from-[#a04f3f]/90 via-[#a04f3f]/80 to-[#a04f3f]/70"></div>

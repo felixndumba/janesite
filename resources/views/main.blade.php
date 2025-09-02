@@ -15,10 +15,15 @@
         @include('partials.servicessupport')
     </div data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
      <div id="services">
-        @include('partials.services')
+        @include('partials.service-1')
     </div>
+     
     <div id="partners">
         @include('partials.partner')
+    </div>
+    
+    <div id="explore">
+        @include('partials.exploremore')
     </div>
     <div id="reviews">
         @include('partials.reviews')

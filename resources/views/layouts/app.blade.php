@@ -14,51 +14,69 @@
 
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'], true) 
+        <!-- AOS Library -->
        
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'], buildDirectory: true)
+
 
     </head>
+    <body  class="bg-gray-50">
+
+    <!-- Sidebar -->
+   
+
     <body class="font-sans antialias bg-[#f9f7f4]">
-        <div class="min-h-screen  ">
-           
+        
+                <!-- Page Heading -->
+                @isset($header)
+                    <header class="  shadow">
+                       @include('layouts.header')
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="  shadow">
-                   @include('layouts.header')
+                        <div class="w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endisset
 
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div> 
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main class="bg=bg-[#FFF8E7]">
-               @yield('content')
-            </main>
-            <footer>
+                <!-- Page Content -->
+                <main class="bg=bg-[#FFF8E7] pb-40">
+                   @yield('content')
+                </main>
+                 <footer >
                 @include('layouts.footer')
             </footer>
+            </div>
+
+            
         </div>
         <script>
     AOS.init({
         duration: 1200,
         once: true,
+        mirror: true
     });
 </script>
-<a href="{{ route('contact') }}"
+<a href="https://calendly.com/janendichu1/financial-planning"
+   target="_blank"
    class="fixed bottom-20 right-6 bg-[#a04f3f] text-white font-semibold px-5 py-3 rounded-full shadow-lg hover:bg-[#8b3f30] transition-all z-50">
    Book a Clarity Call
 </a>
 
-<a href="#services"
+
+<a href="{{ route('services') }}"
    class="fixed bottom-6 right-6 bg-[#a04f3f] text-white font-semibold px-5 py-3 rounded-full shadow-lg hover:bg-[#8b3f30] transition-all z-50">
    View Our Services
 </a>
 
 @include('partials.paymentmodal')
+
+
+</body>
+
+</div>
 
         
 </html>

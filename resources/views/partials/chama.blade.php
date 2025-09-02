@@ -1,25 +1,25 @@
-<div class=" h-fumax-w-7xl mx-auto px-6 bg-[#f9f7f4] rounded-lg shadow-lg">
+ <div class=" h-fumax-w-7xl mx-auto px-6 bg-[#f9f7f4] rounded-lg shadow-lg">
     <h3 class="text-2xl font-bold text-[#924c2e]">Chama Package</h3>
     <p class="text-gray-600 mt-2">Specialized financial guidance for investment groups and chamas.</p><br>
 
     <ul class="list-none pl-5 text-gray-700 space-y-2">
-        <li class="flex items-center gap-2">
-            <span class="text-[#c45b1f] text-xl">✔</span> One session
+        <li class="flex items-center gap-3 text-lg">
+            <span class="text-[#c45b1f]">•</span> One session
         </li>
-        <li class="flex items-center gap-2">
-            <span class="text-[#c45b1f] text-xl">✔</span> Discovery session
+        <li class="flex items-center gap-3 text-lg">
+            <span class="text-[#c45b1f]">•</span> Discovery session
         </li>
-        <li class="flex items-center gap-2">
-            <span class="text-[#c45b1f] text-xl">✔</span> Goal setting session
+        <li class="flex items-center gap-3 text-lg">
+            <span class="text-[#c45b1f]">•</span> Goal setting session
         </li>
-        <li class="flex items-center gap-2">
-            <span class="text-[#c45b1f] text-xl">✔</span> Money personalities exercise
+        <li class="flex items-center gap-3 text-lg">
+            <span class="text-[#c45b1f]">•</span> Money personalities exercise
         </li>
-        <li class="flex items-center gap-2">
-            <span class="text-[#c45b1f] text-xl">✔</span> Aligning your goals with available investments
+        <li class="flex items-center gap-3 text-lg">
+            <span class="text-[#c45b1f]">•</span> Aligning your goals with available investments
         </li>
-        <li class="flex items-center gap-2">
-            <span class="text-[#c45b1f] text-xl">✔</span> Credit options
+        <li class="flex items-center gap-3 text-lg">
+            <span class="text-[#c45b1f]">•</span> Credit options
         </li>
     </ul>
     

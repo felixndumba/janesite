@@ -8,34 +8,38 @@
         <!-- Free Package -->
         <div class="bg-white border rounded-lg shadow-sm p-6 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#c45b1f]">
             <h3 class="text-lg font-bold text-gray-900">Free Package</h3>
-            <p class="text-2xl font-bold text-[#c45b1f] mt-2">FREE</p>
+       
 
             <ul class="mt-6 space-y-3 text-gray-700">
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Employee financial wellness programs</li>
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Corporate retirement plan consulting</li>
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Insurance consulting</li>
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Risk management & asset protection</li>
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Employee benefits package design</li>
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Available online and physical</li>
-            </ul>
-            <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]">
-                Select Package
-            </button>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Employee financial wellness programs</li>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Corporate retirement plan consulting</li>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Insurance consulting</li>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Risk management & asset protection</li>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Employee benefits package design</li>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Available online and physical</li>
+            </ul><br>
+                 <p class="text-2xl font-bold text-[#c45b1f] mt-2">FREE</p><br>
+          <a href="https://calendly.com/janendichu1/financial-planning" target="_blank" 
+   class="mt-6 block text-center w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]">
+    Select Package
+</a>
+
         </div>
 
         <!-- Premium Package -->
         <div class="bg-white border rounded-lg shadow-sm p-6 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#c45b1f]">
             <h3 class="text-lg font-bold text-gray-900">Premium Package</h3>
-            <p class="text-2xl font-bold text-[#c45b1f] mt-2">30,000 KSH</p>
+            
 
             <ul class="mt-6 space-y-3 text-gray-700">
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Executive financial planning</li>
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Business succession planning</li>
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Investment management for corporate funds</li>
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Mergers & acquisitions financial advisory</li>
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Tax planning strategy (with accountants)</li>
-                <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Available online and physical</li>
-            </ul>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Executive financial planning</li>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Business succession planning</li>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Investment management for corporate funds</li>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Mergers & acquisitions financial advisory</li>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Tax planning strategy (with accountants)</li>
+                <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Available online and physical</li>
+            </ul> <br>
+            <p class="text-2xl font-bold text-[#c45b1f] mt-2">30,000 KSH</p><br>
             <button onclick="openPaymentModal('Premium Package', '30000')" 
             class="w-full bg-[#c45b1f] hover:bg-[#a34817] text-white font-medium py-3 px-6 rounded-lg transition">
             Select Package

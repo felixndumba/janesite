@@ -12,11 +12,11 @@ export default defineConfig({
         tailwindcss(),
     ],
     build: {
-        outDir: '1/build',
+        outDir: 'public/1',
         manifest: true,
         rollupOptions: {
             input: ['resources/css/app.css', 'resources/js/app.js'],
         },
     },
-    base: '/build/', // 👈 This ensures Laravel looks in /build for assets
+    base: '/1/', // 👈 This ensures Laravel looks in /build for assets
 });

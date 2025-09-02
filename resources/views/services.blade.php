@@ -1,5 +1,6 @@
-
-<section class="py-12 bg-[#f9f7f4]" x-data="{ activeTab: 'individual' } " data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
+@extends('layouts.app')
+@extends('layouts.header')
+<section class="py-12 bg-[#f9f7f4] pt-32" x-data="{ activeTab: 'individual' } " data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     <div class="max-w-7xl mx-auto px-6">
 
         <!-- Heading -->
