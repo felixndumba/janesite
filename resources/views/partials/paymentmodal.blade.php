@@ -1,6 +1,6 @@
 <!-- M-Pesa Payment Modal -->
 <div id="mpesaModal" 
-     class="hidden fixed inset-0 h-screen w-screen  bg-opacity-60 backdrop-blur-sm 
+     class="hidden fixed inset-0 h-screen w-screen bg-black bg-opacity-60 backdrop-blur-sm 
             flex items-center justify-center z-[9999] transition-opacity duration-300 overflow-hidden">
     
     <!-- Modal Card -->
@@ -35,6 +35,9 @@
                    class="border rounded-lg w-full p-3 focus:ring-2 focus:ring-orange-400 
                           focus:border-orange-500 outline-none shadow-sm transition"/>
         </div>
+
+        <!-- Status Message -->
+        <div id="paymentMessage" class="hidden mb-4 p-3 rounded-lg text-sm font-medium"></div>
 
         <!-- Payment Instructions -->
         <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 border border-gray-200">
@@ -85,7 +88,23 @@
         setTimeout(() => modal.classList.add('hidden'), 200);
     }
 
-    // 🚀 Integrate Payment Request
+    // ✅ Show inline messages
+    function showMessage(message, type = "info") {
+        const msgBox = document.getElementById("paymentMessage");
+        msgBox.classList.remove("hidden", "bg-green-100", "text-green-700", "bg-red-100", "text-red-700", "bg-blue-100", "text-blue-700");
+
+        if (type === "success") {
+            msgBox.classList.add("bg-green-100", "text-green-700", "border", "border-green-300");
+        } else if (type === "error") {
+            msgBox.classList.add("bg-red-100", "text-red-700", "border", "border-red-300");
+        } else {
+            msgBox.classList.add("bg-blue-100", "text-blue-700", "border", "border-blue-300");
+        }
+
+        msgBox.innerText = message;
+    }
+
+    // ✅ Handle Payment Request
     document.getElementById('payButton').addEventListener('click', async (e) => {
         e.preventDefault();
 
@@ -93,11 +112,13 @@
         const amount = document.getElementById('payAmount').textContent.replace(' KSH','').trim();
 
         if (!/^2547\d{8}$/.test(phone)) { 
-            alert('Enter phone as 2547XXXXXXXX'); 
+            showMessage('⚠️ Enter phone as 2547XXXXXXXX', 'error');
             return; 
         }
 
         try {
+            showMessage("⏳ Sending payment request...", "info");
+
             const res = await fetch("{{ route('mpesa.initiate') }}", {
                 method: "POST",
                 headers: {
@@ -114,14 +135,19 @@
 
             const data = await res.json();
             if (res.ok) {
-                alert("✅ Payment request sent to your phone. Enter your M-Pesa PIN.");
+                showMessage("✅ Payment request sent! Enter M-Pesa PIN.", "success");
+
+                // 👉 Redirect to Calendly after 3s
+                setTimeout(() => {
+                    window.location.href = "https://calendly.com/YOUR_USERNAME";
+                }, 3000);
             } else {
                 console.error(data);
-                alert("❌ Failed to initiate payment. Check console/logs.");
+                showMessage("❌ Failed to initiate payment. Try again.", "error");
             }
         } catch (err) {
             console.error(err);
-            alert("⚠️ Network error. Try again.");
+            showMessage("⚠️ Network error. Please try again later.", "error");
         }
     });
 </script>

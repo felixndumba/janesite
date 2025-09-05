@@ -32,9 +32,8 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Investment/savings/insurance product guidance</li>
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">✔</span> Available online and physical</li>
             </ul>
-            <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" ">
+            <a href="{{ route('contact') }}" class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817] inline-block text-center">
                 Select Package
-            </button>
         </div>
 
         <div class="bg-white border rounded-lg shadow-sm p-6 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#c45b1f]">

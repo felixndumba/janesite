@@ -22,7 +22,7 @@ public function boot()
 {
     // Force HTTPS when on production or ngrok tunnel
      if ($this->app->environment('production', 'staging')) {
-        URL::forceScheme('https');
+        URL::forceScheme('http');
     }
 }
 }

@@ -21,6 +21,12 @@ Route::get('/services', function () {
 })->name('services');
 
 
+Route::get('/service-individual-free',
+ function () {
+    return view('partials.individual-free');
+})->name('individual-free');
+
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
