@@ -1,6 +1,6 @@
 <!-- M-Pesa Payment Modal -->
 <div id="mpesaModal" 
-     class="hidden fixed inset-0 h-screen w-screen bg-black bg-opacity-60 backdrop-blur-sm 
+     class="hidden fixed inset-0 h-screen w-screen bg-opacity-60 backdrop-blur-sm 
             flex items-center justify-center z-[9999] transition-opacity duration-300 overflow-hidden">
     
     <!-- Modal Card -->
@@ -134,20 +134,42 @@
             });
 
             const data = await res.json();
-            if (res.ok) {
-                showMessage("✅ Payment request sent! Enter M-Pesa PIN.", "success");
+          if (res.ok) {
+    showMessage("✅ Payment request sent! Enter M-Pesa PIN.", "success");
 
-                // 👉 Redirect to Calendly after 3s
-                setTimeout(() => {
-                    window.location.href = "https://calendly.com/YOUR_USERNAME";
-                }, 3000);
-            } else {
-                console.error(data);
-                showMessage("❌ Failed to initiate payment. Try again.", "error");
+    // 👉 Get CheckoutRequestID from API response
+    const checkoutId = data.checkout_request_id;
+    let attempts = 0;
+
+    // 👉 Start polling backend to check if payment is confirmed
+    const poll = setInterval(async () => {
+        attempts++;
+        try {
+            const check = await fetch(`/api/payment-status/${checkoutId}`);
+            const result = await check.json();
+
+            if (result.status === "success") {
+                clearInterval(poll);
+                showMessage("🎉 Payment confirmed! Redirecting...", "success");
+
+                // ✅ Redirect to Calendly after confirmation
+                window.location.href = "https://calendly.com/YOUR_USERNAME";
+            }
+
+            if (attempts > 10) { // stop after ~30s
+                clearInterval(poll);
+                showMessage("⚠️ Payment not confirmed. Try again later.", "error");
             }
         } catch (err) {
-            console.error(err);
-            showMessage("⚠️ Network error. Please try again later.", "error");
+            clearInterval(poll);
+            showMessage("⚠️ Error checking payment status.", "error");
         }
+    }, 3000); // check every 3s
+
+} else {
+    console.error(data);
+    showMessage("❌ Failed to initiate payment. Try again.", "error");
+}
+
     });
 </script>

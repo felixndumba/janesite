@@ -62,7 +62,7 @@
 <a href="https://calendly.com/janendichu1/financial-planning"
    target="_blank"
    class="fixed bottom-20 right-6 bg-[#a04f3f] text-white font-semibold px-5 py-3 rounded-full shadow-lg hover:bg-[#8b3f30] transition-all z-50">
-   Book a Clarity Call
+   Book a Free Discovery Call
 </a>
 
 

@@ -1,4 +1,4 @@
-<section x-data="{ selected: null }" class="py-16 bg-[#f9f7f4]">
+<section x-data="{ selected: null, isCouple: 'individual' }" class="py-16 bg-[#f9f7f4]">
     <div class="max-w-5xl mx-auto px-4">
 
         <!-- Initial 2 Cards -->
@@ -78,44 +78,61 @@
         </div>
 
         <!-- Paid Packages (Basic + Premium) -->
-        <div x-show="selected === 'paid'" class="grid md:grid-cols-2 gap-8 mt-10">
-            <!-- Basic -->
-            <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
-                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
-                    BASIC PACKAGE
+         <div>
+            
+             <div x-show="selected === 'paid'" class="mt-10 space-y-6">
+                <div class="mb-8 flex items-center justify-center space-x-6">
+                    <label class="inline-flex items-center">
+                        <input type="radio" value="individual" x-model="isCouple" checked class="accent-[#b25d4c]">
+                        <span class="ml-2 text-lg font-medium text-black">Individual</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" value="couple" x-model="isCouple" class="accent-[#b25d4c]">
+                        <span class="ml-2 text-lg font-medium text-black">Couples (50% off)</span>
+                    </label>
                 </div>
 
-                <ul class="mt-8 space-y-2 text-gray-700">
-                    <li>• One comprehensive session</li>
-                    <li>• Budgeting, Goal setting, Debt management</li>
-                    <li>• Financial freedom journey mapping</li>
-                    <li>• Wealth creation & Passive income strategies</li>
-                    <li>• Available online and physical</li>
-                </ul>
-                 <p class="text-xl font-bold text-[#b25d4c] mt-2">8,500 KSH</p>
-                <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" onclick="openPaymentModal(`Basic Package`, `8500`)">
-                Select Package
-            </button>
-            </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Basic -->
+                    <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
+                            BASIC PACKAGE
+                        </div>
 
-            <!-- Premium -->
-            <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
-                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
-                    PREMIUM PACKAGE
+                        <ul class="mt-8 space-y-2 text-gray-700">
+                            <li>• One comprehensive session</li>
+                            <li>• Budgeting, Goal setting, Debt management</li>
+                            <li>• Financial freedom journey mapping</li>
+                            <li>• Wealth creation & Passive income strategies</li>
+                            <li>• Available online and physical</li>
+                        </ul>
+                        <p class="text-xl font-bold text-[#b25d4c] mt-2" x-text="isCouple === 'couple' ? '12,750 KSH' : '8,500 KSH'"></p>
+                        <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]"
+                            :onclick="`openPaymentModal('Basic Package' + (isCouple === 'couple' ? ' (Couple)' : ''),` + (isCouple === 'couple' ? 12750 : 8500) + `)`">
+                            Select Package
+                        </button>
+                    </div>
+
+                    <!-- Premium -->
+                    <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
+                            PREMIUM PACKAGE
+                        </div>
+
+                        <ul class="mt-8 space-y-2 text-gray-700">
+                            <li>• 3 comprehensive sessions</li>
+                            <li>• All basic package features</li>
+                            <li>• Advanced wealth creation strategies</li>
+                            <li>• Ongoing financial accountability</li>
+                            <li>• Priority support & follow-ups</li>
+                        </ul>
+                        <p class="text-xl font-bold text-[#b25d4c] mt-2" x-text="isCouple === 'couple' ? '33,750 KSH' : '22,500 KSH'"></p>
+                        <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]"
+                            :onclick="`openPaymentModal('Premium Package' + (isCouple === 'couple' ? ' (Couple)' : ''),` + (isCouple === 'couple' ? 33750 : 22500) + `)`">
+                            Select Package
+                        </button>
+                    </div>
                 </div>
-
-                <ul class="mt-8 space-y-2 text-gray-700">
-                    <li>• 3 comprehensive sessions</li>
-                    <li>• All basic package features</li>
-                    <li>• Advanced wealth creation strategies</li>
-                    <li>• Ongoing financial accountability</li>
-                    <li>• Priority support & follow-ups</li>
-                </ul>
-                 <p class="text-xl font-bold text-[#b25d4c] mt-2">22,500 KSH</p>
-                <button class="mt-6 w-full bg-[#c45b1f] text-white font-semibold py-3 rounded-lg hover:bg-[#a34817]" onclick="openPaymentModal(`Premium Package`, `22500`)">
-                Select Package
-            </button>
-            </div>
 
             <div class="col-span-2 text-center mt-6">
                 <button @click="selected = null"
@@ -125,5 +142,7 @@
             </div>
         </div>
 
+         </div>
+       
     </div>
 </section>

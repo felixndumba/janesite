@@ -7,7 +7,7 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
 
         <!-- Left Side: Image with Social Icons -->
         <div class="relative flex flex-col justify-between ">
-            <img src="{{ asset('images/2.jpg') }}" alt="Contact" class="w-full h-130 object-cover">
+            <img src="{{ asset('images/200.jpg') }}" alt="Contact" class="w-full h-130 object-cover">
 
             <!-- Social Media Icons at bottom of image -->
            
@@ -28,7 +28,7 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
             <i class="fas fa-envelope text-blue-500 mr-2"></i>
             <strong>Email:</strong> 
             <a href="mailto:janendichui@gmail.com" class="text-blue-600 hover:underline">
-                janendichui@gmail.com
+                janendichu@gmail.com
             </a>
         </li>
         <li>
