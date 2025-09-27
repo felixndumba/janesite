@@ -47,8 +47,14 @@
     </div>
 
     <!-- Bottom -->
-    <div class="mt-10 border-t text-center text-sm py-6 text-gray-500">
-        © {{ now()->year }} Jane Ndichu. All rights reserved.
-        Powered by feltechnologies.
-    </div>
+   <div class="mt-10 border-t text-center text-sm py-6 text-gray-500">
+    © {{ now()->year }} Jane Ndichu. All rights reserved.
+    Developed by 
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNFGvigeXwnxiTfjRky0M0L5rw3jdMgfHd61xw4ZGIGcYj1g/viewform?usp=header" 
+       target="_blank" 
+       class="text-gray-700 hover:text-gray-900 underline">
+       Nexa Technologies
+    </a>.
+</div>
+
 </footer>

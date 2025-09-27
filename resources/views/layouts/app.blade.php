@@ -42,7 +42,7 @@
                 @endisset
 
                 <!-- Page Content -->
-                <main class="bg=bg-[#FFF8E7] pb-40">
+                <main class="pt-24 bg=bg-[#FFF8E7] pb-40">
                    @yield('content')
                 </main>
                  <footer >

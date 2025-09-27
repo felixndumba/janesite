@@ -20,6 +20,10 @@ Route::get('/services', function () {
     return view('services');
 })->name('services');
 
+Route::get('/Master-class', function () {
+    return view('master-class');
+})->name('master');
+
 
 Route::get('/service-individual-free',
  function () {
@@ -30,6 +34,10 @@ Route::get('/service-individual-free',
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+Route::get('/products', function () {
+    return view('products-1');
+})->name('products');
 
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 

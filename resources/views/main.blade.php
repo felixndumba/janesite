@@ -22,9 +22,7 @@
         @include('partials.partner')
     </div>
     
-    <div id="explore">
-        @include('partials.exploremore')
-    </div>
+   
     <div id="reviews">
         @include('partials.reviews')
     </div>
