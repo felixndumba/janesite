@@ -16,9 +16,11 @@
             <h3 class="text-md font-semibold text-[#a04f3f] mb-3">Quick Links</h3>
             <ul class="space-y-2 text-sm">
                 <li><a href="/" class="hover:text-[#a04f3f]">Home</a></li>
-                <li><a href="/services" class="hover:text-[#a04f3f]">Services</a></li>
-                <li><a href="/about" class="hover:text-[#a04f3f]">About</a></li>
-                <li><a href="/contact" class="hover:text-[#a04f3f]">Contact</a></li>
+                <li><a href={{ route('services') }} class="hover:text-[#a04f3f]">Services</a></li>
+                <li><a href={{ route('products') }} class="hover:text-[#a04f3f]">Financial Solutions</a></li>
+                 <li><a href={{ route('contact') }} class="hover:text-[#a04f3f]">Master Class</a></li>
+               
+                
             </ul>
         </div>
 
@@ -34,7 +36,7 @@
 
         <!-- Social Media -->
         <div>
-            <h3 class="text-md font-semibold text-[#a04f3f] mb-3">Follow Me on Social</h3>
+            <h3 class="text-md font-semibold text-[#a04f3f] mb-3">Follow Me on Socials</h3>
             <div class="flex space-x-4 text-[#a04f3f] text-xl">
                 
                 

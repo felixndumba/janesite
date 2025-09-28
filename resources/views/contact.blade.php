@@ -49,7 +49,8 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
 
 
             <!-- Contact Form Card -->
-            <div class="relative -ml-20 bg-blue-50  shadow-lg p-8 mt-1 w-full max-w-md">
+            <div class="relative lg:-ml-20 bg-blue-50 shadow-lg p-8 mt-1 w-full max-w-md mx-auto">
+
                 
                 <!-- Contact Title -->
                 <h2 class="text-5xl font-bold text-gray-800 mb-6 text-center">Contact</h2>

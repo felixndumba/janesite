@@ -16,32 +16,31 @@
             <div>
                 <h2 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-4" style="font-family: 'Times New Roman', serif;">
                    Financial Freedom Master Class
-                </h2>
+                </h2><br>
 
                 <!-- Price -->
-                  <div class="inline-block relative px-4 py-2">
-  <!-- Date text -->
-  <span class="relative z-10 text-xl font-bold text-gray-900">KES 3,000</span>
+                 <div class="inline-block relative px-4 py-2">
+  <!-- Price text -->
+  <span class="relative z-10 text-xl font-bold text-white">KES 3,000</span>
 
-  <!-- Scratchy background layers -->
-  <span class="absolute inset-0 -skew-x-12 bg-yellow-300 opacity-60"></span>
-  <span class="absolute inset-0 skew-x-12 bg-yellow-400 opacity-50 translate-y-1"></span>
-  <span class="absolute inset-0 rotate-3 bg-yellow-200 opacity-50 -translate-y-1"></span>
-  <span class="absolute inset-0 -rotate-6 bg-yellow-300 opacity-40 translate-x-1"></span>
-</div>
-   <div class="inline-block relative px-4 py-2">
-  <!-- Date text -->
-  <span class="relative z-10 text-xl font-bold text-gray-900">Limited slots</span>
+  <!-- Scratchy background layers using brand shades -->
+  <span class="absolute inset-0 -skew-x-12 bg-[#a04f3f] opacity-70"></span>
+  <span class="absolute inset-0 skew-x-12 bg-[#b85f4d] opacity-60 translate-y-1"></span>
+  <span class="absolute inset-0 rotate-3 bg-[#8c3e32] opacity-50 -translate-y-1"></span>
+  <span class="absolute inset-0 -rotate-6 bg-[#703028] opacity-40 translate-x-1"></span>
+</div> 
 
-  <!-- Scratchy background layers -->
-  <span class="absolute inset-0 -skew-x-12 bg-yellow-300 opacity-60"></span>
-  <span class="absolute inset-0 skew-x-12 bg-yellow-400 opacity-50 translate-y-1"></span>
-  <span class="absolute inset-0 rotate-3 bg-yellow-200 opacity-50 -translate-y-1"></span>
-  <span class="absolute inset-0 -rotate-6 bg-yellow-300 opacity-40 translate-x-1"></span>
-</div>
+  <div class="inline-block relative px-4 py-2">
+  <!-- Label text -->
+  <span class="relative z-10 text-xl font-bold text-white">Limited slots</span>
 
-
-                <!-- Short Description -->
+  <!-- Scratchy background layers using brand shades -->
+  <span class="absolute inset-0 -skew-x-12 bg-[#a04f3f] opacity-70"></span>
+  <span class="absolute inset-0 skew-x-12 bg-[#b85f4d] opacity-60 translate-y-1"></span>
+  <span class="absolute inset-0 rotate-3 bg-[#8c3e32] opacity-50 -translate-y-1"></span>
+  <span class="absolute inset-0 -rotate-6 bg-[#703028] opacity-40 translate-x-1"></span>
+</div> <br><br>
+            <!-- Short Description -->
                 <p class="text-lg text-gray-700 font-medium mb-4">
                     The session will be a richly immersive two-hour experience.
                 </p>
@@ -66,13 +65,17 @@
 </h2>
 
 <!-- Decorative icons container -->
-<div class="relative inline-block ml-4 flex flex-col">
-  <span class="block w-12 h-12 bg-yellow-300 rounded-lg mb-2"></span>
+<div class="relative inline-block ml-4  flex-col">
+  <!-- Top large block -->
+  <span class="block w-12 h-12 bg-[#a04f3f] rounded-lg mb-2"></span>
+  
+  <!-- Bottom two smaller blocks -->
   <div class="flex">
-    <span class="block w-8 h-8 bg-yellow-600 rounded-lg mr-2"></span>
-    <span class="block w-8 h-8 bg-yellow-600 rounded-lg "></span>
+    <span class="block w-8 h-8 bg-[#b85f4d] rounded-lg mr-2"></span>
+    <span class="block w-8 h-8 bg-[#8c3e32] rounded-lg"></span>
   </div>
 </div>
+
 
        
        
@@ -102,11 +105,14 @@
              Free Budget Template.
             </li>
         </ul><br>
-       <div class="relative inline-block ml-4 flex flex-col">
-  <span class="block w-12 h-12 bg-yellow-300 rounded-lg mb-2"></span>
+       <div class="relative inline-block ml-4  flex-col">
+  <!-- Top large block -->
+  <span class="block w-12 h-12 bg-[#a04f3f] rounded-lg mb-2"></span>
+  
+  <!-- Bottom two smaller blocks -->
   <div class="flex">
-    <span class="block w-8 h-8 bg-yellow-600 rounded-lg mr-2"></span>
-    <span class="block w-8 h-8 bg-yellow-600 rounded-lg "></span>
+    <span class="block w-8 h-8 bg-[#b85f4d] rounded-lg mr-2"></span>
+    <span class="block w-8 h-8 bg-[#8c3e32] rounded-lg"></span>
   </div>
 </div>
     </div>

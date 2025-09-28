@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @extends('layouts.header')
+@section('content')
 <div class="relative  text-grey/20">
     <!-- Background Image with Gradient Overlay -->
    <div class="absolute inset-0">
@@ -11,15 +12,20 @@
     <!-- Content Wrapper -->
     <div class="relative z-10 container mx-auto px-6 py-20 lg:py-32 flex flex-col lg:flex-row items-center">
         <!-- Text Section -->
-        <div class="lg:w-1/2 text-center lg:text-left">
-            <span class="uppercase tracking-wider text-grey/20 font-semibold">Smart Finance & Solutions</span>
-            <h1 class="mt-4 text-4xl lg:text-5xl font-extrabold leading-tight">
-                Secure Your Future <br> With Our Financial Solutions
-            </h1>
-            <p class="mt-6 text-lg text-grey/20 max-w-lg">
-                From Money Market to Pension, Education Schemes, and Medical Plans – 
-                we help you plan, invest, and grow your wealth with confidence. 
-            </p>
+       <div class="lg:w-1/2 text-center lg:text-left">
+    <span class="uppercase tracking-wider text-gray-500 font-semibold">
+        Savings • Investments • Insurance
+    </span>
+    <h1 class="mt-4 text-4xl lg:text-5xl font-extrabold leading-tight">
+        Build Wealth, <br> Protect What Matters
+    </h1>
+
+
+           <p class="mt-6 text-lg text-gray-700 max-w-lg">
+  From tailored <span class="font-semibold">Savings & Investment plans</span> to comprehensive 
+  <span class="font-semibold">Insurance solutions</span>, we provide strategies that secure your 
+  future, protect what matters, and help your wealth grow with confidence.
+</p>
 
             <!-- Buttons -->
             <div class="mt-8 flex justify-center lg:justify-start gap-4">
@@ -61,7 +67,7 @@
     <!-- Card Grid -->
     <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Unit Trusts -->
-      <div class="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between">
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Unit Trusts</h3>
           <p class="mt-2 text-gray-600">Money Market & Balanced Funds to help you grow steadily.</p>
@@ -75,7 +81,7 @@
       </div>
 
       <!-- Pension Fund -->
-      <div class="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between">
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Pension Fund</h3>
           <p class="mt-2 text-gray-600">Plan for retirement with security and confidence.</p>
@@ -86,7 +92,7 @@
       </div>
 
       <!-- NSSF Tier 2 -->
-      <div class="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between">
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">NSSF Tier 2</h3>
           <p class="mt-2 text-gray-600">Supplementary retirement savings for a stronger future.</p>
@@ -97,7 +103,7 @@
       </div>
 
       <!-- Annuities & Income Drawdown -->
-      <div class="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between">
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Annuities & Income Drawdown</h3>
           <p class="mt-2 text-gray-600">Reliable retirement income solutions that last a lifetime.</p>
@@ -108,7 +114,7 @@
       </div>
 
       <!-- Endowment Plans -->
-      <div class="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between">
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Endowment Plans</h3>
           <p class="mt-2 text-gray-600">Save while ensuring protection and future benefits.</p>
@@ -119,7 +125,7 @@
       </div>
 
       <!-- Education Funds -->
-      <div class="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between">
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Education Funds</h3>
           <p class="mt-2 text-gray-600">Secure your child’s academic future with structured savings.</p>
@@ -130,7 +136,7 @@
       </div>
 
       <!-- Balanced Funds -->
-      <div class="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between">
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Balanced Funds</h3>
           <p class="mt-2 text-gray-600">Diversified portfolio balancing growth and security.</p>
@@ -141,7 +147,7 @@
       </div>
 
       <!-- Fixed Fund -->
-      <div class="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between">
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Fixed Fund</h3>
           <p class="mt-2 text-gray-600">Low-risk investments with consistent returns.</p>
@@ -152,7 +158,7 @@
       </div>
 
       <!-- Mansa X -->
-      <div class="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between">
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Mansa X</h3>
           <p class="mt-2 text-gray-600">Innovative investment platform for modern investors.</p>
@@ -162,12 +168,14 @@
         </div>
       </div>
     </div>
+    
   </div>
+  
 </section>
 
 
 <!-- INSURANCE -->
-<section class="bg-[#f9f7f4] py-16 px-6 lg:px-20">
+<section class="bg-[#f9f7f4] py-16 px-6 ">
   <div class="max-w-6xl mx-auto">
     <h2 class="text-3xl font-extrabold text-[#a04f3f]  "><span class="border-b-4 border-yellow-70">Insurance Solutions</span></h2>
     <p class="mt-2 text-gray-600 max-w-2xl">
@@ -266,3 +274,4 @@
     </div>
   </div>
 </section>
+@endsection
