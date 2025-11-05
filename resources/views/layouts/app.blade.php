@@ -48,6 +48,8 @@
                  <footer class="bg-[#f9f7f4]" >
                 @include('layouts.footer')
             </footer>
+
+          
             </div>
 
             

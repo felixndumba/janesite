@@ -7,7 +7,7 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
 
         <!-- Left Side: Image with Social Icons -->
         <div class="relative flex flex-col justify-between ">
-            <img src="{{ asset('images/200.jpg') }}" alt="Contact" class="w-full h-130 object-cover">
+            <img src="{{ asset('images/texture.jpg') }}" alt="Contact" class="w-full h-130 object-cover">
 
             <!-- Social Media Icons at bottom of image -->
            

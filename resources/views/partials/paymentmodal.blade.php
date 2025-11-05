@@ -1,6 +1,9 @@
+
+
+
 <!-- M-Pesa Payment Modal -->
-<div id="mpesaModal" 
-     class="hidden fixed inset-0 h-screen w-screen bg-opacity-60 backdrop-blur-sm 
+<div id="mpesaModal"
+     class="hidden fixed inset-0 h-screen w-screen bg-opacity-60 backdrop-blur-sm
             flex items-center justify-center z-[9999] transition-opacity duration-300 overflow-hidden">
     
     <!-- Modal Card -->
@@ -11,7 +14,7 @@
         <!-- Header -->
         <div class="flex justify-between items-center mb-4">
             <h4 class="font-bold text-lg text-gray-800 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" 
+                <svg xmlns="https://www.w3.org/2000/svg" 
                      class="h-6 w-6 text-black-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                           d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
@@ -61,7 +64,10 @@
 </div>
 
 <script>
-    function openPaymentModal(packageName, amount) {
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Make functions globally accessible
+    window.openPaymentModal = function(packageName, amount) {
         const modal = document.getElementById('mpesaModal');
         const card = document.getElementById('mpesaCard');
 
@@ -78,7 +84,7 @@
         }, 10);
     }
 
-    function closePaymentModal() {
+    window.closePaymentModal = function() {
         const modal = document.getElementById('mpesaModal');
         const card = document.getElementById('mpesaCard');
 
@@ -91,7 +97,8 @@
     // ✅ Show inline messages
     function showMessage(message, type = "info") {
         const msgBox = document.getElementById("paymentMessage");
-        msgBox.classList.remove("hidden", "bg-green-100", "text-green-700", "bg-red-100", "text-red-700", "bg-blue-100", "text-blue-700");
+        msgBox.classList.remove("hidden", "bg-green-100", "text-green-700",
+            "bg-red-100", "text-red-700", "bg-blue-100", "text-blue-700");
 
         if (type === "success") {
             msgBox.classList.add("bg-green-100", "text-green-700", "border", "border-green-300");
@@ -134,42 +141,45 @@
             });
 
             const data = await res.json();
-          if (res.ok) {
-    showMessage("✅ Payment request sent! Enter M-Pesa PIN.", "success");
 
-    // 👉 Get CheckoutRequestID from API response
-    const checkoutId = data.checkout_request_id;
-    let attempts = 0;
+            if (res.ok) {
+                showMessage("✅ Payment request sent! Enter M-Pesa PIN.", "success");
 
-    // 👉 Start polling backend to check if payment is confirmed
-    const poll = setInterval(async () => {
-        attempts++;
-        try {
-            const check = await fetch(`/api/payment-status/${checkoutId}`);
-            const result = await check.json();
+                const checkoutId = data.checkout_request_id;
+                let attempts = 0;
 
-            if (result.status === "success") {
-                clearInterval(poll);
-                showMessage("🎉 Payment confirmed! Redirecting...", "success");
+                const poll = setInterval(async () => {
+                    attempts++;
+                    try {
+                        const check = await fetch(`/api/payment-status/${checkoutId}`);
+                        const result = await check.json();
 
-                // ✅ Redirect to Calendly after confirmation
-                window.location.href = "https://calendly.com/YOUR_USERNAME";
-            }
+                        if (result.status === "success") {
+                            clearInterval(poll);
+                            showMessage("🎉 Payment confirmed! Redirecting...", "success");
+                            window.location.href = "https://calendly.com/YOUR_USERNAME";
+                        }
 
-            if (attempts > 10) { // stop after ~30s
-                clearInterval(poll);
-                showMessage("⚠️ Payment not confirmed. Try again later.", "error");
+                        if (attempts > 10) {
+                            clearInterval(poll);
+                            showMessage("⚠️ Payment not confirmed. Try again later.", "error");
+                        }
+                    } catch (err) {
+                        clearInterval(poll);
+                        showMessage("⚠️ Error checking payment status.", "error");
+                    }
+                }, 3000);
+
+            } else {
+                console.error(data);
+                showMessage("❌ Failed to initiate payment. Try again.", "error");
             }
         } catch (err) {
-            clearInterval(poll);
-            showMessage("⚠️ Error checking payment status.", "error");
+            console.error(err);
+            showMessage("❌ Network error. Try again.", "error");
         }
-    }, 3000); // check every 3s
-
-} else {
-    console.error(data);
-    showMessage("❌ Failed to initiate payment. Try again.", "error");
-}
-
     });
+});
 </script>
+
+

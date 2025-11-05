@@ -21,8 +21,11 @@ class AppServiceProvider extends ServiceProvider
 public function boot()
 {
     // Force HTTPS when on production or ngrok tunnel
-     if ($this->app->environment('production', 'staging')) {
-        URL::forceScheme('http');
+     $appUrl = config('app.url');
+
+    // Force HTTPS when in production OR when using ngrok (secure tunnels)
+    if (config('app.env') === 'production' || str_starts_with($appUrl, 'https://')) {
+        \URL::forceScheme('https');
     }
 }
 }

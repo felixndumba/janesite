@@ -1,4 +1,4 @@
-<section class="relative bg-cover bg-center" style="background-image: url('/images/backimage.jpg');">
+<section class="relative bg-cover bg-center" style="background-image: url('{{ asset('images/backimage.jpg') }}');">
   <!-- Overlay -->
   <div class="absolute inset-0 bg-[#a04f3f]/70"></div>
 

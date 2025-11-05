@@ -115,10 +115,12 @@
 
             <!-- Chama -->
             <div x-show="activeTab === 'chama'">
-               
+
                 @include('partials.chama')
             </div>
         </div>
     </div>
 </section>
+
+
 @endsection

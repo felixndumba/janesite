@@ -2,15 +2,15 @@
 <section class="grid grid-cols-1 md:grid-cols-4 min-h-screen" 
    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000" >
   <!-- 01 Meet Jane -->
-  <div class="relative bg-cover bg-center" style="background-image: url('/images/.jpg');" 
+  <div class="relative bg-cover bg-center" style="background-image: url('{{ asset('images/jane20.jpg') }}');"
   data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     <div class="bg-black/50 h-full p-6 flex flex-col justify-center">
       <span class="text-4xl font-extrabold text-white mb-4">01</span>
       <h3 class="text-2xl font-bold text-white mb-4">Meet Jane</h3>
       <p class="text-white leading-relaxed">
-        Jane is a 4-time Top-Award winning Financial Advisor with 7 years of experience, 
-        certified by IRA, CMA, and RBA. She offers a personalized financial freedom journey 
-        with a friendly, results-driven approach to savings, investments, wealth building, 
+        Jane is a 4-time Top-Award winning Financial Advisor with 7 years of experience,
+        certified by IRA, CMA, and RBA. She offers a personalized financial freedom journey
+        with a friendly, results-driven approach to savings, investments, wealth building,
         and protection.
       </p>
       <a href="/about-jane" class="mt-6 inline-block bg-[#c45b1f] text-white px-4 py-2 rounded shadow">
@@ -47,13 +47,13 @@
 
   <!-- 04 My Videos & Podcasts -->
 
-    <div class="relative bg-cover bg-center" style="background-image: url('/images/.jpg');"
+    <div class="relative bg-cover bg-center" style="background-image: url('{{ asset('images/serviceimage.jpg') }}');"
     data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="10000">
     <div class="bg-black/50 h-full p-6 flex flex-col justify-center">
       <span class="text-4xl font-extrabold text-white mb-4">04</span>
       <h3 class="text-2xl font-bold text-white mb-4">My Videos & Podcasts</h3>
       <p class="text-white leading-relaxed">
-     Explore a variety of videos and podcasts focused on financial literacy, 
+     Explore a variety of videos and podcasts focused on financial literacy,
       investment strategies, and wealth protection tips.
       </p>
        <a href="https://youtube.com" target="_blank" class="mt-6 inline-block bg-[#c45b1f] text-white  px-4 py-2 rounded shadow">

@@ -18,5 +18,5 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.js'],
         },
     },
-    base: '/1/', // 👈 This ensures Laravel looks in /build for assets
+   
 });

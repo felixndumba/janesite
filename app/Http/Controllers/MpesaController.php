@@ -55,7 +55,7 @@ class MpesaController extends Controller
             "BusinessShortCode" => $shortcode,
             "Password"          => $password,
             "Timestamp"         => $timestamp,
-            "TransactionType"   => env('MPESA_ENV') === 'sandbox' 
+            "TransactionType"   => env('MPESA_ENV') === 'production' 
                                     ? "CustomerPayBillOnline" 
                                     : "CustomerBuyGoodsOnline",
             "Amount"            => (int)$data['amount'],
@@ -63,7 +63,7 @@ class MpesaController extends Controller
             "PartyB"            => $shortcode,
             "PhoneNumber"       => $data['phone'],
             "CallBackURL"       => env('MPESA_CALLBACK_URL'),
-            "AccountReference"  => $data['account_reference'] ?? 'ORDER',
+            "AccountReference"  => $data['account_reference'] ?? 'Package',
             "TransactionDesc"   => $data['description'] ?? 'Payment'
         ];
 
