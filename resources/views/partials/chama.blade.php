@@ -31,7 +31,7 @@
     </div>
 
     <div class="mt-4 flex space-x-4">
-       <button class="w-1/2 bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638] transition duration-300" onclick="openPaymentModal('Chama Small Group Package', '9500')">
+       <button class="w-1/2 bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638] transition duration-300" onclick="openPaymentModal('Chama Small Group Package', '1')">
             Book for Small Group (<10)
         </button>
         <div class="w-1/2">

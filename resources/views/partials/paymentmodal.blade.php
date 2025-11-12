@@ -1,6 +1,3 @@
-
-
-
 <!-- M-Pesa Payment Modal -->
 <div id="mpesaModal"
      class="hidden fixed inset-0 h-screen w-screen bg-opacity-60 backdrop-blur-sm
@@ -63,10 +60,15 @@
     </div>
 </div>
 
+<div id="payment-status">Waiting for payment confirmation...</div>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+    // Track the current CheckoutRequestID and polling interval
+    let currentCheckoutId = null;
+    let pollingInterval = null;
 
-    // Make functions globally accessible
+    // Open modal
     window.openPaymentModal = function(packageName, amount) {
         const modal = document.getElementById('mpesaModal');
         const card = document.getElementById('mpesaCard');
@@ -75,51 +77,82 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('modalAmount').innerText = amount + ' KSH';
         document.getElementById('payAmount').innerText = amount + ' KSH';
 
-        document.body.style.overflow = 'hidden'; // Disable scroll
+        document.body.style.overflow = 'hidden';
         modal.classList.remove('hidden');
 
         setTimeout(() => {
-            card.classList.remove('scale-95', 'opacity-0');
-            card.classList.add('scale-100', 'opacity-100');
+            card.classList.remove('scale-95','opacity-0');
+            card.classList.add('scale-100','opacity-100');
         }, 10);
     }
 
+    // Close modal
     window.closePaymentModal = function() {
         const modal = document.getElementById('mpesaModal');
         const card = document.getElementById('mpesaCard');
 
-        document.body.style.overflow = ''; // Enable scroll
-        card.classList.add('scale-95', 'opacity-0');
-        card.classList.remove('scale-100', 'opacity-100');
+        document.body.style.overflow = '';
+        card.classList.add('scale-95','opacity-0');
+        card.classList.remove('scale-100','opacity-100');
+
         setTimeout(() => modal.classList.add('hidden'), 200);
+
+        if(pollingInterval) clearInterval(pollingInterval);
     }
 
-    // ✅ Show inline messages
+    // Show status messages
     function showMessage(message, type = "info") {
         const msgBox = document.getElementById("paymentMessage");
-        msgBox.classList.remove("hidden", "bg-green-100", "text-green-700",
-            "bg-red-100", "text-red-700", "bg-blue-100", "text-blue-700");
+        msgBox.classList.remove(
+            "hidden","bg-green-100","text-green-700",
+            "bg-red-100","text-red-700","bg-blue-100","text-blue-700"
+        );
 
-        if (type === "success") {
-            msgBox.classList.add("bg-green-100", "text-green-700", "border", "border-green-300");
-        } else if (type === "error") {
-            msgBox.classList.add("bg-red-100", "text-red-700", "border", "border-red-300");
-        } else {
-            msgBox.classList.add("bg-blue-100", "text-blue-700", "border", "border-blue-300");
-        }
+        if(type === "success") msgBox.classList.add("bg-green-100","text-green-700","border","border-green-300");
+        else if(type === "error") msgBox.classList.add("bg-red-100","text-red-700","border","border-red-300");
+        else msgBox.classList.add("bg-blue-100","text-blue-700","border","border-blue-300");
 
         msgBox.innerText = message;
     }
 
-    // ✅ Handle Payment Request
+    // Poll backend for payment status
+    async function pollPaymentStatus(checkoutRequestId) {
+        if (!checkoutRequestId) {
+            console.log("checkoutRequestId is missing!");
+            return;
+        }
+
+        try {
+            const res = await fetch(`/api/payment-status/${checkoutRequestId}`);
+            if (!res.ok) throw new Error("Network response not ok");
+
+            const data = await res.json();
+
+            if(data.status === "success") {
+                showMessage("🎉 Payment confirmed! Redirecting...","success");
+                clearInterval(pollingInterval);
+                setTimeout(() => window.location.href = "https://calendly.com/YOUR_USERNAME", 1500);
+
+            } else if(data.status === "failed") {
+                showMessage("⚠️ Payment failed or cancelled.","error");
+                clearInterval(pollingInterval);
+            }
+            // pending — keep polling automatically
+        } catch(err) {
+            console.error(err);
+            showMessage("❌ Network error while checking payment status.","error");
+        }
+    }
+
+    // Handle Pay button click
     document.getElementById('payButton').addEventListener('click', async (e) => {
         e.preventDefault();
 
-        const phone  = document.getElementById('mpesaPhone').value.trim();
+        const phone = document.getElementById('mpesaPhone').value.trim();
         const amount = document.getElementById('payAmount').textContent.replace(' KSH','').trim();
 
-        if (!/^2547\d{8}$/.test(phone)) { 
-            showMessage('⚠️ Enter phone as 2547XXXXXXXX', 'error');
+        if(!/^2547\d{8}$/.test(phone)) { 
+            showMessage('⚠️ Enter phone as 2547XXXXXXXX','error'); 
             return; 
         }
 
@@ -142,44 +175,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const data = await res.json();
 
-            if (res.ok) {
-                showMessage("✅ Payment request sent! Enter M-Pesa PIN.", "success");
+            if(res.ok && data.CheckoutRequestID) {
+                showMessage("✅ Payment request sent! Enter M-Pesa PIN.","success");
+                currentCheckoutId = data.CheckoutRequestID;
 
-                const checkoutId = data.checkout_request_id;
-                let attempts = 0;
+                // Clear any existing interval before starting new polling
+                if(pollingInterval) clearInterval(pollingInterval);
 
-                const poll = setInterval(async () => {
-                    attempts++;
-                    try {
-                        const check = await fetch(`/api/payment-status/${checkoutId}`);
-                        const result = await check.json();
-
-                        if (result.status === "success") {
-                            clearInterval(poll);
-                            showMessage("🎉 Payment confirmed! Redirecting...", "success");
-                            window.location.href = "https://calendly.com/YOUR_USERNAME";
-                        }
-
-                        if (attempts > 10) {
-                            clearInterval(poll);
-                            showMessage("⚠️ Payment not confirmed. Try again later.", "error");
-                        }
-                    } catch (err) {
-                        clearInterval(poll);
-                        showMessage("⚠️ Error checking payment status.", "error");
-                    }
+                // Start polling every 3 seconds
+                pollingInterval = setInterval(() => {
+                    pollPaymentStatus(currentCheckoutId);
                 }, 3000);
 
             } else {
                 console.error(data);
-                showMessage("❌ Failed to initiate payment. Try again.", "error");
+                showMessage("❌ Failed to initiate payment. Try again.","error");
             }
-        } catch (err) {
+
+        } catch(err) {
             console.error(err);
-            showMessage("❌ Network error. Try again.", "error");
+            showMessage("❌ Network error. Try again.","error");
         }
     });
 });
 </script>
-
-

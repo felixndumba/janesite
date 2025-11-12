@@ -11,9 +11,9 @@ class MpesaController extends Controller
 {
     private function baseUrl(): string
     {
-        return env('MPESA_ENV') === 'sandbox'
-            ? 'https://sandbox.safaricom.co.ke'
-            : 'https://api.safaricom.co.ke';
+        return env('MPESA_ENV') === 'production'
+            ? 'https://api.safaricom.co.ke'
+            : 'https://sandbox.safaricom.co.ke';
     }
 
     private function accessToken(): string
@@ -48,6 +48,7 @@ class MpesaController extends Controller
         ]);
 
         $shortcode = env('MPESA_SHORTCODE');
+        $till = env('MPESA_TILL_NUMBER');
         $timestamp = now()->format('YmdHis');
         $password  = $this->password($shortcode, env('MPESA_PASSKEY'), $timestamp);
 
@@ -55,12 +56,10 @@ class MpesaController extends Controller
             "BusinessShortCode" => $shortcode,
             "Password"          => $password,
             "Timestamp"         => $timestamp,
-            "TransactionType"   => env('MPESA_ENV') === 'production' 
-                                    ? "CustomerPayBillOnline" 
-                                    : "CustomerBuyGoodsOnline",
+            "TransactionType"   => "CustomerBuyGoodsOnline",
             "Amount"            => (int)$data['amount'],
             "PartyA"            => $data['phone'],
-            "PartyB"            => $shortcode,
+            "PartyB"            => $till,
             "PhoneNumber"       => $data['phone'],
             "CallBackURL"       => env('MPESA_CALLBACK_URL'),
             "AccountReference"  => $data['account_reference'] ?? 'Package',
@@ -75,7 +74,6 @@ class MpesaController extends Controller
         Log::info('STK Push Request', $payload);
         Log::info('STK Push Response', $json);
 
-        // Save initial payment
         if (isset($json['CheckoutRequestID'])) {
             Payment::create([
                 'merchant_request_id' => $json['MerchantRequestID'] ?? null,
@@ -90,7 +88,7 @@ class MpesaController extends Controller
         return response()->json($json, $res->status());
     }
 
-    /** STEP B: Handle STK Callback */
+    /** STEP B: STK Callback */
     public function stkCallback(Request $request)
     {
         $cb = $request->input('Body.stkCallback');
@@ -119,8 +117,10 @@ class MpesaController extends Controller
                     if ($name === 'PhoneNumber') $payment->phone = (string)$val;
                     if ($name === 'TransactionDate') $payment->transaction_date = (string)$val;
                 }
+
                 $payment->save();
             }
+
         } else {
             Log::warning('Callback for unknown CheckoutRequestID', [$checkoutRequestId]);
         }
@@ -128,18 +128,34 @@ class MpesaController extends Controller
         return response()->json(['ResultCode'=>0,'ResultDesc'=>'Processed']);
     }
 
-    /** STEP C: Check Status (for frontend polling) */
-    public function checkStatus($checkoutRequestID)
+    /** STEP C: Poll payment status */
+    public function checkStatus($checkoutRequestId)
     {
-        $payment = Payment::where('checkout_request_id', $checkoutRequestID)->first();
+        Log::info('Checking payment status for', ['CheckoutRequestID' => $checkoutRequestId]);
+
+        $payment = Payment::where('checkout_request_id', $checkoutRequestId)->first();
+
+        if (!$payment) {
+            return response()->json(['status' => 'pending', 'payment' => null]);
+        }
+
+        $status = match ($payment->result_code) {
+            "0" => 'success',
+            null => 'pending',
+            default => 'failed',
+        };
 
         return response()->json([
-            'status' => $payment?->result_code === "0" 
-                ? 'success' 
-                : ($payment?->result_code 
-                    ? 'failed' 
-                    : 'pending'),
-            'payment' => $payment,
+            'status' => $status,
+            'payment' => [
+                'checkout_request_id' => $payment->checkout_request_id,
+                'amount' => $payment->amount,
+                'phone' => $payment->phone,
+                'mpesa_receipt_number' => $payment->mpesa_receipt_number,
+                'transaction_date' => $payment->transaction_date,
+                'result_code' => $payment->result_code,
+                'result_desc' => $payment->result_desc,
+            ],
         ]);
     }
 }
