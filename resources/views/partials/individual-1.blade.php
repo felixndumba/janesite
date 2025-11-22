@@ -65,7 +65,7 @@
                     <li>• Investment / savings / insurance product guidance</li>
                     <li>• Available online and physical</li>
                 </ul>
-                <a href="https://calendly.com/janendichu1/financial-planning" target="_blank"
+                <a href="https://calendly.com/janendichu1/free_discovery_call" target="_blank"
    class="mt-6 w-full block text-center bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638] transition">
    Select Package
 </a><br><br>
@@ -107,10 +107,16 @@
                             <li>• Available online and physical</li>
                         </ul>
                         <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '12,750 KSH' : '8,500 KSH'"></p>
-                        <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-                            :onclick="`openPaymentModal('Basic Package' + (isCouple === 'couple' ? ' (Couple)' : ''),` + (isCouple === 'couple' ? 12750 : 8500) + `)`">
-                            Select Package
-                        </button>
+                      <button 
+    class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
+    @click="openPaymentModal(
+        'Basic Package' + (isCouple === 'couple' ? ' (Couple)' : ''),
+        isCouple === 'couple' ? 12750 : 8500
+    )"
+>
+    Select Package
+</button>
+
                     </div>
 
                     <!-- Premium -->
@@ -127,10 +133,16 @@
                             <li>• Priority support & follow-ups</li>
                         </ul>
                         <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '33,750 KSH' : '22,500 KSH'"></p>
-                        <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-                            :onclick="`openPaymentModal('Premium Package' + (isCouple === 'couple' ? ' (Couple)' : ''),` + (isCouple === 'couple' ? 33750 : 22500) + `)`">
-                            Select Package
-                        </button>
+                      <button 
+    class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
+    @click="openPaymentModal(
+        'Premium Package' + (isCouple === 'couple' ? ' (Couple)' : ''),
+        isCouple === 'couple' ? 33750 : 22500
+    )"
+>
+    Select Package
+</button>
+
                     </div>
                 </div>
 

@@ -39,5 +39,9 @@ Route::get('/products', function () {
     return view('products-1');
 })->name('products');
 
+Route::get('/meet-jane', function () {
+    return view('meetjane');
+})->name('meet-jane');
+
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 

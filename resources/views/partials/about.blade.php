@@ -1,122 +1,35 @@
-<!-- ABOUT SECTION -->
-<section class="grid grid-cols-1 md:grid-cols-4 min-h-screen" 
-   data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000" >
-  <!-- 01 Meet Jane -->
-  <div class="relative bg-cover bg-center" style="background-image: url('{{ asset('images/jane20.jpg') }}');"
-  data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-    <div class="bg-black/50 h-full p-6 flex flex-col justify-center">
-      <span class="text-4xl font-extrabold text-white mb-4">01</span>
-      <h3 class="text-2xl font-bold text-white mb-4">Meet Jane</h3>
-      <p class="text-white leading-relaxed">
-        Jane is a 4-time Top-Award winning Financial Advisor with 7 years of experience,
-        certified by IRA, CMA, and RBA. She offers a personalized financial freedom journey
-        with a friendly, results-driven approach to savings, investments, wealth building,
-        and protection.
-      </p>
-      <a href="/about-jane" class="mt-6 inline-block bg-[#c45b1f] text-white px-4 py-2 rounded shadow">
-        Learn More
-      </a>
+<section class="py-20 px-6 md:px-20 bg-white">
+    <div class="max-w-5xl mx-auto">
+        <!-- Subheading --> 
+       <p class="text-lg font-semibold text-[#c45b1f] mb-3 italic">
+    Trusted Financial Guidance for a Stronger Future
+</p>
+
+
+        <!-- Main Heading -->
+        <h2 class="text-4xl md:text-5xl font-bold text-[#a04f3f] leading-tight mb-6">
+            Empowering Smart Financial Decisions for Individuals, Teams, and Businesses
+        </h2>
+
+        <!-- Body Text -->
+        <p class="text-black text-lg leading-relaxed mb-10 italic">
+          <span class="text-[#a04f3f]"> Who are we? </span>Thedi Advisors is a forward-thinking financial advisory firm dedicated to helping 
+            individuals, professionals, and organizations build sustainable wealth. 
+            We specialize in personalized Financial Planning, Investment Advisory, 
+            Risk & Insurance Guidance, Retirement Planning, and Market Research Insights— 
+            all designed to give our clients clarity, confidence, and long-term financial stability.
+            <br><br>
+            Our team blends deep industry expertise with modern financial intelligence, enabling
+            clients to make informed choices around saving, investing, debt management, asset
+            growth, and financial protection. At <span class="text-[#a04f3f] font-semibold">Thedi Advisors</span>, 
+            we believe financial empowerment should be simple, strategic, and accessible 
+            to everyone.
+        </p>
+
+        <!-- CTA Button -->
+        <a href="{{ route('meet-jane') }}" 
+           class="inline-block bg-[#a04f3f] text-white px-8 py-3 text-lg rounded-lg shadow-md hover:bg-[#c45b1f] transition">
+            Meet the Chief FA
+        </a>
     </div>
-  </div>
-
-  <!-- 02 My Certifications & Awards -->
-  <div class="bg-[#a04f3f] p-6 flex flex-col justify-center"
-  data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-    <span class="text-4xl font-extrabold text-white mb-4">02</span>
-    <h3 class="text-2xl text-white font-bold mb-4">My Certifications & Awards</h3>
-    <p class="text-gray-800 leading-relaxed">
-      Certified by IRA, CMA, and RBA. Recognized with 4 Top-Awards in the financial 
-      sector for excellence and outstanding client results.
-    </p>
-  </div>
-
-  <!-- 03 My Portfolio -->
-    <div class="bg-[#a04f3f] p-6 flex flex-col justify-center"
-    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-  
-    <div class=" h-full p-6 flex flex-col justify-center">
-      <span class="text-4xl font-extrabold text-white mb-4">03</span>
-      <h3 class="text-2xl font-bold text-white mb-4">My Portfolio</h3>
-      <p class="text-gray-800 leading-relaxed">
-        Worked with 2000+ individuals, 10+ companies, 5+ businesses, and 10+ chamas, 
-        delivering measurable financial growth and security.
-      </p>
-     
-    </div>
-  </div>
-
-  <!-- 04 My Videos & Podcasts -->
-
-    <div class="relative bg-cover bg-center" style="background-image: url('{{ asset('images/serviceimage.jpg') }}');"
-    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="10000">
-    <div class="bg-black/50 h-full p-6 flex flex-col justify-center">
-      <span class="text-4xl font-extrabold text-white mb-4">04</span>
-      <h3 class="text-2xl font-bold text-white mb-4">My Videos & Podcasts</h3>
-      <p class="text-white leading-relaxed">
-     Explore a variety of videos and podcasts focused on financial literacy,
-      investment strategies, and wealth protection tips.
-      </p>
-       <a href="https://youtube.com" target="_blank" class="mt-6 inline-block bg-[#c45b1f] text-white  px-4 py-2 rounded shadow">
-      Watch on YouTube
-    </a>
-    </div>
-  </div>
 </section>
-
-
-<!-- STATS SECTION -->
-<section class=" py-16 px-6 md:px-12" data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center bg-[#f6f3ef] rounded-2xl shadow-sm p-8 ">
-    <div>
-      <span class="text-5xl font-bold text-[#a04f3f]" data-count="2000">0</span>
-      <p class="text-lg font-medium text-black">Individuals</p>
-    </div>
-    <div>
-      <span class="text-5xl font-bold text-[#a04f3f]" data-count="10">0</span>
-      <p class="text-lg font-medium text-black">Companies</p>
-    </div>
-    <div>
-      <span class="text-5xl font-bold text-[#a04f3f]" data-count="5">0</span>
-      <p class="text-lg font-medium text-black">Businesses</p>
-    </div>
-    <div>
-      <span class="text-5xl font-bold text-[#a04f3f]" data-count="10">0</span>
-      <p class="text-lg font-medium text-black">Chamas</p>
-    </div>
-  </div>
-</section>
-
-<!-- COUNT-UP SCRIPT -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const counters = document.querySelectorAll("[data-count]");
-    const speed = 60; // lower = faster
-
-    const countUp = (counter) => {
-      const target = +counter.getAttribute("data-count");
-      const updateCount = () => {
-        const current = +counter.innerText;
-        const increment = Math.ceil(target / speed);
-        if (current < target) {
-          counter.innerText = current + increment;
-          setTimeout(updateCount, 30);
-        } else {
-          counter.innerText = target + "+";
-        }
-      };
-      updateCount();
-    };
-
-    const options = { threshold: 0.5 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          countUp(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, options);
-
-    counters.forEach(counter => observer.observe(counter));
-  });
-</script>

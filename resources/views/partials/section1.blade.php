@@ -1,7 +1,7 @@
 <section 
    data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200"
     class="relative py-24 px-6 bg-cover bg-center" 
-    style="background-image: url('{{ asset('images/jane1.jpg') }}');"
+    style="background-image: url('{{ asset('images/.jpg') }}');"
 
 >
     <!-- Gradient Overlay - Using #a04f3f with opacity to dim background image -->
@@ -28,7 +28,7 @@
         <!-- Right Image (Circular) -->
         <div class="flex justify-center" >
             <div class="relative w-80 h-80 md:w-96 md:h-96 overflow-hidden rounded-full shadow-xl border-[10px] border-[#f9f7f4]">
-                <img src="{{ asset('images/jane1.jpg') }}" alt="Hero Image" class="object-cover w-full h-full" />
+                <img src="{{ asset('images/.jpg') }}" alt="Hero Image" class="object-cover w-full h-full" />
             </div>
         </div>
 

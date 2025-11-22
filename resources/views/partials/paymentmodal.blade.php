@@ -44,7 +44,7 @@
             <p class="font-semibold text-gray-700">Payment Instructions:</p>
             <ol class="list-decimal pl-5 text-sm text-gray-600 mb-4 space-y-1">
                 <li>Enter your M-Pesa registered phone number</li>
-                <li>You’ll receive an STK push notification</li>
+                <li>You’ll receive an STK push notification on your phone</li>
                 <li>Enter your M-Pesa PIN to complete payment</li>
                 <li>After payment, you’ll be redirected to book your session</li>
             </ol>
@@ -60,7 +60,7 @@
     </div>
 </div>
 
-<div id="payment-status">Waiting for payment confirmation...</div>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(data.status === "success") {
                 showMessage("🎉 Payment confirmed! Redirecting...","success");
                 clearInterval(pollingInterval);
-                setTimeout(() => window.location.href = "https://calendly.com/YOUR_USERNAME", 1500);
+                setTimeout(() => window.location.href = "https://calendly.com/janendichu1/personal-financial-advisor", 1500);
 
             } else if(data.status === "failed") {
                 showMessage("⚠️ Payment failed or cancelled.","error");
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if(res.ok && data.CheckoutRequestID) {
                 showMessage("✅ Payment request sent! Enter M-Pesa PIN.","success");
-                currentCheckoutId = data.CheckoutRequestID;
+                
 
                 // Clear any existing interval before starting new polling
                 if(pollingInterval) clearInterval(pollingInterval);

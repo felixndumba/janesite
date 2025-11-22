@@ -19,7 +19,7 @@
                 <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Available online and physical</li>
             </ul><br><br>
          
-            <a href="https://calendly.com/janendichu1/financial-planning" target="_blank"
+            <a href="https://calendly.com/janendichu1/free_discovery_call" target="_blank"
                 class="mt-6 block text-center w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]">
                 Select Package
             </a>

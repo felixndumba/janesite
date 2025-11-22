@@ -10,7 +10,7 @@
 
                 <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <img src="{{ asset('images/jnn.png') }}" alt="Logo" class="h-14 w-auto">
+                    <img src="{{ asset('images/THEDI NEW.png') }}" alt="Logo" class="h-14 w-auto">
                 </div>
 
                 <!-- Desktop Navigation -->
@@ -19,7 +19,7 @@
                         Home
                         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full {{ request()->is('/') ? 'w-full' : '' }}"></span>
                     </a>
-                    <a href="{{ url('/#about') }}" class="relative group block px-4 py-2 text-gray-800 hover:text-[#a04f3f]">
+                    <a href="{{ route('meet-jane') }}" class="relative group block px-4 py-2 text-gray-800 hover:text-[#a04f3f]">
                         Meet Jane
                         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full"></span>
                     </a>
