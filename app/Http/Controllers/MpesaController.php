@@ -47,10 +47,12 @@ class MpesaController extends Controller
             'description'       => ['nullable','string','max:60'],
         ]);
 
-        $shortcode = env('MPESA_SHORTCODE');
-        $till = env('MPESA_TILL_NUMBER');
+        $shortcode = config('services.shortcode');
+        $till = config('services.till');
+        $passkey = config('services.passkey');
+
         $timestamp = now()->format('YmdHis');
-        $password  = $this->password($shortcode, env('MPESA_PASSKEY'), $timestamp);
+        $password  = $this->password($shortcode, $passkey, $timestamp);
 
         $payload = [
             "BusinessShortCode" => $shortcode,

@@ -21,10 +21,10 @@
                     In partnership with Insurance & Investment companies
                 </p>
                 <div class="mt-6">
-                    <button @click="selected = 'free'"
-                        class="inline-block bg-[#b25d4c] text-white px-6 py-2 rounded-full hover:bg-[#8a4638] transition">
-                        Join Us
-                    </button>
+                                <a href="https://calendly.com/janendichu1/free_discovery_call" target="_blank"
+  class="inline-block bg-[#b25d4c] text-white px-6 py-2 rounded-full hover:bg-[#8a4638] transition">
+   Book Now
+</a>
                 </div>
             </div>
 
@@ -54,29 +54,6 @@
             </div>
         </div>
 
-        <!-- Free Package Only -->
-        <div x-show="selected === 'free'" class="mt-10">
-            <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
-                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
-                    FREE PACKAGE
-                </div>
-                <ul class="mt-8 space-y-2 text-gray-800">
-                    <li>• Free need analysis session</li>
-                    <li>• Investment / savings / insurance product guidance</li>
-                    <li>• Available online and physical</li>
-                </ul>
-                <a href="https://calendly.com/janendichu1/free_discovery_call" target="_blank"
-   class="mt-6 w-full block text-center bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638] transition">
-   Select Package
-</a><br><br>
-
-                <button @click="selected = null"
-                    class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600">
-                    Back
-                </button>
-            </div>
-        </div>
-
         <!-- Paid Packages (Basic + Premium) -->
          <div>
             
@@ -93,8 +70,7 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Basic -->
-                    <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
+                    <!-- Basic -->    <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
                         <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
                             BASIC PACKAGE
                         </div>

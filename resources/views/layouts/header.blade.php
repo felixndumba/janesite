@@ -10,7 +10,7 @@
 
                 <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <img src="{{ asset('images/THEDI NEW.png') }}" alt="Logo" class="h-14 w-auto">
+                    <img src="{{ asset('images/thedione.png') }}" alt="Logo" class="h-14 w-auto">
                 </div>
 
                 <!-- Desktop Navigation -->

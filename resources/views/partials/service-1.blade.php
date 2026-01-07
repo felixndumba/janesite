@@ -8,7 +8,7 @@
       Empowering You To Build Wealth, Confidence & Financial Freedom
     </h2>
     <p class="text-lg md:text-xl leading-relaxed mb-8 text-grey-700">
-      <span class="text-gray-200">At Jane Ndichu Consultancy, we simplify money management, cultivate smart financial habits, 
+      <span class="text-gray-200">At Thedi Advisors Consultancy, we simplify money management, cultivate smart financial habits, 
       and guide you through investment, debt management, and wealth creation strategies. 
       Our mission is to equip you with tools and insights that create lasting prosperity.</span>
     </p>

@@ -3,8 +3,8 @@
         <!-- Logo & Message -->
         <div>
             <div class="flex items-center space-x-3 mb-4">
-                <img src="{{ asset('images/THEDI NEW.png') }}" alt="Logo" class="w-12 h-12 ">
-                <span class="text-xl font-bold text-[#a04f3f]">Financial Advisor</span>
+                <img src="{{ asset('images/adv.png') }}" alt="Logo" class="w-12 h-12 ">
+                <span class="text-xl font-bold text-[#a04f3f]">Thedi Advisors</span>
             </div>
             <p class="text-sm text-gray-600">
                 Empowering individuals and businesses across Kenya with expert financial strategies and personalized support. Your growth, our goal.
@@ -40,7 +40,7 @@
             <div class="flex space-x-4 text-[#a04f3f] text-xl">
                 
                 
-               
+                <a href="#"><i class="fab fa-youtube hover:text-[#6b3b31] transition"></i></a>
                 <a href="#"><i class="fab fa-instagram hover:text-[#6b3b31] transition"></i></a>
                  <a href="#"><i class="fab fa-tiktok hover:text-[#6b3b31] transition"></i></a>
                  <a href="#"><i class="fab fa-linkedin hover:text-[#6b3b31] transition"></i></a>

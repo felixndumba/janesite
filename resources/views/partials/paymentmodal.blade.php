@@ -174,6 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             const data = await res.json();
+           
 
             if(res.ok && data.CheckoutRequestID) {
                 showMessage("✅ Payment request sent! Enter M-Pesa PIN.","success");

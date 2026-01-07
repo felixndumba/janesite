@@ -70,13 +70,15 @@
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Unit Trusts</h3>
-          <p class="mt-2 text-gray-600">Money Market & Balanced Funds to help you grow steadily.</p>
+          <p class="mt-2 text-gray-600">Money market fund, fixed income fund, equity fund, balanced fund.</p>
         </div>
         <div class="mt-4">
-          <a href="{{ url('/checkout/unit-trusts') }}" 
-             class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-            Select
-          </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
 
@@ -87,40 +89,44 @@
           <p class="mt-2 text-gray-600">Plan for retirement with security and confidence.</p>
         </div>
         <div class="mt-4">
-          <a href="{{ url('/checkout/pension') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
 
       <!-- NSSF Tier 2 -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
-          <h3 class="text-xl font-semibold text-[#a04f3f]">NSSF Tier 2</h3>
+          <h3 class="text-xl font-semibold text-[#a04f3f]">NSSF Tier II</h3>
           <p class="mt-2 text-gray-600">Supplementary retirement savings for a stronger future.</p>
         </div>
         <div class="mt-4">
-          <a href="{{ url('/checkout/nssf-tier2') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
 
       <!-- Annuities & Income Drawdown -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
-          <h3 class="text-xl font-semibold text-[#a04f3f]">Annuities & Income Drawdown</h3>
-          <p class="mt-2 text-gray-600">Reliable retirement income solutions that last a lifetime.</p>
+          <h3 class="text-xl font-semibold text-[#a04f3f]">Fixed plan</h3>
+          <p class="mt-2 text-gray-600">Endownment policies, fixed savings accounts.</p>
         </div>
         <div class="mt-4">
-          <a href="{{ url('/checkout/annuities') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
-        </div>
-      </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
 
-      <!-- Endowment Plans -->
-      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-semibold text-[#a04f3f]">Endowment Plans</h3>
-          <p class="mt-2 text-gray-600">Save while ensuring protection and future benefits.</p>
-        </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/endowment') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
         </div>
       </div>
 
@@ -130,41 +136,13 @@
           <h3 class="text-xl font-semibold text-[#a04f3f]">Education Funds</h3>
           <p class="mt-2 text-gray-600">Secure your child’s academic future with structured savings.</p>
         </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/education') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
-        </div>
-      </div>
+      <div class="mt-4">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
 
-      <!-- Balanced Funds -->
-      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-semibold text-[#a04f3f]">Balanced Funds</h3>
-          <p class="mt-2 text-gray-600">Diversified portfolio balancing growth and security.</p>
-        </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/balanced') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
-        </div>
-      </div>
-
-      <!-- Fixed Fund -->
-      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-semibold text-[#a04f3f]">Fixed Fund</h3>
-          <p class="mt-2 text-gray-600">Low-risk investments with consistent returns.</p>
-        </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/fixed-fund') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
-        </div>
-      </div>
-
-      <!-- Mansa X -->
-      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-semibold text-[#a04f3f]">Mansa X</h3>
-          <p class="mt-2 text-gray-600">Innovative investment platform for modern investors.</p>
-        </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/mansa-x') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
         </div>
       </div>
     </div>
@@ -190,8 +168,13 @@
           <h3 class="text-xl font-semibold text-[#a04f3f]">Motor Insurance</h3>
           <p class="mt-2 text-gray-600">Reliable coverage for your vehicle against risks.</p>
         </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/motor') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
+       <div class="mt-4">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
 
@@ -201,8 +184,13 @@
           <h3 class="text-xl font-semibold text-[#a04f3f]">Health Insurance</h3>
           <p class="mt-2 text-gray-600">Access quality healthcare when you need it most.</p>
         </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/health') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
+       <div class="mt-4">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
 
@@ -212,8 +200,13 @@
           <h3 class="text-xl font-semibold text-[#a04f3f]">Business Insurance</h3>
           <p class="mt-2 text-gray-600">Safeguard your enterprise against unforeseen risks.</p>
         </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/business') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
+        <<div class="mt-4">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
 
@@ -223,8 +216,13 @@
           <h3 class="text-xl font-semibold text-[#a04f3f]">Travel Insurance</h3>
           <p class="mt-2 text-gray-600">Peace of mind while you explore the world.</p>
         </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/travel') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
+       <div class="mt-4">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
 
@@ -234,8 +232,13 @@
           <h3 class="text-xl font-semibold text-[#a04f3f]">Life Insurance</h3>
           <p class="mt-2 text-gray-600">Protect your family with Whole Life cover solutions.</p>
         </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/life') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
+       <div class="mt-4">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
 
@@ -246,7 +249,12 @@
           <p class="mt-2 text-gray-600">Protect construction projects from risks and uncertainties.</p>
         </div>
         <div class="mt-4">
-          <a href="{{ url('/checkout/contractors') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
 
@@ -256,8 +264,13 @@
           <h3 class="text-xl font-semibold text-[#a04f3f]">WIBA & Personal Accident</h3>
           <p class="mt-2 text-gray-600">Cover against work injuries and personal accidents.</p>
         </div>
-        <div class="mt-4">
-          <a href="{{ url('/checkout/wiba') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
+       <div class="mt-4">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
 
@@ -268,7 +281,12 @@
           <p class="mt-2 text-gray-600">Comprehensive cover for goods transported across seas.</p>
         </div>
         <div class="mt-4">
-          <a href="{{ url('/checkout/marine') }}" class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">Select</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
+   target="_blank"
+   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+    Select
+</a>
+
         </div>
       </div>
     </div>

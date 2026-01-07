@@ -7,7 +7,7 @@
 
             <!-- Left Side - Image -->
             <div>
-                <img src="{{ asset('images/2.jpg') }}"
+                <img src="{{ asset('images/2.jpg') }}"a
                      alt="Remote Work Master Class"
                      class="rounded-xl  shadow-md  w-full h-60 object-cover">
             </div>

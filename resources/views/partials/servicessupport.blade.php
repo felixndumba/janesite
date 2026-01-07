@@ -4,7 +4,7 @@
         <!-- Left Side -->
         <div>
             <h2 class="text-3xl font-bold text-[#c45b1f] mb-6">
-                Why Choose My Financial Advisory Services?
+                Why Choose Our Financial Advisory Services?
             </h2>
 
             <ul class="space-y-6 text-gray-700">
@@ -45,13 +45,13 @@
         <!-- Right Side -->
         <div class="bg-[#f6f3ef] rounded-2xl shadow-sm p-8 text-center">
             <h3 class="text-2xl font-bold text-[#c45b1f] mb-4">Ready to Start?</h3>
-            <p class="text-gray-600 mb-6">Take the first step towards financial freedom with a free consultation</p>
+            <p class="text-gray-600 mb-6">Take the first step towards financial freedom with a free discovery call</p>
 
             <div class="flex justify-center gap-6">
         <a href="https://calendly.com/janendichu1/free_discovery_call" target="_blank" class="block">
            <div class="bg-white px-6 py-4 rounded-lg shadow text-center w-40 cursor-pointer hover:shadow-lg transition">
              <p class="text-xl font-bold text-[#c89b52]">BOOK FREE</p>
-             <p class="text-sm text-gray-600">Initial Consultation</p>
+            
            </div>
          </a>
          
