@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libonig-dev \
     curl \
-    && docker-php-ext-install pdo_mysql zip mbstring
+    sqlite3 \
+    && docker-php-ext-install pdo_mysql pdo_sqlite zip mbstring
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -25,17 +26,22 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # ✅ Create required Laravel directories
 RUN mkdir -p storage/framework/{cache,sessions,views} \
     && mkdir -p bootstrap/cache \
-    && mkdir -p /tmp/views
+    && mkdir -p /tmp/views \
+    && mkdir -p database \
+    && touch database/database.sqlite
 
 # ✅ Set correct permissions
-RUN chown -R www-data:www-data storage bootstrap/cache /tmp \
-    && chmod -R 775 storage bootstrap/cache /tmp
+RUN chown -R www-data:www-data storage bootstrap/cache /tmp database \
+    && chmod -R 775 storage bootstrap/cache /tmp database
 
 # ✅ Cloud Run environment variables
 ENV APP_ENV=production \
     APP_DEBUG=false \
     LOG_CHANNEL=stderr \
-    VIEW_COMPILED_PATH=/tmp/views
+    VIEW_COMPILED_PATH=/tmp/views \
+    DB_CONNECTION=sqlite \
+    DB_DATABASE=/var/www/html/database/database.sqlite \
+    PORT=8080
 
 # Expose Cloud Run port
 EXPOSE 8080
