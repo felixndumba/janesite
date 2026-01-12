@@ -28,3 +28,4 @@ RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
 EXPOSE 8080
 
 CMD ["apache2-foreground"]
+CMD php artisan serve --host=0.0.0.0 --port=${PORT}
