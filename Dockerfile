@@ -4,14 +4,14 @@ FROM php:8.2-fpm
 # Set working directory
 WORKDIR /var/www/html
 
-# Install system dependencies
+# Install system dependencies (including SQLite dev headers)
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libzip-dev \
     libonig-dev \
     curl \
-    sqlite3 \
+    libsqlite3-dev \
     && docker-php-ext-install pdo_mysql pdo_sqlite zip mbstring
 
 # Install Composer
