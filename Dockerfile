@@ -1,16 +1,17 @@
-# Use official PHP image
+# Use official PHP image with FPM
 FROM php:8.2-fpm
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Install system dependencies (including SQLite dev headers)
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libzip-dev \
     libonig-dev \
     curl \
+    sqlite3 \
     libsqlite3-dev \
     && docker-php-ext-install pdo_mysql pdo_sqlite zip mbstring
 
@@ -31,8 +32,8 @@ RUN mkdir -p storage/framework/{cache,sessions,views} \
     && touch database/database.sqlite
 
 # ✅ Set correct permissions
-RUN chown -R www-data:www-data storage bootstrap/cache /tmp database \
-    && chmod -R 775 storage bootstrap/cache /tmp database
+RUN chown -R www-data:www-data storage bootstrap/cache database /tmp \
+    && chmod -R 775 storage bootstrap/cache database /tmp
 
 # ✅ Cloud Run environment variables
 ENV APP_ENV=production \
@@ -40,11 +41,10 @@ ENV APP_ENV=production \
     LOG_CHANNEL=stderr \
     VIEW_COMPILED_PATH=/tmp/views \
     DB_CONNECTION=sqlite \
-    DB_DATABASE=/var/www/html/database/database.sqlite \
-    PORT=8080
+    DB_DATABASE=/var/www/html/database/database.sqlite
 
 # Expose Cloud Run port
 EXPOSE 8080
 
-# ✅ Start Laravel correctly for Cloud Run
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
+# ✅ Run migrations and start Laravel server
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
