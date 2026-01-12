@@ -18,7 +18,7 @@
                 <li><a href="/" class="hover:text-[#a04f3f]">Home</a></li>
                 <li><a href={{ route('services') }} class="hover:text-[#a04f3f]">Services</a></li>
                 <li><a href={{ route('products') }} class="hover:text-[#a04f3f]">Financial Solutions</a></li>
-                 <li><a href={{ route('contact') }} class="hover:text-[#a04f3f]">Master Class</a></li>
+                 <li><a href={{ route('master') }} class="hover:text-[#a04f3f]">Master Class</a></li>
                
                 
             </ul>
@@ -40,7 +40,7 @@
             <div class="flex space-x-4 text-[#a04f3f] text-xl">
                 
                 
-                <a href="#"><i class="fab fa-youtube hover:text-[#6b3b31] transition"></i></a>
+                <a href="https://www.youtube.com/results?search_query=jane+ndichu"><i class="fab fa-youtube hover:text-[#6b3b31] transition"></i></a>
                 <a href="#"><i class="fab fa-instagram hover:text-[#6b3b31] transition"></i></a>
                  <a href="#"><i class="fab fa-tiktok hover:text-[#6b3b31] transition"></i></a>
                  <a href="#"><i class="fab fa-linkedin hover:text-[#6b3b31] transition"></i></a>

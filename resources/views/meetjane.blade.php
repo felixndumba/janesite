@@ -110,18 +110,19 @@
         <a 
           href="https://www.youtube.com/results?search_query=janendichu"
           target="_blank"
-          class="text-[#a04f3f] font-semibold underline hover:text-[#c45b1f] transition"
+          class="text-[#a04f3f] font-semibold hover:text-[#c45b1f] transition"
         >
           View More Videos →
         </a>
       </div>
     </div>
+  
 
     <!-- Video -->
     <div class="rounded-xl overflow-hidden shadow-lg">
       <iframe 
-        class="w-full aspect-video rounded-xl"
-        src="https://www.youtube.com/embed/Vpri9a74TC0"
+        class="w-full h-80 aspect-video rounded-xl"
+        src="https://www.youtube.com/embed/Knbq21hf4RI"
         title="YouTube video player"
         allowfullscreen>
       </iframe>

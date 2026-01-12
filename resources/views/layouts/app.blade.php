@@ -74,7 +74,7 @@
 </a>
 
 @include('partials.paymentmodal')
-
+@include('partials.paymentmodal1')
 
 </body>
 

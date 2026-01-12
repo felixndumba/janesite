@@ -16,7 +16,7 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">•</span> New business model recommendations</li>
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">•</span> Available online and physical</li>
             </ul><br>
-            <p class="text-xl  text-black mt-2">10,000 KSH</p>
+            <p class="text-xl  text-black mt-2">KSH 10,000</p>
             <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]" onclick="openPaymentModal(`Basic Package`, `10000`)">
                 Select Package
             </button>
@@ -35,7 +35,7 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">•</span> Goal setting & target planning</li>
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">•</span> 1 FREE accountability session</li>
             </ul><br>
-            <p class="text-xl  text-black mt-2">25,500 KSH</p>
+            <p class="text-xl  text-black mt-2">KSH 25,500</p>
             <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]" onclick="openPaymentModal(`Premium Package`, `25500`)">
                 Select Package
             </button>

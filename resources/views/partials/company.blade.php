@@ -38,7 +38,7 @@
                 <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Tax planning strategy (with accountants)</li>
                 <li class="flex items-center gap-3 text-lg"><span class="text-[#c45b1f]">•</span> Available online and physical</li>
             </ul><br>
-            <p class="text-xl  text-black mt-2">30,000 KSH</p>
+            <p class="text-xl  text-black mt-2">KSH 30,000</p>
             <button onclick="openPaymentModal('Premium Package', '30000')"
                 class="mt-6 w-full bg-[#b25d4c] hover:bg-[#8a4638] text-white font-medium py-3 px-6 rounded-lg transition">
                 Select Package
