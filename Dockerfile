@@ -1,31 +1,32 @@
-FROM php:8.2-apache
+# Use official PHP image with Composer
+FROM php:8.2-fpm
 
+# Set working directory
 WORKDIR /var/www/html
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    git unzip curl zip \
-    libpng-dev libonig-dev libxml2-dev \
-    nodejs npm \
-    && docker-php-ext-install pdo_mysql mbstring bcmath gd
+    git \
+    unzip \
+    libzip-dev \
+    libonig-dev \
+    curl \
+    && docker-php-ext-install pdo_mysql zip mbstring
 
-RUN a2enmod rewrite
-
+# Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Copy project files
 COPY . .
 
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
-RUN npm install && npm run build
 
-RUN chown -R www-data:www-data storage bootstrap/cache
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html/storage
 
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
-RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
-    /etc/apache2/sites-available/*.conf \
-    /etc/apache2/apache2.conf
-
-# Cloud Run uses 8080
+# Expose the Cloud Run port
 EXPOSE 8080
 
-CMD ["apache2-foreground"]
-CMD php artisan serve --host=0.0.0.0 --port=${PORT}
+# Run Laravel using Cloud Run PORT
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
