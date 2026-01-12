@@ -1,4 +1,4 @@
-# Use official PHP image with Composer
+# Use official PHP image
 FROM php:8.2-fpm
 
 # Set working directory
@@ -20,13 +20,25 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . .
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage
+# ✅ Create required Laravel directories
+RUN mkdir -p storage/framework/{cache,sessions,views} \
+    && mkdir -p bootstrap/cache \
+    && mkdir -p /tmp/views
 
-# Expose the Cloud Run port
+# ✅ Set correct permissions
+RUN chown -R www-data:www-data storage bootstrap/cache /tmp \
+    && chmod -R 775 storage bootstrap/cache /tmp
+
+# ✅ Cloud Run environment variables
+ENV APP_ENV=production \
+    APP_DEBUG=false \
+    LOG_CHANNEL=stderr \
+    VIEW_COMPILED_PATH=/tmp/views
+
+# Expose Cloud Run port
 EXPOSE 8080
 
-# Run Laravel using Cloud Run PORT
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
+# ✅ Start Laravel correctly for Cloud Run
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
