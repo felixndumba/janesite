@@ -1,58 +1,40 @@
-# ===============================
-# Laravel Production Dockerfile
-# ===============================
+FROM php:8.2-apache
 
-FROM php:8.2-fpm
+RUN a2enmod rewrite
 
-# Set working directory
-WORKDIR /var/www/html
+RUN sed -i 's/80/8080/g' /etc/apache2/ports.conf \
+ && sed -i 's/:80/:8080/g' /etc/apache2/sites-available/000-default.conf
 
-# Install system dependencies
+# PHP deps
 RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    libzip-dev \
-    libonig-dev \
-    curl \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql mbstring zip gd \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    git unzip libzip-dev libpng-dev libonig-dev libxml2-dev curl \
+    && docker-php-ext-install pdo_mysql zip mbstring bcmath
 
-# Install Composer
+# Node.js (for Vite)
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
+
+# Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy Laravel files
+WORKDIR /var/www/html
 COPY . .
 
-# Install PHP dependencies
-RUN composer install \
-    --no-dev \
-    --optimize-autoloader \
-    --no-interaction
+# Install backend deps
+RUN composer install --no-dev --optimize-autoloader
 
-# Create required Laravel directories
-RUN mkdir -p \
-    storage/framework/cache \
-    storage/framework/sessions \
-    storage/framework/views \
-    bootstrap/cache \
-    /tmp/views
+# Install frontend deps & build
+RUN npm install && npm run build
 
-# Set permissions
-RUN chown -R www-data:www-data storage bootstrap/cache /tmp \
-    && chmod -R 775 storage bootstrap/cache /tmp
+# Permissions
+RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Laravel environment (Render-compatible)
-ENV APP_ENV=production \
-    APP_DEBUG=false \
-    LOG_CHANNEL=stderr \
-    VIEW_COMPILED_PATH=/tmp/views
+# Apache public dir
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
+    /etc/apache2/sites-available/*.conf
 
-# Expose Render port
+
+
 EXPOSE 8080
-
-# Start Laravel
-CMD php artisan serve --host=0.0.0.0 --port=8080
+CMD ["apache2-foreground"]
