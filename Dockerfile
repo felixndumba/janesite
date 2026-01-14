@@ -22,7 +22,7 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     /etc/apache2/sites-available/*.conf
 
-RUN php artisan config:clear && php artisan cache:clear
+
 
 EXPOSE 8080
 
