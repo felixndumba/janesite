@@ -1,9 +1,8 @@
-# Base image
 FROM php:8.2-fpm
 
 WORKDIR /var/www/html
 
-# System dependencies
+# PHP + system dependencies
 RUN apt-get update && apt-get install -y \
     git unzip libzip-dev libonig-dev libpng-dev libjpeg-dev libfreetype6-dev curl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -17,15 +16,12 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy package.json first for npm caching
-COPY package*.json ./
+# Copy entire Laravel app first
+COPY . .
 
-# Install frontend dependencies
+# Install frontend dependencies & build assets
 RUN npm install
 RUN npm run build
-
-# Copy rest of Laravel app
-COPY . .
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
@@ -37,7 +33,7 @@ RUN mkdir -p storage/framework/{cache,sessions,views} bootstrap/cache /tmp/views
 RUN chown -R www-data:www-data storage bootstrap/cache /tmp \
     && chmod -R 775 storage bootstrap/cache /tmp
 
-# Environment
+# Environment variables
 ENV APP_ENV=production \
     APP_DEBUG=false \
     LOG_CHANNEL=stderr \
