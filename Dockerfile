@@ -32,8 +32,7 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     /etc/apache2/sites-available/*.conf
 
-# Clear Laravel cache (VERY IMPORTANT)
-RUN php artisan config:clear && php artisan cache:clear
+
 
 # Expose Cloud Run port
 EXPOSE 8080
