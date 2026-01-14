@@ -7,6 +7,11 @@ FROM php:8.2-fpm
 # Set working directory
 WORKDIR /var/www/html
 
+RUN curl -sL deb.nodesource.com | bash - \
+    && apt-get install -y nodejs
+COPY package*.json ./
+RUN npm install
+RUN npm run build
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -53,6 +58,6 @@ ENV APP_ENV=production \
 
 # Expose Render port
 EXPOSE 8080
-RUN npm install && npm run build
+
 # Start Laravel
 CMD php artisan serve --host=0.0.0.0 --port=8080
