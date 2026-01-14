@@ -18,6 +18,10 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Copy entire Laravel app first
 COPY . .
+# Create required Laravel directories
+RUN mkdir -p storage/framework/{cache,sessions,views} bootstrap/cache /tmp/views \
+    && chown -R www-data:www-data storage bootstrap/cache /tmp \
+    && chmod -R 775 storage bootstrap/cache /tmp
 
 # Install frontend dependencies & build assets
 RUN npm install
