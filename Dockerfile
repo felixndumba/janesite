@@ -7,6 +7,7 @@ FROM php:8.2-fpm
 # Set working directory
 WORKDIR /var/www/html
 
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -21,11 +22,18 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo_mysql mbstring zip gd \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Node.js for Vite
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Copy Laravel files
 COPY . .
+
+# Install frontend dependencies & build assets
+RUN npm install
+RUN npm run build
 
 # Install PHP dependencies
 RUN composer install \
