@@ -62,3 +62,8 @@ Route::get('/products', function () {
 Route::get('/meet-jane', function () {
     return view('meetjane');
 })->name('meet-jane');
+
+Route::get('/sitemap.xml', function () {
+    return response()->view('sitemap')->header('Content-Type', 'text/xml');
+});
+
