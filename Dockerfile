@@ -43,5 +43,13 @@ ENV APP_ENV=production \
     LOG_CHANNEL=stderr \
     VIEW_COMPILED_PATH=/tmp/views
 
+<<<<<<< HEAD
 # Expose port
 EXPOSE 8080
+=======
+# Expose Render port
+EXPOSE 8080
+
+# Start Laravel
+CMD php artisan serve --host=0.0.0.0 --port=8080
+>>>>>>> 238303aad97364ebbaa11eb7b5a672325af79bf3
