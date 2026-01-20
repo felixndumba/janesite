@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-      <meta name="description" content="The DI Advisors provides expert consulting and advisory services in Kenya. Contact us today for professional solutions.">
+      <meta name="description" content="Thedi Advisors provides expert consulting and advisory services in Kenya. Contact us today for professional solutions.">
 
        <title>Thedi Advisors | Professional Consulting Services</title>
 
-  <meta name="google-site-verification" content="kVKfXrtuFEhvvqHyS6zuI5okOHNvPxS-DTcKi4yHXKM" />
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -20,10 +21,8 @@
        
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'], buildDirectory: true)
-
-
+        <link rel="icon" type="THEDI NEW/png" href="{{ asset('favicon.png') }}">
     </head>
     <body  class="bg-gray-50">
 
@@ -34,9 +33,6 @@
         
                 <!-- Page Heading -->
                 @isset($header)
-                    <header class="  shadow">
-                       @include('layouts.header')
-
                         <div class="w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
                             {{ $header }}
                         </div>
