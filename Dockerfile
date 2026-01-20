@@ -2,7 +2,7 @@ FROM php:8.2-fpm
 
 WORKDIR /var/www/html
 
-# Install system dependencies
+# PHP + system dependencies
 RUN apt-get update && apt-get install -y \
     git unzip libzip-dev libonig-dev libpng-dev libjpeg-dev libfreetype6-dev curl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -13,11 +13,15 @@ RUN apt-get update && apt-get install -y \
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
 
-# Install Composer
+# Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Copy entire Laravel app first
 COPY . .
+# Create required Laravel directories
+RUN mkdir -p storage/framework/{cache,sessions,views} bootstrap/cache /tmp/views \
+    && chown -R www-data:www-data storage bootstrap/cache /tmp \
+    && chmod -R 775 storage bootstrap/cache /tmp
 
 # Install frontend dependencies & build assets
 RUN npm install
@@ -27,8 +31,10 @@ RUN npm run build
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Create required Laravel directories
-RUN mkdir -p storage/framework/{cache,sessions,views} bootstrap/cache /tmp/views \
-    && chown -R www-data:www-data storage bootstrap/cache /tmp \
+RUN mkdir -p storage/framework/{cache,sessions,views} bootstrap/cache /tmp/views
+
+# Set permissions
+RUN chown -R www-data:www-data storage bootstrap/cache /tmp \
     && chmod -R 775 storage bootstrap/cache /tmp
 
 # Environment variables
@@ -37,8 +43,14 @@ ENV APP_ENV=production \
     LOG_CHANNEL=stderr \
     VIEW_COMPILED_PATH=/tmp/views
 
+<<<<<<< HEAD
+# Expose port
+EXPOSE 8080
+EXPOSE 8080
+=======
 # Expose Render port
 EXPOSE 8080
 
 # Start Laravel
 CMD php artisan serve --host=0.0.0.0 --port=8080
+>>>>>>> 238303aad97364ebbaa11eb7b5a672325af79bf3
