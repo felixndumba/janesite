@@ -53,7 +53,7 @@ class MpesaController extends Controller
     }
 
     /**
-     * STEP A: Initiate STK Push
+     * STEP A: Initiate STK Push (asynchronous, safe for Railway)
      */
     public function stkPush(Request $request)
     {
@@ -85,8 +85,9 @@ class MpesaController extends Controller
         ];
 
         try {
-            $res = Http::timeout(90) // Increased timeout for production
-                ->retry(3, 2000)    // Retry 3 times with 2s delay
+            // Send STK Push request asynchronously
+            $res = Http::timeout(30) // short timeout to avoid Railway killing request
+                ->retry(2, 1000)    // retry 2 times with 1s interval
                 ->withToken($this->accessToken())
                 ->post($this->baseUrl() . '/mpesa/stkpush/v1/processrequest', $payload);
 
@@ -95,25 +96,29 @@ class MpesaController extends Controller
             Log::info('STK Push Request', $payload);
             Log::info('STK Push Response', $json);
 
-            if (isset($json['CheckoutRequestID'])) {
-                Payment::create([
-                    'merchant_request_id' => $json['MerchantRequestID'] ?? null,
-                    'checkout_request_id' => $json['CheckoutRequestID'] ?? null,
-                    'amount' => $data['amount'],
-                    'phone'  => $data['phone'],
-                    'result_code' => null,
-                    'result_desc' => null,
-                ]);
-            }
+            // Save payment as pending
+            Payment::create([
+                'merchant_request_id' => $json['MerchantRequestID'] ?? null,
+                'checkout_request_id' => $json['CheckoutRequestID'] ?? null,
+                'amount' => $data['amount'],
+                'phone'  => $data['phone'],
+                'result_code' => null,
+                'result_desc' => null,
+            ]);
 
-            return response()->json($json, $res->status());
+            // Return immediately to client
+            return response()->json([
+                'status' => 'pending',
+                'message' => 'STK Push request sent. Wait for callback.',
+                'checkout_request_id' => $json['CheckoutRequestID'] ?? null
+            ]);
 
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
             Log::error('STK Push Connection Error', ['message' => $e->getMessage(), 'payload' => $payload]);
             return response()->json([
                 'status' => 'error',
                 'message' => 'Could not connect to M-Pesa API. Please try again later.'
-            ], 503); // Service Unavailable
+            ], 503);
         } catch (\Exception $e) {
             Log::error('STK Push General Error', ['message' => $e->getMessage(), 'payload' => $payload]);
             return response()->json([
