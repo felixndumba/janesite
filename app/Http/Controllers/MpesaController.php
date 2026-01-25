@@ -9,6 +9,9 @@ use App\Models\Payment;
 
 class MpesaController extends Controller
 {
+    /**
+     * Base URL depending on environment
+     */
     private function baseUrl(): string
     {
         return env('MPESA_ENV') === 'production'
@@ -16,28 +19,42 @@ class MpesaController extends Controller
             : 'https://sandbox.safaricom.co.ke';
     }
 
+    /**
+     * Get access token from Safaricom
+     */
     private function accessToken(): string
     {
         $key = env('MPESA_CONSUMER_KEY');
         $secret = env('MPESA_CONSUMER_SECRET');
 
-        $res = Http::withBasicAuth($key, $secret)
-            ->get($this->baseUrl().'/oauth/v1/generate?grant_type=client_credentials');
+        try {
+            $res = Http::timeout(30)
+                ->withBasicAuth($key, $secret)
+                ->get($this->baseUrl() . '/oauth/v1/generate?grant_type=client_credentials');
 
-        if (!$res->ok()) {
-            Log::error('M-PESA Token Error', $res->json());
-            abort(500, 'Failed to get access token');
+            if (!$res->ok() || !isset($res->json()['access_token'])) {
+                Log::error('M-PESA Token Error', $res->json());
+                throw new \Exception('Failed to get access token');
+            }
+
+            return $res->json()['access_token'];
+        } catch (\Exception $e) {
+            Log::error('M-PESA Token Exception', ['message' => $e->getMessage()]);
+            throw $e;
         }
-
-        return $res->json()['access_token'];
     }
 
+    /**
+     * Generate password for STK Push
+     */
     private function password(string $shortcode, string $passkey, string $timestamp): string
     {
-        return base64_encode($shortcode.$passkey.$timestamp);
+        return base64_encode($shortcode . $passkey . $timestamp);
     }
 
-    /** STEP A: Initiate STK Push */
+    /**
+     * STEP A: Initiate STK Push
+     */
     public function stkPush(Request $request)
     {
         $data = $request->validate([
@@ -50,7 +67,6 @@ class MpesaController extends Controller
         $shortcode = config('services.shortcode');
         $till = config('services.till');
         $passkey = config('services.passkey');
-
         $timestamp = now()->format('YmdHis');
         $password  = $this->password($shortcode, $passkey, $timestamp);
 
@@ -68,36 +84,55 @@ class MpesaController extends Controller
             "TransactionDesc"   => $data['description'] ?? 'Payment'
         ];
 
-        $res = Http::withToken($this->accessToken())
-            ->post($this->baseUrl().'/mpesa/stkpush/v1/processrequest', $payload);
+        try {
+            $res = Http::timeout(90) // Increased timeout for production
+                ->retry(3, 2000)    // Retry 3 times with 2s delay
+                ->withToken($this->accessToken())
+                ->post($this->baseUrl() . '/mpesa/stkpush/v1/processrequest', $payload);
 
-        $json = $res->json();
+            $json = $res->json();
 
-        Log::info('STK Push Request', $payload);
-        Log::info('STK Push Response', $json);
+            Log::info('STK Push Request', $payload);
+            Log::info('STK Push Response', $json);
 
-        if (isset($json['CheckoutRequestID'])) {
-            Payment::create([
-                'merchant_request_id' => $json['MerchantRequestID'] ?? null,
-                'checkout_request_id' => $json['CheckoutRequestID'] ?? null,
-                'amount' => $data['amount'],
-                'phone'  => $data['phone'],
-                'result_code' => null,
-                'result_desc' => null,
-            ]);
+            if (isset($json['CheckoutRequestID'])) {
+                Payment::create([
+                    'merchant_request_id' => $json['MerchantRequestID'] ?? null,
+                    'checkout_request_id' => $json['CheckoutRequestID'] ?? null,
+                    'amount' => $data['amount'],
+                    'phone'  => $data['phone'],
+                    'result_code' => null,
+                    'result_desc' => null,
+                ]);
+            }
+
+            return response()->json($json, $res->status());
+
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {
+            Log::error('STK Push Connection Error', ['message' => $e->getMessage(), 'payload' => $payload]);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Could not connect to M-Pesa API. Please try again later.'
+            ], 503); // Service Unavailable
+        } catch (\Exception $e) {
+            Log::error('STK Push General Error', ['message' => $e->getMessage(), 'payload' => $payload]);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Something went wrong while initiating payment.'
+            ], 500);
         }
-
-        return response()->json($json, $res->status());
     }
 
-    /** STEP B: STK Callback */
+    /**
+     * STEP B: STK Callback from Safaricom
+     */
     public function stkCallback(Request $request)
     {
         $cb = $request->input('Body.stkCallback');
         Log::info('STK Callback', [$cb]);
 
         if (!$cb) {
-            return response()->json(['ResultCode'=>0, 'ResultDesc'=>'OK']);
+            return response()->json(['ResultCode' => 0, 'ResultDesc' => 'OK']);
         }
 
         $checkoutRequestId = $cb['CheckoutRequestID'] ?? null;
@@ -119,18 +154,18 @@ class MpesaController extends Controller
                     if ($name === 'PhoneNumber') $payment->phone = (string)$val;
                     if ($name === 'TransactionDate') $payment->transaction_date = (string)$val;
                 }
-
                 $payment->save();
             }
-
         } else {
             Log::warning('Callback for unknown CheckoutRequestID', [$checkoutRequestId]);
         }
 
-        return response()->json(['ResultCode'=>0,'ResultDesc'=>'Processed']);
+        return response()->json(['ResultCode' => 0, 'ResultDesc' => 'Processed']);
     }
 
-    /** STEP C: Poll payment status */
+    /**
+     * STEP C: Check payment status
+     */
     public function checkStatus($checkoutRequestId)
     {
         Log::info('Checking payment status for', ['CheckoutRequestID' => $checkoutRequestId]);
