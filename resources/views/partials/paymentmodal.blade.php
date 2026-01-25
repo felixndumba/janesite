@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ================= OPEN MODAL ================= */
     window.openPaymentModal = function(packageName, amount) {
         document.getElementById("modalPackage").innerText = packageName;
-        document.getElementById("modalAmount").innerText =  " KSH" + amount;
-        document.getElementById("payAmount").innerText =  " KSH" + amount;
+        document.getElementById("modalAmount").innerText = "KSH " + amount;
+        document.getElementById("payAmount").innerText = "KSH " + amount;
 
         modal.classList.remove("hidden");
 
@@ -104,17 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (pollingInterval) clearInterval(pollingInterval);
     };
 
-    /* === CLICK OUTSIDE CARD CLOSES MODAL === */
     modal.addEventListener("click", (e) => {
-        if (!card.contains(e.target)) {
-            closePaymentModal();
-        }
+        if (!card.contains(e.target)) closePaymentModal();
     });
 
-    /* ================= STATUS MESSAGE ================= */
+    /* ================= MESSAGE ================= */
     function showMessage(message, type = "info") {
         const box = document.getElementById("paymentMessage");
-
         box.className = "mb-4 p-3 rounded-lg text-sm font-medium";
 
         if (type === "success") box.classList.add("bg-green-100","text-green-700");
@@ -122,12 +118,18 @@ document.addEventListener("DOMContentLoaded", () => {
         else box.classList.add("bg-blue-100","text-blue-700");
 
         box.innerText = message;
+        box.classList.remove("hidden");
     }
 
     /* ================= POLLING ================= */
     async function pollPaymentStatus(id) {
         try {
-            const res = await fetch(`/api/payment-status/${id}`);
+            const res = await fetch(`/api/payment-status/${id}`, {
+                headers: { "Accept": "application/json" }
+            });
+
+            if (!res.ok) return;
+
             const data = await res.json();
 
             if (data.status === "success") {
@@ -135,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearInterval(pollingInterval);
                 setTimeout(() => {
                     window.location.href =
-                      "https://calendly.com/janendichu1/personal-financial-advisor";
+                        "https://calendly.com/janendichu1/personal-financial-advisor";
                 }, 1500);
             }
 
@@ -144,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearInterval(pollingInterval);
             }
         } catch {
-            showMessage("❌ Network error.", "error");
+            showMessage("❌ Network error. Retrying...", "error");
         }
     }
 
@@ -152,7 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("payButton").addEventListener("click", async () => {
 
         const phone = document.getElementById("mpesaPhone").value.trim();
-        const amount = document.getElementById("payAmount").innerText.replace(" KSH","");
+        const amount = document
+            .getElementById("payAmount")
+            .innerText.replace("KSH","")
+            .trim();
 
         if (!/^2547\d{8}$/.test(phone)) {
             showMessage("⚠️ Enter phone as 2547XXXXXXXX", "error");
@@ -161,25 +166,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
         showMessage("⏳ Sending payment request...");
 
-        const res = await fetch("{{ route('mpesa.initiate') }}", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": "{{ csrf_token() }}"
-            },
-            body: JSON.stringify({
-                phone,
-                amount: Number(amount),
-                account_reference: "ORDER",
-                description: "Online Payment"
-            })
-        });
+        let res, data;
 
-        const data = await res.json();
+        try {
+            res = await fetch("/api/mpesa/stk/initiate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    phone,
+                    amount: Number(amount),
+                    account_reference: "ORDER",
+                    description: "Online Payment"
+                })
+            });
+        } catch {
+            showMessage("❌ Cannot reach server.", "error");
+            return;
+        }
 
-        if (res.ok && data.CheckoutRequestID) {
+        if (!res.ok) {
+            showMessage("❌ Payment service unavailable.", "error");
+            return;
+        }
+
+        try {
+            data = await res.json();
+        } catch {
+            showMessage("❌ Invalid server response.", "error");
+            return;
+        }
+
+        if (data.CheckoutRequestID) {
             currentCheckoutId = data.CheckoutRequestID;
-            showMessage("✅ STK push sent. Enter PIN.", "success");
+            showMessage("✅ STK push sent. Enter your PIN.", "success");
 
             pollingInterval = setInterval(() => {
                 pollPaymentStatus(currentCheckoutId);
@@ -190,3 +212,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
