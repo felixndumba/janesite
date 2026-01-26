@@ -27,6 +27,15 @@ class MpesaController extends Controller
         $key = env('MPESA_CONSUMER_KEY');
         $secret = env('MPESA_CONSUMER_SECRET');
 
+        if (!$key || !$secret) {
+            $missing = [];
+            if (!$key) $missing[] = 'MPESA_CONSUMER_KEY';
+            if (!$secret) $missing[] = 'MPESA_CONSUMER_SECRET';
+            $msg = 'Missing required environment variable(s): ' . implode(', ', $missing);
+            Log::error($msg);
+            throw new \Exception($msg);
+        }
+
         try {
             $res = Http::timeout(60)
                 ->withBasicAuth($key, $secret)
@@ -53,7 +62,7 @@ class MpesaController extends Controller
     }
 
     /**
-     * STEP A: Initiate STK Push (asynchronous, safe for Railway)
+     * STEP A: Initiate STK Push (asynchronous)
      */
     public function stkPush(Request $request)
     {
@@ -64,9 +73,27 @@ class MpesaController extends Controller
             'description'       => ['nullable','string','max:60'],
         ]);
 
+        // Read env variables and check
         $shortcode = env('MPESA_SHORTCODE');
         $till = env('MPESA_TILL_NUMBER');
         $passkey = env('MPESA_PASSKEY');
+        $callback = env('MPESA_CALLBACK_URL');
+
+        $missing = [];
+        if (!$shortcode) $missing[] = 'MPESA_SHORTCODE';
+        if (!$till) $missing[] = 'MPESA_TILL_NUMBER';
+        if (!$passkey) $missing[] = 'MPESA_PASSKEY';
+        if (!$callback) $missing[] = 'MPESA_CALLBACK_URL';
+
+        if (!empty($missing)) {
+            $msg = 'Missing required environment variable(s): ' . implode(', ', $missing);
+            Log::error($msg);
+            return response()->json([
+                'status' => 'error',
+                'message' => $msg
+            ], 500);
+        }
+
         $timestamp = now()->format('YmdHis');
         $password  = $this->password($shortcode, $passkey, $timestamp);
 
@@ -79,15 +106,14 @@ class MpesaController extends Controller
             "PartyA"            => $data['phone'],
             "PartyB"            => $till,
             "PhoneNumber"       => $data['phone'],
-            "CallBackURL"       => config('mpesa.callback_url'),
+            "CallBackURL"       => $callback,
             "AccountReference"  => $data['account_reference'] ?? 'Package',
             "TransactionDesc"   => $data['description'] ?? 'Payment'
         ];
 
         try {
-            // Send STK Push request asynchronously
-            $res = Http::timeout(30) // short timeout to avoid Railway killing request
-                ->retry(2, 1000)    // retry 2 times with 1s interval
+            $res = Http::timeout(30)
+                ->retry(2, 1000)
                 ->withToken($this->accessToken())
                 ->post($this->baseUrl() . '/mpesa/stkpush/v1/processrequest', $payload);
 
@@ -96,7 +122,6 @@ class MpesaController extends Controller
             Log::info('STK Push Request', $payload);
             Log::info('STK Push Response', $json);
 
-            // Save payment as pending
             Payment::create([
                 'merchant_request_id' => $json['MerchantRequestID'] ?? null,
                 'checkout_request_id' => $json['CheckoutRequestID'] ?? null,
@@ -106,7 +131,6 @@ class MpesaController extends Controller
                 'result_desc' => null,
             ]);
 
-            // Return immediately to client
             return response()->json([
                 'status' => 'pending',
                 'message' => 'STK Push request sent. Wait for callback.',
@@ -114,16 +138,25 @@ class MpesaController extends Controller
             ]);
 
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            Log::error('STK Push Connection Error', ['message' => $e->getMessage(), 'payload' => $payload]);
+            Log::error('STK Push Connection Error', [
+                'message' => $e->getMessage(),
+                'payload' => $payload
+            ]);
             return response()->json([
                 'status' => 'error',
                 'message' => 'Could not connect to M-Pesa API. Please try again later.'
             ], 503);
         } catch (\Exception $e) {
-            Log::error('STK Push General Error', ['message' => $e->getMessage(), 'payload' => $payload]);
+            Log::error('STK Push General Error', [
+                'message' => $e->getMessage(),
+                'trace'   => $e->getTraceAsString(),
+                'payload' => $payload
+            ]);
+
             return response()->json([
                 'status' => 'error',
-                'message' => 'Something went wrong while initiating payment.'
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
             ], 500);
         }
     }
