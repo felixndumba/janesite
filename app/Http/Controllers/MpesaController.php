@@ -64,9 +64,9 @@ class MpesaController extends Controller
             'description'       => ['nullable','string','max:60'],
         ]);
 
-        $shortcode = config('services.mpesa.shortcode');
-        $till = config('services.mpesa.till');
-        $passkey = config('services.mpesa.passkey');
+        $shortcode = config('services.shortcode');
+        $till = config('services.till');
+        $passkey = config('services.passkey');
         $timestamp = now()->format('YmdHis');
         $password  = $this->password($shortcode, $passkey, $timestamp);
 
