@@ -47,6 +47,9 @@ ENV APP_ENV=production \
     LOG_CHANNEL=stderr \
     VIEW_COMPILED_PATH=/tmp/views \
     SESSION_DRIVER=file
+    
+php artisan config:clear
+php artisan cache:clear
 
 # Expose Railway port
 EXPOSE 8080
