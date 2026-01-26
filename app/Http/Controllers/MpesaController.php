@@ -28,7 +28,7 @@ class MpesaController extends Controller
         $secret = env('MPESA_CONSUMER_SECRET');
 
         try {
-            $res = Http::timeout(30)
+            $res = Http::timeout(60)
                 ->withBasicAuth($key, $secret)
                 ->get($this->baseUrl() . '/oauth/v1/generate?grant_type=client_credentials');
 
