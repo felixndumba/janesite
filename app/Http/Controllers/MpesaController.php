@@ -64,9 +64,9 @@ class MpesaController extends Controller
             'description'       => ['nullable','string','max:60'],
         ]);
 
-        $shortcode = config('services.shortcode');
-        $till = config('services.till');
-        $passkey = config('services.passkey');
+        $shortcode = config('services.mpesa.shortcode');
+        $till = config('services.mpesa.till');
+        $passkey = config('services.mpesa.passkey');
         $timestamp = now()->format('YmdHis');
         $password  = $this->password($shortcode, $passkey, $timestamp);
 
@@ -79,7 +79,7 @@ class MpesaController extends Controller
             "PartyA"            => $data['phone'],
             "PartyB"            => $till,
             "PhoneNumber"       => $data['phone'],
-            "CallBackURL"       => env('MPESA_CALLBACK_URL'),
+            "CallBackURL"       => config('mpesa.callback_url'),
             "AccountReference"  => $data['account_reference'] ?? 'Package',
             "TransactionDesc"   => $data['description'] ?? 'Payment'
         ];
