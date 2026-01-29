@@ -22,7 +22,8 @@
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
         @vite(['resources/css/app.css', 'resources/js/app.js'], buildDirectory: true)
-        <link rel="icon" type="THEDI NEW/png" href="{{ asset('favicon.png') }}">
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+
     </head>
     <body  class="bg-gray-50">
 
