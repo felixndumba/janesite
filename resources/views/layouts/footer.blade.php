@@ -28,7 +28,7 @@
         <div>
             <h3 class="text-md font-semibold text-[#a04f3f] mb-3">Contact Us</h3>
             <ul class="text-sm space-y-2">
-                <li>Email: <a href="mailto:info@janeadvisory.com" class="hover:text-[#a04f3f]">info@janeadvisory.com</a></li>
+                <li>Email: <a href="mailto:info@janeadvisory.com" class="hover:text-[#a04f3f]">sales@thediadvisors.co.ke</a></li>
                 <li>Phone: <a href="tel:+254712345678" class="hover:text-[#a04f3f]">+254 702531073</a></li>
                 <li>Location: Nairobi, Kenya</li>
             </ul>

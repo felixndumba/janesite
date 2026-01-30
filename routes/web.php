@@ -50,8 +50,7 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-// Handle POST from contact form
-Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+
 
 // Products page
 Route::get('/products', function () {
@@ -67,3 +66,5 @@ Route::get('/sitemap.xml', function () {
     return response()->view('sitemap')->header('Content-Type', 'text/xml');
 });
 
+Route::post('/contact/send', [ContactController::class, 'send'])
+    ->name('contact.send');
