@@ -70,7 +70,8 @@
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
          class="fixed top-24 left-0 right-0 h-[65vh] bg-[#f9f7f4] z-50 flex flex-col items-start justify-start space-y-6 text-black text-xl font-semibold px-8 overflow-y-auto"
-         style="backdrop-filter: none;">
+         style="display: none; backdrop-filter: none;"
+         x-bind:style="menuOpen ? 'display: flex;' : 'display: none;'">
 
         <a href="/" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('/') ? 'bg-[#b25d4c] text-white' : '' }}">Home</a>
         <a href="{{ url('/#about') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('about') ? 'bg-[#b25d4c] text-white' : '' }}">Meet Jane</a>

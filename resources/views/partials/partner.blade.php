@@ -7,7 +7,7 @@
            
            
             <div class="flex justify-center items-center">
-                <img src="{{ asset('images/icea.png') }}" alt="ICEA Lion" class="h-16 md:h-20 max-h-20 object-contain">
+                <img src="{{ asset('images/icea.png') }}" alt="ICEA Lion" class="h-16 md:h-20 max-h-20 object-contain" loading="lazy">
             </div>
            
             <div class="flex justify-center items-center">
