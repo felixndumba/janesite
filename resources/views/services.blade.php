@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@extends('layouts.header')
+
 @section('content')
 <section class="relative">
   <!-- Background -->

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@extends('layouts.header')
+
 @section('content')
 <div class="relative  text-grey/20">
     <!-- Background Image with Gradient Overlay -->

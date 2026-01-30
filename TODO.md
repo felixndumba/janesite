@@ -1,0 +1,3 @@
+- [x] Fix resources/views/layouts/app.blade.php: Remove duplicate body tag, consolidate @vite to head, add Poppins font link to head
+- [x] Update resources/views/meetjane.blade.php: Remove Google Font link
+- [x] Test the meetjane page for style loading issues

@@ -2,37 +2,21 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     
     <head>
-          @vite(['resources/css/app.css', 'resources/js/app.js'], buildDirectory: true)
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-      <meta name="description" content="Thedi Advisors provides expert consulting and advisory services in Kenya. Contact us today for professional solutions.">
-
-       <title>Thedi Advisors | Professional Consulting Services</title>
-
+        <meta name="description" content="Thedi Advisors provides expert consulting and advisory services in Kenya. Contact us today for professional solutions.">
+        <title>Thedi Advisors | Professional Consulting Services</title>
 
         <!-- Fonts -->
-        <link rel="icon" type="image/png" href="/favicon.png">
-
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- AOS Library -->
-
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
         @vite(['resources/css/app.css', 'resources/js/app.js'], buildDirectory: true)
-        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
-
     </head>
-    <body  class="bg-gray-50">
-
-    <!-- Sidebar -->
-   
-
     <body class="font-sans antialias bg-[#f9f7f4]">
 
         @include('layouts.header')

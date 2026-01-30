@@ -26,11 +26,13 @@
 
         <!-- Contact Info -->
         <div>
-            <h3 class="text-md font-semibold text-[#a04f3f] mb-3">Contact Us</h3>
+            <h3 class="text-md font-semibold text-[#a04f3f] mb-3">Contact Us At</h3>
             <ul class="text-sm space-y-2">
-                <li>Email: <a href="mailto:info@janeadvisory.com" class="hover:text-[#a04f3f]">sales@thediadvisors.co.ke</a></li>
-                <li>Phone: <a href="tel:+254712345678" class="hover:text-[#a04f3f]">+254 702531073</a></li>
-                <li>Location: Nairobi, Kenya</li>
+                <li><strong>Sales:</strong> <a href="mailto:sales@thediadvisors.co.ke" class="hover:text-[#a04f3f] ">sales@thediadvisors.co.ke</a></li>
+                <li><strong>Products:</strong> <a href="mailto:product@thediadvisors.co.ke" class="hover:text-[#a04f3f] ">products@thediadvisors.co.ke</a></li>
+                <li><strong>Info:</strong> <a href="mailto:info@thediadvisors.co.ke" class="hover:text-[#a04f3f] ">info@thediadvisors.co.ke</a></li>
+                <li><strong>Phone:</strong> <a href="tel:+254702531073" class="hover:text-[#a04f3f]">+254 702 531 073</a></li>
+                <li><strong>Location:</strong> Nairobi, Kenya</li>
             </ul>
         </div>
 
