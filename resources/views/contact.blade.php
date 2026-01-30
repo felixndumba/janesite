@@ -94,9 +94,8 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
                         </button>
                     </div>
                 </form>
-            </div>
         </div>
     </div>
 </div>
 @endsection
-@extends('layouts.header')
+

@@ -12,6 +12,7 @@ class ContactController extends Controller
         $data = $request->validate([
             'name'    => 'required|string|max:100',
             'email'   => 'required|email',
+            'subject' => 'nullable|string|max:255',
             'message' => 'required|string|max:2000',
         ]);
 
@@ -37,11 +38,12 @@ class ContactController extends Controller
                     'name'    => $data['name'],
                 ]
             ],
-            'subject' => 'New Contact Message',
+            'subject' => 'New Contact Message' . (isset($data['subject']) && !empty($data['subject']) ? ': ' . $data['subject'] : ''),
             'htmlbody' => "
                 <h3>New Contact Message</h3>
                 <p><strong>Name:</strong> {$data['name']}</p>
                 <p><strong>Email:</strong> {$data['email']}</p>
+                " . (isset($data['subject']) && !empty($data['subject']) ? "<p><strong>Subject:</strong> {$data['subject']}</p>" : "") . "
                 <hr>
                 <p>{$data['message']}</p>
             ",
