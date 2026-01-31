@@ -48,7 +48,7 @@
                 <div class="mt-6">
                     <button @click="selected = 'paid'"
                         class="inline-block bg-[#b25d4c] text-white px-6 py-2 rounded-full hover:bg-[#8a4638] transition">
-                        Join Us
+                      Book Now
                     </button>
                 </div>
             </div>

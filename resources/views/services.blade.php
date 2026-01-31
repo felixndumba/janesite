@@ -19,7 +19,7 @@
     </h2>
 
     <!-- Subtext -->
-    <p class="mt-4 text-lg md:text-xl text-gray-700 max-w-2xl">
+    <p class="mt-4 text-lg md:text-xl text-white max-w-2xl">
   We provide trusted financial solutions designed for <span class="font-semibold">Individuals</span>, 
   <span class="font-semibold">Businesses</span>, <span class="font-semibold">Companies</span>, and 
   <span class="font-semibold">Chamas</span> — helping you save, invest, and grow with confidence.

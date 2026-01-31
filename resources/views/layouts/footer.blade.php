@@ -28,11 +28,10 @@
         <div>
             <h3 class="text-md font-semibold text-[#a04f3f] mb-3">Contact Us At</h3>
             <ul class="text-sm space-y-2">
-                <li><strong>Sales:</strong> <a href="mailto:sales@thediadvisors.co.ke" class="hover:text-[#a04f3f] ">sales@thediadvisors.co.ke</a></li>
-                <li><strong>Products:</strong> <a href="mailto:product@thediadvisors.co.ke" class="hover:text-[#a04f3f] ">products@thediadvisors.co.ke</a></li>
-                <li><strong>Info:</strong> <a href="mailto:info@thediadvisors.co.ke" class="hover:text-[#a04f3f] ">info@thediadvisors.co.ke</a></li>
-                <li><strong>Phone:</strong> <a href="tel:+254702531073" class="hover:text-[#a04f3f]">+254 702 531 073</a></li>
-                <li><strong>Location:</strong> Nairobi, Kenya</li>
+                
+                <li>Email: <a href="mailto:consult@thediadvisors.co.ke" class="hover:text-[#a04f3f] ">consult@thediadvisors.co.ke</a></li>
+                <li>Phone: <a href="tel:+254702531073" class="hover:text-[#a04f3f]">+254 702 531 073</a></li>
+                <li>Location: Nairobi, Kenya</li>
             </ul>
         </div>
 
@@ -52,7 +51,7 @@
 
     <!-- Bottom -->
    <div class="mt-10 border-t text-center text-sm py-6 text-gray-500">
-    © {{ now()->year }} Jane Ndichu. All rights reserved.
+    © {{ now()->year }} Thedi Advisors. All rights reserved.
     Developed by 
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNFGvigeXwnxiTfjRky0M0L5rw3jdMgfHd61xw4ZGIGcYj1g/viewform?usp=header" 
        target="_blank" 
