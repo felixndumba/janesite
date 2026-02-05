@@ -56,7 +56,7 @@
             
             // Validate that input is a number and greater than 10
             if (groupSize && groupSize > 10) {
-                const amount = groupSize * 1500; // Calculate total amount (1500 KSH per person)
+                const amount = groupSize * 2000; // Calculate total amount (1500 KSH per person)
                 openPaymentModal('Chama Large Group Package', amount);
             } else {
                 alert('Please enter a valid number greater than 10 for large group booking.');

@@ -20,22 +20,21 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
      <div class="mb-6  p-5  ">
     <p class="font-[Figtree] text-lg text-gray-800 leading-relaxed tracking-wide mb-4">
         <i class="fas fa-comments text-blue-500 mr-2"></i>
-        Connect with us today—we’re here to provide answers, guidance, and the support you or your business deserves.
+        Connect with us today, we’re here to provide answers, guidance, and the support you or your business deserves.
     </p>
 
     <ul class="font-[Figtree] text-gray-700 space-y-3">
         <li>
             <i class="fas fa-envelope text-blue-500 mr-2"></i>
             <strong>Email:</strong> 
-            <a href="mailto:janendichui@gmail.com" class="text-blue-600 hover:underline">
-                janendichu@gmail.com
+            <a href="mailto:consult@thediadvisors.co.ke" class="text-blue-600 hover:underline">
+                consult@thediadvisors.co.ke
             </a>
         </li>
         <li>
             <i class="fas fa-phone text-blue-500 mr-2"></i>
             <strong>Call:</strong> 
-            <span class="text-gray-800">+254 702 531 073</span> <!-- Replace with your real number -->
-        </li>
+            <span class="text-gray-800">+254 702 531 073</span>        </li>
     </ul>
 </div>
 

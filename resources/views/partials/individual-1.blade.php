@@ -82,7 +82,7 @@
                             <li>• Wealth creation & Passive income strategies</li>
                             <li>• Available online and physical</li>
                         </ul>
-                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '12,750 KSH' : '8,500 KSH'"></p>
+                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '15000 KSH' : '10,000 KSH'"></p>
                       <button 
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
     @click="openPaymentModal(
@@ -108,7 +108,7 @@
                             <li>• Ongoing financial accountability</li>
                             <li>• Priority support & follow-ups</li>
                         </ul>
-                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '33,750 KSH' : '22,500 KSH'"></p>
+                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '43,500 KSH' : '29,000 KSH'"></p>
                       <button 
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
     @click="openPaymentModal(

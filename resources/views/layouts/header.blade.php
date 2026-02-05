@@ -74,7 +74,7 @@
          x-bind:style="menuOpen ? 'display: flex;' : 'display: none;'">
 
         <a href="/" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('/') ? 'bg-[#b25d4c] text-white' : '' }}">Home</a>
-        <a href="{{ url('/#about') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('about') ? 'bg-[#b25d4c] text-white' : '' }}">Meet Jane</a>
+        <a href="{{ url('meet-jane') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('about') ? 'bg-[#b25d4c] text-white' : '' }}">About Jane</a>
         <a href="{{ route('services') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->routeIs('services') ? 'bg-[#b25d4c] text-white' : '' }}">Services</a>
         <a href="{{ route('master') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->routeIs('master') ? 'bg-[#b25d4c] text-white' : '' }}">Master Class</a>
         <a href="{{ url('products') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('products') ? 'bg-[#b25d4c] text-white' : '' }}">Financial Solutions</a>
