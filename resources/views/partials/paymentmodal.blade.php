@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const modal = document.getElementById("mpesaModal");
     const card  = document.getElementById("mpesaCard");
+    const messageBox = document.getElementById("paymentMessage");
 
     /* ================= OPEN MODAL ================= */
     window.openPaymentModal = function(packageName, amount) {
@@ -87,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("payAmount").innerText = "KSH " + amount;
 
         modal.classList.remove("hidden");
-
         setTimeout(() => {
             card.classList.remove("scale-95","opacity-0");
             card.classList.add("scale-100","opacity-100");
@@ -98,10 +98,12 @@ document.addEventListener("DOMContentLoaded", () => {
     window.closePaymentModal = function() {
         card.classList.add("scale-95","opacity-0");
         card.classList.remove("scale-100","opacity-100");
-
         setTimeout(() => modal.classList.add("hidden"), 200);
 
-        if (pollingInterval) clearInterval(pollingInterval);
+        if (pollingInterval) {
+            clearInterval(pollingInterval);
+            pollingInterval = null;
+        }
     };
 
     modal.addEventListener("click", (e) => {
@@ -110,21 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ================= MESSAGE ================= */
     function showMessage(message, type = "info") {
-        const box = document.getElementById("paymentMessage");
-        box.className = "mb-4 p-3 rounded-lg text-sm font-medium";
+        messageBox.className = "mb-4 p-3 rounded-lg text-sm font-medium";
 
-        if (type === "success") box.classList.add("bg-green-100","text-green-700");
-        else if (type === "error") box.classList.add("bg-red-100","text-red-700");
-        else box.classList.add("bg-blue-100","text-blue-700");
+        if (type === "success") messageBox.classList.add("bg-green-100","text-green-700");
+        else if (type === "error") messageBox.classList.add("bg-red-100","text-red-700");
+        else messageBox.classList.add("bg-blue-100","text-blue-700");
 
-        box.innerText = message;
-        box.classList.remove("hidden");
+        messageBox.innerText = message;
+        messageBox.classList.remove("hidden");
     }
 
     /* ================= POLLING ================= */
-    async function pollPaymentStatus(id) {
+    async function pollPaymentStatus(checkoutId) {
         try {
-            const res = await fetch(`/api/payment-status/${id}`, {
+            const res = await fetch(`/api/payment-status/${checkoutId}`, {
                 headers: { "Accept": "application/json" }
             });
 
@@ -136,8 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 showMessage("🎉 Payment confirmed! Redirecting...", "success");
                 clearInterval(pollingInterval);
                 setTimeout(() => {
-                    window.location.href =
-                        "https://calendly.com/janendichu1/personal-financial-advisor";
+                    window.location.href = "https://calendly.com/janendichu1/personal-financial-advisor";
                 }, 1500);
             }
 
@@ -145,6 +145,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 showMessage("⚠️ Payment failed or cancelled.", "error");
                 clearInterval(pollingInterval);
             }
+
+            // still pending → do nothing, keep polling
+
         } catch {
             showMessage("❌ Network error. Retrying...", "error");
         }
@@ -154,10 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("payButton").addEventListener("click", async () => {
 
         const phone = document.getElementById("mpesaPhone").value.trim();
-        const amount = document
-            .getElementById("payAmount")
-            .innerText.replace("KSH","")
-            .trim();
+        const amount = document.getElementById("payAmount").innerText.replace("KSH","").trim();
 
         if (!/^2547\d{8}$/.test(phone)) {
             showMessage("⚠️ Enter phone as 2547XXXXXXXX", "error");
@@ -199,17 +199,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (data.CheckoutRequestID) {
-            currentCheckoutId = data.CheckoutRequestID;
-            showMessage("✅ STK push sent. Enter your PIN.", "success");
+        // ✅ Correct key from backend
+        if (data.checkout_request_id) {
+            currentCheckoutId = data.checkout_request_id;
+            showMessage("✅ STK push sent. Enter your M-Pesa PIN.", "success");
 
             pollingInterval = setInterval(() => {
                 pollPaymentStatus(currentCheckoutId);
             }, 3000);
         } else {
             showMessage("❌ Failed to initiate payment.", "error");
+            console.error('STK Response:', data);
         }
     });
+
 });
 </script>
-
