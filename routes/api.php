@@ -2,9 +2,9 @@
 use App\Http\Controllers\MpesaController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/mpesa/stk/initiate', [MpesaController::class, 'stkPush'])->name('mpesa.initiate');
-Route::post('/stk/callback', [MpesaController::class, 'stkCallback'])->name('mpesa.stk.callback');
-Route::get('/payment-status/{checkoutRequestId}', [MpesaController::class, 'checkStatus']);
+Route::post('/api/mpesa/stk/initiate', [MpesaController::class, 'stkPush'])->name('mpesa.initiate');
+Route::post('/api/stk/callback', [MpesaController::class, 'stkCallback'])->name('mpesa.stk.callback');
+Route::get('/api/payment-status/{checkoutRequestId}', [MpesaController::class, 'checkStatus']);
 ;
 
 
