@@ -13,7 +13,7 @@ class MpesaController extends Controller
 
     private function baseUrl(): string
     {
-        return config('services.mpesa.env') === 'production'
+        return config('services.env') === 'production'
             ? 'https://api.safaricom.co.ke'
             : 'https://sandbox.safaricom.co.ke';
     }
@@ -22,8 +22,8 @@ class MpesaController extends Controller
 
     private function accessToken(): string
     {
-        $key    = config('services.mpesa.consumer_key');
-        $secret = config('services.mpesa.consumer_secret');
+        $key    = config('services.consumer_key');
+        $secret = config('services.consumer_secret');
 
         $res = Http::withBasicAuth($key, $secret)
             ->get($this->baseUrl() . '/oauth/v1/generate?grant_type=client_credentials');
@@ -54,9 +54,9 @@ class MpesaController extends Controller
             'description'       => ['nullable', 'string', 'max:60'],
         ]);
 
-        $shortcode = config('services.mpesa.shortcode');
-        $till      = config('services.mpesa.till');
-        $passkey   = config('services.mpesa.passkey');
+        $shortcode = config('services.shortcode');
+        $till      = config('services.till');
+        $passkey   = config('services.passkey');
 
         $timestamp = now()->format('YmdHis');
         $password  = $this->password($shortcode, $passkey, $timestamp);
