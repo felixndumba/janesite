@@ -5,13 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use App\Models\Payment;
+use Illuminate\Support\Facades\Cache;
 
 class MpesaController extends Controller
 {
-    /* =======================
-     |  BASE URL
-     ======================= */
     private function baseUrl(): string
     {
         return env('MPESA_ENV') === 'production'
@@ -19,9 +16,6 @@ class MpesaController extends Controller
             : 'https://sandbox.safaricom.co.ke';
     }
 
-    /* =======================
-     |  ACCESS TOKEN
-     ======================= */
     private function accessToken(): string
     {
         $res = Http::timeout(10)
@@ -32,16 +26,12 @@ class MpesaController extends Controller
             ->get($this->baseUrl() . '/oauth/v1/generate?grant_type=client_credentials');
 
         if (!$res->ok()) {
-            Log::error('MPESA TOKEN ERROR', ['body' => $res->body()]);
             throw new \Exception('Failed to get access token');
         }
 
         return $res->json()['access_token'];
     }
 
-    /* =======================
-     |  STK PASSWORD
-     ======================= */
     private function stkPassword(string $timestamp): string
     {
         return base64_encode(
@@ -83,18 +73,18 @@ class MpesaController extends Controller
                 ->post($this->baseUrl() . '/mpesa/stkpush/v1/processrequest', $payload);
 
             if (!$res->ok()) {
-                Log::error('STK HTTP ERROR', ['body' => $res->body()]);
+                Log::error('STK HTTP Error', ['body' => $res->body()]);
                 return response()->json(['message' => 'STK failed'], 502);
             }
 
             $json = $res->json();
 
-            Payment::create([
-                'merchant_request_id' => $json['MerchantRequestID'] ?? '',
-                'checkout_request_id' => $json['CheckoutRequestID'] ?? '',
-                'amount' => $data['amount'],
-                'phone'  => $data['phone'],
-            ]);
+            // Store temporary status in cache (10 minutes)
+            Cache::put(
+                'stk_' . $json['CheckoutRequestID'],
+                ['status' => 'pending'],
+                now()->addMinutes(10)
+            );
 
             return response()->json([
                 'status' => 'pending',
@@ -118,28 +108,18 @@ class MpesaController extends Controller
             return response()->json(['ResultCode' => 0, 'ResultDesc' => 'OK']);
         }
 
-        $payment = Payment::where(
-            'checkout_request_id',
-            $cb['CheckoutRequestID'] ?? ''
-        )->first();
+        $checkoutId = $cb['CheckoutRequestID'] ?? null;
 
-        if ($payment) {
-            $payment->result_code = (string)($cb['ResultCode'] ?? '');
-            $payment->result_desc = $cb['ResultDesc'] ?? '';
-
-            if ((string)$cb['ResultCode'] === "0") {
-                foreach ($cb['CallbackMetadata']['Item'] as $item) {
-                    if ($item['Name'] === 'MpesaReceiptNumber') {
-                        $payment->mpesa_receipt_number = $item['Value'];
-                    }
-                    if ($item['Name'] === 'TransactionDate') {
-                        $payment->transaction_date = $item['Value'];
-                    }
-                }
-            }
-
-            $payment->raw_payload = $request->all();
-            $payment->save();
+        if ($checkoutId) {
+            Cache::put(
+                'stk_' . $checkoutId,
+                [
+                    'status' => ((string)$cb['ResultCode'] === "0") ? 'success' : 'failed',
+                    'result_desc' => $cb['ResultDesc'] ?? '',
+                    'payload' => $request->all()
+                ],
+                now()->addMinutes(10)
+            );
         }
 
         return response()->json(['ResultCode' => 0, 'ResultDesc' => 'Processed']);
@@ -150,17 +130,8 @@ class MpesaController extends Controller
      ======================= */
     public function checkStatus($checkoutRequestId)
     {
-        $payment = Payment::where('checkout_request_id', $checkoutRequestId)->first();
-
-        if (!$payment) {
-            return response()->json(['status' => 'pending']);
-        }
-
-        return response()->json([
-            'status' => $payment->result_code === "0"
-                ? 'success'
-                : ($payment->result_code === null ? 'pending' : 'failed'),
-            'payment' => $payment
-        ]);
+        return response()->json(
+            Cache::get('stk_' . $checkoutRequestId, ['status' => 'pending'])
+        );
     }
 }
