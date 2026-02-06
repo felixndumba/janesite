@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             data = await res.json();
         } catch {
-            showMessage("❌ Unexpected server response. Please try again.", "error");
+            showMessage("❌ Unexpected response. Please try again.", "error");
             return;
         }
 
