@@ -4,7 +4,6 @@
             flex items-center justify-center z-[9999]
             overflow-y-auto px-4 transition-opacity duration-300">
 
-    <!-- Modal Card -->
     <div id="mpesaCard"
          class="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl
                 transform scale-95 opacity-0 transition-all duration-300 relative">
@@ -52,14 +51,14 @@
                 <li>Enter your PIN</li>
                 <li>You’ll be redirected after payment</li>
             </ol><br>
-             <div class="bg-gray-400 border border-yellow-200 rounded-lg p-4 text-sm text-gray-700 flex items-start">
-            <span class="flex items-center justify-center w-6 h-6 bg-yellow-100 rounded-full mr-3 text-yellow-600">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </span>
-            <p>Please note that the payment is for the stipulated time of your choosing kindly.</p>
-        </div>
+            <div class="bg-gray-400 border border-yellow-200 rounded-lg p-4 text-sm text-gray-700 flex items-start">
+                <span class="flex items-center justify-center w-6 h-6 bg-yellow-100 rounded-full mr-3 text-yellow-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </span>
+                <p>Please note that the payment is for the stipulated time of your choosing kindly.</p>
+            </div>
         </div>
 
         <!-- Pay Button -->
@@ -87,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("payAmount").innerText = "KSH " + amount;
 
         modal.classList.remove("hidden");
-
         setTimeout(() => {
             card.classList.remove("scale-95","opacity-0");
             card.classList.add("scale-100","opacity-100");
@@ -123,16 +121,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ================= POLLING ================= */
     let pollCount = 0;
-    const maxPolls = 30; // 30 polls * 3 seconds = 90 seconds timeout
+    const maxPolls = 30; // ~90s timeout
 
     async function pollPaymentStatus(id) {
         pollCount++;
 
         try {
-            const res = await fetch(`/api/payment-status/${id}`, {
-                headers: { "Accept": "application/json" }
-            });
-
+            const res = await fetch(`/api/payment-status/${id}`, { headers: { "Accept": "application/json" }});
             if (!res.ok) return;
 
             const data = await res.json();
@@ -141,9 +136,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 showMessage("🎉 Payment confirmed! Redirecting...", "success");
                 clearInterval(pollingInterval);
                 setTimeout(() => {
-                    window.location.href =
-                        "https://calendly.com/janendichu1/personal-financial-advisor";
+                    window.location.href = "https://calendly.com/janendichu1/personal-financial-advisor";
                 }, 1500);
+                return;
             }
 
             if (data.status === "failed") {
@@ -151,13 +146,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearInterval(pollingInterval);
             }
 
-            // Check for timeout
             if (pollCount >= maxPolls) {
                 showMessage("⏰ Payment timed out. Please try again.", "error");
                 clearInterval(pollingInterval);
             }
-        } catch {
+        } catch (err) {
             showMessage("❌ Network error. Retrying...", "error");
+            console.error(err);
         }
     }
 
@@ -165,10 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("payButton").addEventListener("click", async () => {
 
         const phone = document.getElementById("mpesaPhone").value.trim();
-        const amount = document
-            .getElementById("payAmount")
-            .innerText.replace("KSH","")
-            .trim();
+        const amount = document.getElementById("payAmount").innerText.replace("KSH","").trim();
 
         if (!/^2547\d{8}$/.test(phone)) {
             showMessage("⚠️ Enter phone as 2547XXXXXXXX", "error");
@@ -182,10 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             res = await fetch("/api/mpesa/stk/initiate", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
+                headers: { "Content-Type":"application/json","Accept":"application/json" },
                 body: JSON.stringify({
                     phone,
                     amount: Number(amount),
@@ -199,28 +188,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (!res.ok) {
-            showMessage("❌ Payment service unavailable.", "error");
+            try { data = await res.json(); } catch { data = null; }
+            showMessage(data?.message || "❌ Payment service unavailable.", "error");
+            console.error("STK INIT ERROR:", data);
             return;
         }
 
-        try {
-            data = await res.json();
-        } catch {
+        try { data = await res.json(); } catch {
             showMessage("❌ Invalid server response.", "error");
             return;
         }
 
-        if (data.CheckoutRequestID) {
+        if (data.success && data.CheckoutRequestID) {
             currentCheckoutId = data.CheckoutRequestID;
-            showMessage("✅ STK push sent. Enter your PIN.", "success");
+            showMessage(data.message || "✅ STK push sent. Enter your PIN.", "success");
 
-            pollingInterval = setInterval(() => {
-                pollPaymentStatus(currentCheckoutId);
-            }, 3000);
+            pollingInterval = setInterval(() => pollPaymentStatus(currentCheckoutId), 3000);
         } else {
-            showMessage("❌ Failed to initiate payment.", "error");
+            showMessage(data.message || "❌ Failed to initiate payment.", "error");
+            console.error("M-Pesa STK Error:", data.raw || data);
         }
     });
 });
 </script>
-
