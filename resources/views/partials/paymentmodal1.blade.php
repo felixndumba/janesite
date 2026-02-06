@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("mpesaModalMaster");
     const card  = document.getElementById("mpesaCardMaster");
 
-    /* OPEN MODAL */
+    /* ================= OPEN MODAL ================= */
     window.openMasterclassPaymentModal = function(packageName, amount) {
         document.getElementById("masterPackage").innerText = packageName;
         document.getElementById("masterAmount").innerText = "KSH " + amount;
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 10);
     };
 
-    /* CLOSE MODAL */
+    /* ================= CLOSE MODAL ================= */
     window.closeMasterclassPaymentModal = function() {
         card.classList.add("scale-95","opacity-0");
         card.classList.remove("scale-100","opacity-100");
@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!card.contains(e.target)) closeMasterclassPaymentModal();
     });
 
+    /* ================= SHOW MESSAGE ================= */
     function showMasterMessage(msg, type="info") {
         const box = document.getElementById("masterMessage");
         box.className = "mb-4 p-3 rounded-lg text-sm font-medium";
@@ -104,59 +105,73 @@ document.addEventListener("DOMContentLoaded", () => {
         box.classList.remove("hidden");
     }
 
+    /* ================= POLLING PAYMENT STATUS ================= */
     async function pollMasterStatus(id) {
-        const res = await fetch(`/api/payment-status/${id}`);
-        const data = await res.json();
+        try {
+            const res = await fetch(`/api/payment-status/${id}`);
+            const data = await res.json();
 
-        if (data.status === "success") {
-            showMasterMessage("🎉 Payment successful! Joining class…", "success");
-            clearInterval(masterPolling);
+            if (data.status === "success") {
+                showMasterMessage("🎉 Payment successful! You are being redirected…", "success");
+                clearInterval(masterPolling);
 
-            setTimeout(() => {
-                window.location.href = "/master-class-room"; // 🔁 CHANGE IF NEEDED
-            }, 1500);
-        }
-
-        if (data.status === "failed") {
-            showMasterMessage("❌ Payment failed.", "error");
-            clearInterval(masterPolling);
+                setTimeout(() => {
+                    window.location.href = "/master-class-room"; // 🔁 Adjust if needed
+                }, 1500);
+            } else if (data.status === "failed") {
+                showMasterMessage("❌ Payment could not be completed. Please try again or contact support.", "error");
+                clearInterval(masterPolling);
+            } else {
+                showMasterMessage("⏳ Payment is being processed. Please complete the STK push on your phone.", "info");
+            }
+        } catch (err) {
+            showMasterMessage("⚠️ Unable to check payment status. Retrying...", "error");
         }
     }
 
+    /* ================= INITIATE PAYMENT ================= */
     document.getElementById("masterPayButton").addEventListener("click", async () => {
         const phone = document.getElementById("masterPhone").value.trim();
         const amount = document.getElementById("masterPayAmount").innerText.replace("KSH ","");
 
         if (!/^2547\d{8}$/.test(phone)) {
-            showMasterMessage("⚠️ Enter phone as 2547XXXXXXXX", "error");
+            showMasterMessage("⚠️ Please enter a valid phone number in the format 2547XXXXXXXX.", "error");
             return;
         }
 
-        showMasterMessage("⏳ Sending STK push...");
+        showMasterMessage("⏳ Sending payment request...", "info");
 
-        const res = await fetch("{{ route('mpesa.initiate') }}", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": "{{ csrf_token() }}"
-            },
-            body: JSON.stringify({
-                phone,
-                amount: Number(amount),
-                account_reference: "MASTERCLASS",
-                description: "Master Class Payment"
-            })
-        });
+        try {
+            const res = await fetch("{{ route('mpesa.initiate') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                body: JSON.stringify({
+                    phone,
+                    amount: Number(amount),
+                    account_reference: "MASTERCLASS",
+                    description: "Master Class Payment"
+                })
+            });
 
-        const data = await res.json();
+            const data = await res.json();
 
-        if (res.ok && data.CheckoutRequestID) {
-            masterCheckoutId = data.CheckoutRequestID;
-            masterPolling = setInterval(() => {
-                pollMasterStatus(masterCheckoutId);
-            }, 3000);
-        } else {
-            showMasterMessage("❌ Failed to initiate payment.", "error");
+            if (res.ok && data.checkout_request_id) {
+                masterCheckoutId = data.checkout_request_id;
+                showMasterMessage("✅ STK push sent! Enter your M-Pesa PIN on your phone to complete payment.", "success");
+
+                masterPolling = setInterval(() => {
+                    pollMasterStatus(masterCheckoutId);
+                }, 3000);
+            } else {
+                const msg = data.message || "❌ Could not initiate payment. Please try again.";
+                showMasterMessage(msg, "error");
+            }
+
+        } catch (err) {
+            showMasterMessage("❌ Unable to send payment request. Check your internet and try again.", "error");
         }
     });
 });
