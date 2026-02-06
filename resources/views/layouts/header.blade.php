@@ -20,7 +20,7 @@
                         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full {{ request()->is('/') ? 'w-full' : '' }}"></span>
                     </a>
                     <a href="{{ route('meet-jane') }}" class="relative group block px-4 py-2 text-gray-800 hover:text-[#a04f3f]">
-                        Meet Jane
+                        About Us
                         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full"></span>
                     </a>
                     <a href="{{ route('services') }}" class="relative group block px-4 py-2 {{ request()->routeIs('services') ? 'text-[#a04f3f]' : 'text-gray-800' }} hover:text-[#a04f3f]">
@@ -74,7 +74,7 @@
          x-bind:style="menuOpen ? 'display: flex;' : 'display: none;'">
 
         <a href="/" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('/') ? 'bg-[#b25d4c] text-white' : '' }}">Home</a>
-        <a href="{{ url('meet-jane') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('about') ? 'bg-[#b25d4c] text-white' : '' }}">About Jane</a>
+        <a href="{{ url('meet-jane') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('about') ? 'bg-[#b25d4c] text-white' : '' }}">About Us</a>
         <a href="{{ route('services') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->routeIs('services') ? 'bg-[#b25d4c] text-white' : '' }}">Services</a>
         <a href="{{ route('master') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->routeIs('master') ? 'bg-[#b25d4c] text-white' : '' }}">Master Class</a>
         <a href="{{ url('products') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('products') ? 'bg-[#b25d4c] text-white' : '' }}">Financial Solutions</a>

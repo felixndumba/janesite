@@ -65,6 +65,30 @@
     </p>
 
     <!-- Card Grid -->
+         <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-semibold text-[#a04f3f]">Fixed plan</h3>
+          <p class="mt-2 text-gray-600">Endownment policies, fixed savings accounts.</p>
+        </div>
+        <div class="mt-4">
+            <button data-product="Fixed plan" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
+        </div>
+      </div>
+
+       <!-- Education Funds -->
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-semibold text-[#a04f3f]">Education Funds</h3>
+          <p class="mt-2 text-gray-600">Secure your child’s academic future with structured savings.</p>
+        </div>
+      <div class="mt-4">
+            <button data-product="Education Funds" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
+        </div>
+      </div>
     <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Unit Trusts -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
@@ -73,12 +97,9 @@
           <p class="mt-2 text-gray-600">Money market fund, fixed income fund, equity fund, balanced fund.</p>
         </div>
         <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
+            <button data-product="Unit Trusts" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
         </div>
       </div>
 
@@ -89,12 +110,9 @@
           <p class="mt-2 text-gray-600">Plan for retirement with security and confidence.</p>
         </div>
         <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
+            <button data-product="Pension Fund" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
         </div>
       </div>
 
@@ -105,46 +123,16 @@
           <p class="mt-2 text-gray-600">Supplementary retirement savings for a stronger future.</p>
         </div>
         <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
+            <button data-product="NSSF Tier II" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
         </div>
       </div>
 
-      <!-- Annuities & Income Drawdown -->
-      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-semibold text-[#a04f3f]">Fixed plan</h3>
-          <p class="mt-2 text-gray-600">Endownment policies, fixed savings accounts.</p>
-        </div>
-        <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
+      
+  
 
-        </div>
-      </div>
-
-      <!-- Education Funds -->
-      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-semibold text-[#a04f3f]">Education Funds</h3>
-          <p class="mt-2 text-gray-600">Secure your child’s academic future with structured savings.</p>
-        </div>
-      <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
-        </div>
-      </div>
+     
     </div>
     
   </div>
@@ -161,6 +149,19 @@
     </p>
 
     <!-- Card Grid -->
+     <!-- Life Insurance -->
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-semibold text-[#a04f3f]">Life Insurance</h3>
+          <p class="mt-2 text-gray-600">Protect your family with Whole Life cover solutions.</p>
+        </div>
+        <div class="mt-4">
+            <button data-product="Life Insurance" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
+        </div>
+      </div>
+      
     <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Motor Insurance -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
@@ -169,12 +170,9 @@
           <p class="mt-2 text-gray-600">Reliable coverage for your vehicle against risks.</p>
         </div>
        <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
+            <button data-product="Motor Insurance" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
         </div>
       </div>
 
@@ -185,12 +183,9 @@
           <p class="mt-2 text-gray-600">Access quality healthcare when you need it most.</p>
         </div>
        <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
+            <button data-product="Health Insurance" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
         </div>
       </div>
 
@@ -200,13 +195,10 @@
           <h3 class="text-xl font-semibold text-[#a04f3f]">Business Insurance</h3>
           <p class="mt-2 text-gray-600">Safeguard your enterprise against unforeseen risks.</p>
         </div>
-        <<div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
+        <div class="mt-4">
+            <button data-product="Business Insurance" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
         </div>
       </div>
 
@@ -217,30 +209,13 @@
           <p class="mt-2 text-gray-600">Peace of mind while you explore the world.</p>
         </div>
        <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
+            <button data-product="Travel Insurance" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
         </div>
       </div>
 
-      <!-- Life Insurance -->
-      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-semibold text-[#a04f3f]">Life Insurance</h3>
-          <p class="mt-2 text-gray-600">Protect your family with Whole Life cover solutions.</p>
-        </div>
-       <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
-        </div>
-      </div>
+      
 
       <!-- Contractors All Risk -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
@@ -249,12 +224,9 @@
           <p class="mt-2 text-gray-600">Protect construction projects from risks and uncertainties.</p>
         </div>
         <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
+            <button data-product="Contractors All Risk" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
         </div>
       </div>
 
@@ -264,13 +236,10 @@
           <h3 class="text-xl font-semibold text-[#a04f3f]">WIBA & Personal Accident</h3>
           <p class="mt-2 text-gray-600">Cover against work injuries and personal accidents.</p>
         </div>
-       <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
+        <div class="mt-4">
+            <button data-product="WIBA & Personal Accident" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
         </div>
       </div>
 
@@ -281,15 +250,14 @@
           <p class="mt-2 text-gray-600">Comprehensive cover for goods transported across seas.</p>
         </div>
         <div class="mt-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIAsMnAJUm3YsnspIN5ulZs_Jrxjv_-qGJ6T_BsGTFhXZP2Q/viewform?usp=header"
-   target="_blank"
-   class="inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
-    Select
-</a>
-
+            <button data-product="Marine Insurance" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+@include('partials.product-inquiry-modal')
 @endsection

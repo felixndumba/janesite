@@ -68,3 +68,8 @@ Route::get('/sitemap.xml', function () {
 
 Route::post('/contact/send', [ContactController::class, 'send'])
     ->name('contact.send');
+
+use App\Http\Controllers\ProductInquiryController;
+
+Route::post('/product/inquiry', [ProductInquiryController::class, 'send'])
+    ->name('product.inquiry');

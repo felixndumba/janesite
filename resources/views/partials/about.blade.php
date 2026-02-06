@@ -2,7 +2,7 @@
     <div class="max-w-5xl mx-auto">
 
         <!-- Subheading -->
-        <p class="text-lg font-semibold text-[#c45b1f] mb-3 italic">
+        <p class="text-lg font-semibold text-[#c45b1f] mb-3 ">
             Your Goals. Your Journey. Our Expertise.
         </p>
 
@@ -12,7 +12,7 @@
         </h2>
 
         <!-- Body Text -->
-        <p class="text-black text-lg leading-relaxed mb-10 italic">
+        <p class="text-black text-lg leading-relaxed mb-10 ">
             <span class="text-[#a04f3f] font-semibold">Thedi Advisors</span> is a forward-thinking
             financial advisory firm committed to helping individuals, teams, businesses,
             and companies build sustainable wealth with confidence.
