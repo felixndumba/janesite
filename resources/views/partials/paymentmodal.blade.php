@@ -4,6 +4,7 @@
             flex items-center justify-center z-[9999]
             overflow-y-auto px-4 transition-opacity duration-300">
 
+    <!-- Modal Card -->
     <div id="mpesaCard"
          class="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl
                 transform scale-95 opacity-0 transition-all duration-300 relative">
@@ -57,7 +58,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </span>
-                <p>Please note that the payment is for the stipulated time of your choosing kindly.</p>
+                <p>Please ensure your M-Pesa PIN is ready and sufficient funds are available.</p>
             </div>
         </div>
 
@@ -75,6 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentCheckoutId = null;
     let pollingInterval = null;
+    let pollCount = 0;
+    const maxPolls = 30; // 90 seconds timeout
 
     const modal = document.getElementById("mpesaModal");
     const card  = document.getElementById("mpesaCard");
@@ -96,9 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.closePaymentModal = function() {
         card.classList.add("scale-95","opacity-0");
         card.classList.remove("scale-100","opacity-100");
-
         setTimeout(() => modal.classList.add("hidden"), 200);
-
         if (pollingInterval) clearInterval(pollingInterval);
     };
 
@@ -106,28 +107,24 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!card.contains(e.target)) closePaymentModal();
     });
 
-    /* ================= MESSAGE ================= */
+    /* ================= MESSAGE BOX ================= */
     function showMessage(message, type = "info") {
         const box = document.getElementById("paymentMessage");
         box.className = "mb-4 p-3 rounded-lg text-sm font-medium";
-
         if (type === "success") box.classList.add("bg-green-100","text-green-700");
         else if (type === "error") box.classList.add("bg-red-100","text-red-700");
         else box.classList.add("bg-blue-100","text-blue-700");
-
         box.innerText = message;
         box.classList.remove("hidden");
     }
 
     /* ================= POLLING ================= */
-    let pollCount = 0;
-    const maxPolls = 30; // ~90s timeout
-
     async function pollPaymentStatus(id) {
         pollCount++;
-
         try {
-            const res = await fetch(`/api/payment-status/${id}`, { headers: { "Accept": "application/json" }});
+            const res = await fetch(`/api/payment-status/${id}`, {
+                headers: { "Accept": "application/json" }
+            });
             if (!res.ok) return;
 
             const data = await res.json();
@@ -138,21 +135,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
                     window.location.href = "https://calendly.com/janendichu1/personal-financial-advisor";
                 }, 1500);
-                return;
             }
 
             if (data.status === "failed") {
-                showMessage("⚠️ Payment failed or cancelled.", "error");
+                showMessage("⚠️ Payment failed or cancelled. Please try again.", "error");
                 clearInterval(pollingInterval);
             }
 
             if (pollCount >= maxPolls) {
-                showMessage("⏰ Payment timed out. Please try again.", "error");
+                showMessage("⏰ Payment request timed out. Please try again.", "error");
                 clearInterval(pollingInterval);
             }
-        } catch (err) {
+        } catch {
             showMessage("❌ Network error. Retrying...", "error");
-            console.error(err);
         }
     }
 
@@ -162,19 +157,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const phone = document.getElementById("mpesaPhone").value.trim();
         const amount = document.getElementById("payAmount").innerText.replace("KSH","").trim();
 
+        // Validate
         if (!/^2547\d{8}$/.test(phone)) {
-            showMessage("⚠️ Enter phone as 2547XXXXXXXX", "error");
+            showMessage("⚠️ Enter a valid M-Pesa phone number (2547XXXXXXXX).", "error");
+            return;
+        }
+        if (Number(amount) <= 0) {
+            showMessage("⚠️ Enter a valid amount greater than 0.", "error");
             return;
         }
 
         showMessage("⏳ Sending payment request...");
 
         let res, data;
-
         try {
             res = await fetch("/api/mpesa/stk/initiate", {
                 method: "POST",
-                headers: { "Content-Type":"application/json","Accept":"application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
                 body: JSON.stringify({
                     phone,
                     amount: Number(amount),
@@ -183,31 +185,38 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             });
         } catch {
-            showMessage("❌ Cannot reach server.", "error");
+            showMessage("❌ Cannot reach server. Check your connection and try again.", "error");
             return;
         }
 
         if (!res.ok) {
-            try { data = await res.json(); } catch { data = null; }
-            showMessage(data?.message || "❌ Payment service unavailable.", "error");
-            console.error("STK INIT ERROR:", data);
+            showMessage("❌ Payment service is currently unavailable. Please try again later.", "error");
             return;
         }
 
-        try { data = await res.json(); } catch {
-            showMessage("❌ Invalid server response.", "error");
+        try {
+            data = await res.json();
+        } catch {
+            showMessage("❌ Unexpected server response. Please try again.", "error");
             return;
         }
 
-        if (data.success && data.CheckoutRequestID) {
-            currentCheckoutId = data.CheckoutRequestID;
-            showMessage(data.message || "✅ STK push sent. Enter your PIN.", "success");
+        // Success
+        if (data.checkout_request_id) {
+            currentCheckoutId = data.checkout_request_id;
+            pollCount = 0;
+            showMessage("✅ Payment request sent! Check your phone and enter your PIN.", "success");
 
-            pollingInterval = setInterval(() => pollPaymentStatus(currentCheckoutId), 3000);
+            pollingInterval = setInterval(() => {
+                pollPaymentStatus(currentCheckoutId);
+            }, 3000);
+
+        } else if (data.status === "error") {
+            showMessage("❌ " + data.message, "error");
         } else {
-            showMessage(data.message || "❌ Failed to initiate payment.", "error");
-            console.error("M-Pesa STK Error:", data.raw || data);
+            showMessage("❌ Unable to initiate payment. Please try again.", "error");
         }
     });
+
 });
 </script>
