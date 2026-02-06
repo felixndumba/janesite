@@ -36,21 +36,15 @@ class MpesaController extends Controller
             throw new \Exception($msg);
         }
 
-        try {
-            $res = Http::timeout(60)
-                ->withBasicAuth($key, $secret)
-                ->get($this->baseUrl() . '/oauth/v1/generate?grant_type=client_credentials');
+        $res = Http::withBasicAuth($key, $secret)
+            ->get($this->baseUrl() . '/oauth/v1/generate?grant_type=client_credentials');
 
-            if (!$res->ok() || !isset($res->json()['access_token'])) {
-                Log::error('M-PESA Token Error', $res->json());
-                throw new \Exception('Failed to get access token');
-            }
-
-            return $res->json()['access_token'];
-        } catch (\Exception $e) {
-            Log::error('M-PESA Token Exception', ['message' => $e->getMessage()]);
-            throw $e;
+        if (!$res->ok() || !isset($res->json()['access_token'])) {
+            Log::error('M-PESA Token Error', $res->json());
+            throw new \Exception('Unable to generate M-Pesa access token. Please try again later.');
         }
+
+        return $res->json()['access_token'];
     }
 
     /**
@@ -62,10 +56,11 @@ class MpesaController extends Controller
     }
 
     /**
-     * STEP A: Initiate STK Push (asynchronous)
+     * STEP A: Initiate STK Push
      */
     public function stkPush(Request $request)
     {
+        // Validate request
         $data = $request->validate([
             'amount' => ['required','numeric','min:1'],
             'phone'  => ['required','regex:/^2547\d{8}$/'],
@@ -73,11 +68,11 @@ class MpesaController extends Controller
             'description'       => ['nullable','string','max:60'],
         ]);
 
-        // Read env variables and check
+        // Read environment variables
         $shortcode = env('MPESA_SHORTCODE');
-        $till = env('MPESA_TILL_NUMBER');
-        $passkey = env('MPESA_PASSKEY');
-        $callback = env('MPESA_CALLBACK_URL');
+        $till      = env('MPESA_TILL_NUMBER');
+        $passkey   = env('MPESA_PASSKEY');
+        $callback  = env('MPESA_CALLBACK_URL');
 
         $missing = [];
         if (!$shortcode) $missing[] = 'MPESA_SHORTCODE';
@@ -86,7 +81,7 @@ class MpesaController extends Controller
         if (!$callback) $missing[] = 'MPESA_CALLBACK_URL';
 
         if (!empty($missing)) {
-            $msg = 'Missing required environment variable(s): ' . implode(', ', $missing);
+            $msg = 'Payment cannot proceed. Missing configuration: ' . implode(', ', $missing);
             Log::error($msg);
             return response()->json([
                 'status' => 'error',
@@ -113,7 +108,6 @@ class MpesaController extends Controller
 
         try {
             $res = Http::timeout(30)
-                ->retry(2, 1000)
                 ->withToken($this->accessToken())
                 ->post($this->baseUrl() . '/mpesa/stkpush/v1/processrequest', $payload);
 
@@ -121,6 +115,13 @@ class MpesaController extends Controller
 
             Log::info('STK Push Request', $payload);
             Log::info('STK Push Response', $json);
+
+            if (isset($json['ResponseCode']) && $json['ResponseCode'] !== '0') {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => $json['errorMessage'] ?? 'Failed to initiate payment. Please try again.'
+                ], 400);
+            }
 
             Payment::create([
                 'merchant_request_id' => $json['MerchantRequestID'] ?? null,
@@ -133,7 +134,7 @@ class MpesaController extends Controller
 
             return response()->json([
                 'status' => 'pending',
-                'message' => 'STK Push request sent. Wait for callback.',
+                'message' => 'Payment request sent! Check your M-Pesa app and enter your PIN.',
                 'checkout_request_id' => $json['CheckoutRequestID'] ?? null
             ]);
 
@@ -142,10 +143,12 @@ class MpesaController extends Controller
                 'message' => $e->getMessage(),
                 'payload' => $payload
             ]);
+
             return response()->json([
                 'status' => 'error',
-                'message' => 'Could not connect to M-Pesa API. Please try again later.'
+                'message' => 'Could not connect to M-Pesa. Check your internet and try again.'
             ], 503);
+
         } catch (\Exception $e) {
             Log::error('STK Push General Error', [
                 'message' => $e->getMessage(),
@@ -155,8 +158,7 @@ class MpesaController extends Controller
 
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
+                'message' => 'Something went wrong while initiating payment. Please try again.',
             ], 500);
         }
     }
@@ -206,8 +208,6 @@ class MpesaController extends Controller
      */
     public function checkStatus($checkoutRequestId)
     {
-        Log::info('Checking payment status for', ['CheckoutRequestID' => $checkoutRequestId]);
-
         $payment = Payment::where('checkout_request_id', $checkoutRequestId)->first();
 
         if (!$payment) {
