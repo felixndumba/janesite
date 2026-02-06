@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let res, data;
 
         try {
-            res = await fetch("/api/mpesa/stk/initiate", {
+            res = await fetch("/mpesa/stk/initiate", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
