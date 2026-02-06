@@ -70,7 +70,7 @@ class MpesaController extends Controller
             "PartyA"            => $data['phone'],
             "PartyB"            => $till,
             "PhoneNumber"       => $data['phone'],
-            "CallBackURL"       => config('services.mpesa.callback_url'),
+            "CallBackURL"       => config('services.callback_url'),
             "AccountReference"  => $data['account_reference'] ?? 'ORDER',
             "TransactionDesc"   => $data['description'] ?? 'Payment'
         ];
