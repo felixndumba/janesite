@@ -87,7 +87,7 @@
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
     @click="openPaymentModal(
         'Basic Package' + (isCouple === 'couple' ? ' (Couple)' : ''),
-        isCouple === 'couple' ? 15,000 : 10,000
+        isCouple === 'couple' ? 15000 : 10000
     )"
 >
     Select Package
@@ -113,7 +113,7 @@
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
     @click="openPaymentModal(
         'Premium Package' + (isCouple === 'couple' ? ' (Couple)' : ''),
-        isCouple === 'couple' ? 38,250 : 25,500
+        isCouple === 'couple' ? 38250 : 25500
     )"
 >
     Select Package
