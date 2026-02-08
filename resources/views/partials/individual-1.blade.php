@@ -87,7 +87,7 @@
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
     @click="openPaymentModal(
         'Basic Package' + (isCouple === 'couple' ? ' (Couple)' : ''),
-        isCouple === 'couple' ? 12750 : 8500
+        isCouple === 'couple' ? 15,000 : 10,000
     )"
 >
     Select Package
@@ -108,12 +108,12 @@
                             <li>• Ongoing financial accountability</li>
                             <li>• Priority support & follow-ups</li>
                         </ul>
-                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '43,500 KSH' : '29,000 KSH'"></p>
+                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '38,250 KSH' : '25,500 KSH'"></p>
                       <button
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
     @click="openPaymentModal(
         'Premium Package' + (isCouple === 'couple' ? ' (Couple)' : ''),
-        isCouple === 'couple' ? 33750 : 22500
+        isCouple === 'couple' ? 38,250 : 25,500
     )"
 >
     Select Package
