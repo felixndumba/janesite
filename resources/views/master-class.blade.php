@@ -100,7 +100,7 @@
             <a href="#"
                class="inline-block w-full text-center bg-gray-900 text-white
                       font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-800 transition mb-6"
-                      onclick="openMasterclassPaymentModal(' Master Class', '3000')">
+                      onclick="openMasterclassPaymentModal(' Master Class', '1')">
                 Register Now
             </a>
 
