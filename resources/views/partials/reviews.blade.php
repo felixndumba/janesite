@@ -59,7 +59,7 @@
                         where everyone comes from in terms of investment and
                         knowledge about money.
                         </p>
-                        <p class="mt-4 font-semibold text-gray-900">— Power&Pride Investmnet Chama</p>
+                        <p class="mt-4 font-semibold text-gray-900">— Power&Pride Investment Chama</p>
                     </div>
 
                 </div>

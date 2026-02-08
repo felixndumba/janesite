@@ -9,17 +9,17 @@
                     FREE PACKAGE
                 </div>
                 <ul class="mt-8 space-y-3 text-gray-800">
-                    <li>• Savings & Investments Accounts.</li>
-                    <li>• Retirement Planning</li>
-                    <li>• Setting up an Emergency fund</li>
+                    <li>• Savings Accounts.</li>
+                    <li>• Retirement || Pension Planning</li>
+                    <li>• Setting up an Emergency fund || MMFs</li>
                     <li>• Setting up Sinking funds</li>
-                    <li>• Generational wealth | Trust fund</li>
+                    <li>• Generational wealth || Trust fund</li>
                     <li>• Child Education fund</li>
-                    <li>• Insurance packages</li>
+                     <li>•NSSF Tier II</li>
+                      <li>• Pension Schemes || Annuities</li>
+                    <li>• All insuarance solutions, medical, motor, etc...</li>
                 </ul>
-                <p class="mt-4 italic text-sm text-gray-500">
-                    In partnership with Insurance & Investment companies
-                </p>
+               
                 <div class="mt-6">
                                 <a href="https://calendly.com/janendichu1/free_discovery_call" target="_blank"
   class="inline-block bg-[#b25d4c] text-white px-6 py-2 rounded-full hover:bg-[#8a4638] transition">
@@ -35,16 +35,16 @@
                 </div>
                 <ul class="mt-8 space-y-3 text-gray-800">
                     <li>• Budgeting</li>
-                    <li>• Goals Setting</li>
-                    <li>• Debt Management</li>
+                    <li>• Goals setting</li>
+                    <li>• Debt management</li>
                     <li>• Mapping your financial freedom journey</li>
-                    <li>• Wealth creation | Passive income</li>
-                    <li>• Financial Accountability partner</li>
+                    <li>• Wealth creation || Passive income</li>
+                    <li>•Build an investment portfolio</li>
+                    <li>• Financial accountability partner</li>
+                    <li>• Bonds,stocks,REITS,special Funds</li>
                     <li>• Business consult</li>
                 </ul>
-                <p class="mt-4 italic text-sm text-gray-500">
-                    In partnership with Thedi Advisors
-                </p>
+                
                 <div class="mt-6">
                     <button @click="selected = 'paid'"
                         class="inline-block bg-[#b25d4c] text-white px-6 py-2 rounded-full hover:bg-[#8a4638] transition">
