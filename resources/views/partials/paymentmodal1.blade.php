@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const amount = document.getElementById("masterPayAmount").innerText.replace("KSH ","");
 
         if (!/^(\+2547\d{8}|07\d{8}|01\d{8})$/.test(phone)) {
-            showMasterMessage("⚠️ Please enter a valid phone number (+2547XXXXXXXX, 07XXXXXXXX, or 01XXXXXXXX).", "error");
+            showMasterMessage("⚠️ Please enter a valid phone number.", "error");
             return;
         }
 
