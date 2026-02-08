@@ -24,7 +24,7 @@
         Meet Jane
       </h3>
 
-      <p class="text-gray-700 leading-relaxed italic text-lg">
+      <p class="text-gray-700 leading-relaxed  text-lg">
         Jane is a 4-time Top-Award–winning Financial Advisor with 8 years of experience,
         certified by IRA, CMA, and RBA. She founded Thedi Advisors with a clear mission—to
         provide personalized, research-driven financial guidance that empowers clients
@@ -69,7 +69,7 @@
     <!-- Image -->
     <div class="w-full max-w-md mx-auto md:max-w-full">
       <img 
-        src="{{ asset('images/four.jpeg') }}" 
+        src="{{ asset('images/one.jpeg') }}" 
         alt="Portfolio"
         class="w-full h-auto rounded-xl shadow-md object-cover"
         loading="lazy"
