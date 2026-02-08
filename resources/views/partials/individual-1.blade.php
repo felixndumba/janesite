@@ -1,4 +1,4 @@
-<section x-data="{ selected: null, isCouple: 'individual' }" class="py-16 bg-[#f9f7f4]">
+<section x-data="{ selected: null, isCouple: 'individual', numSessions: 1 }" class="py-16 bg-[#f9f7f4]">
     <div class="max-w-5xl mx-auto px-4">
 
         <!-- Initial 2 Cards -->
@@ -69,7 +69,7 @@
                     </label>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid md:grid-cols-3 gap-8">
                     <!-- Basic -->    <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
                         <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
                             BASIC PACKAGE
@@ -83,7 +83,7 @@
                             <li>• Available online and physical</li>
                         </ul>
                         <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '15000 KSH' : '10,000 KSH'"></p>
-                      <button 
+                      <button
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
     @click="openPaymentModal(
         'Basic Package' + (isCouple === 'couple' ? ' (Couple)' : ''),
@@ -109,7 +109,7 @@
                             <li>• Priority support & follow-ups</li>
                         </ul>
                         <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '43,500 KSH' : '29,000 KSH'"></p>
-                      <button 
+                      <button
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
     @click="openPaymentModal(
         'Premium Package' + (isCouple === 'couple' ? ' (Couple)' : ''),
@@ -120,11 +120,87 @@
 </button>
 
                     </div>
+
+                    <!-- Financial Accountability Partner -->
+                    <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
+                    FINANCIAL ACCOUNTABILITY PARTNER
+                </div>
+
+                        <ul class="mt-10 space-y-2 text-gray-700">
+                            <li>• 90mins session</li>
+                            <li>• Structured Money Check-Ins</li>
+                            <li>• Goal Tracking & Action Accountability</li>
+                            <li>• Budget Reviews</li>
+                            <li>• Financial Habit & Behaviour Support</li>
+                            <li>• Savings, Investment & Debt Review.</li>
+                            <li>• Real-Life Financial Decision Support</li>
+                            <li>• Consistent Guidance & Support</li>
+                        </ul>
+                        <button @click="selected = 'accountability'"
+                            class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]">
+                            Book Now
+                        </button>
+                    </div>
                 </div>
 
             <div class="col-span-2 text-center mt-6">
                 <button @click="selected = null"
                     class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600">
+                    Back
+                </button>
+            </div>
+        </div>
+
+        <!-- Financial Accountability Partner Options -->
+        <div x-show="selected === 'accountability'" class="mt-10 space-y-6">
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Monthly Sessions -->
+                <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
+                        MONTHLY SESSIONS
+                    </div>
+                    <div class="mt-8">
+                        <label class="block text-gray-800 mb-2">Select number of sessions</label>
+                        <input type="number" x-model="numSessions" min="1" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <p class="text-xl text-black mt-4" x-text="'Price: ' + 'KSH' + (numSessions * 7500) + '  per session'"></p>
+                    <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
+                        @click="openPaymentModal('Monthly Sessions (' + numSessions + ' sessions)', numSessions * 7500, 'https://calendly.com/janendichu1/financial-accountability-partner')">
+                        Select Package
+                    </button>
+                </div>
+
+                <!-- Quarterly Package -->
+                <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
+                        QUARTERLY PACKAGE
+                    </div>
+                    <p class="mt-8 text-gray-800">After every 3 months</p>
+                    <p class="text-xl text-black mt-4"> KSH 25,500 </p>
+                    <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
+                        @click="openPaymentModal('Quarterly Package', 25500, 'https://calendly.com/janendichu1/financial-accountability-partner')">
+                        Select Package
+                    </button>
+                </div>
+
+                <!-- Half Yearly -->
+                <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
+                        HALF YEARLY
+                    </div>
+                    <p class="mt-8 text-gray-800">After every 6 months</p>
+                    <p class="text-xl text-black mt-4">KSH 12,750 </p>
+                    <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
+                        @click="openPaymentModal('Half Yearly Package', 12750, 'https://calendly.com/janendichu1/financial-accountability-partner')">
+                      Select Package
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <button @click="selected = null" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600">
                     Back
                 </button>
             </div>

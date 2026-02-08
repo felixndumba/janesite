@@ -7,10 +7,10 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
 
         <!-- Left Side: Image with Social Icons -->
         <div class="relative flex flex-col justify-between ">
-            <img src="{{ asset('images/texture.jpg') }}" alt="Contact" class="w-full h-130 object-cover">
+            <img src="{{ asset('images/cntc.jpg') }}" alt="Contact" class="w-full h-64 md:h-80 lg:h-96 object-cover">
 
             <!-- Social Media Icons at bottom of image -->
-           
+
         </div>
 
         <!-- Right Side: Contact Form (overlay style, taller than image) -->

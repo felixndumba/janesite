@@ -27,7 +27,7 @@
         <!-- Phone Input -->
         <div class="mb-4">
             <label class="font-semibold text-sm">M-Pesa Phone Number</label>
-            <input id="masterPhone" type="text" placeholder="2547XXXXXXXX"
+            <input id="masterPhone" type="text" placeholder="Enter your phone number"
                    class="border rounded-lg w-full p-3 focus:ring-2
                           focus:ring-orange-400 outline-none"/>
         </div>
@@ -105,6 +105,20 @@ document.addEventListener("DOMContentLoaded", () => {
         box.classList.remove("hidden");
     }
 
+    /* ================= OPEN SUCCESS CTA ================= */
+    function openMasterSuccessCTA() {
+        const successCTA = document.getElementById("masterSuccessCTA");
+        successCTA.classList.remove("hidden");
+
+        const card = successCTA.querySelector("div");
+        card.classList.add("scale-95","opacity-0");
+
+        setTimeout(() => {
+            card.classList.remove("scale-95","opacity-0");
+            card.classList.add("scale-100","opacity-100");
+        }, 10);
+    }
+
     /* ================= POLLING PAYMENT STATUS ================= */
     async function pollMasterStatus(id) {
         try {
@@ -112,12 +126,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await res.json();
 
             if (data.status === "success") {
-                showMasterMessage("🎉 Payment successful! You are being redirected…", "success");
                 clearInterval(masterPolling);
+                closeMasterclassPaymentModal();
+                openMasterSuccessCTA();
 
                 setTimeout(() => {
-                    window.location.href = "/master-class-room"; // 🔁 Adjust if needed
-                }, 1500);
+                    window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScPrR3iEDVY0aO0nwg09jkceNMlcKCAFgdGlk_73kkl3Ow5RQ/viewform?usp=publish-editor";
+                }, 3000);
             } else if (data.status === "failed") {
                 showMasterMessage("❌ Payment could not be completed. Please try again or contact support.", "error");
                 clearInterval(masterPolling);
@@ -134,8 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const phone = document.getElementById("masterPhone").value.trim();
         const amount = document.getElementById("masterPayAmount").innerText.replace("KSH ","");
 
-        if (!/^2547\d{8}$/.test(phone)) {
-            showMasterMessage("⚠️ Please enter a valid phone number in the format 2547XXXXXXXX.", "error");
+        if (!/^(\+2547\d{8}|07\d{8}|01\d{8})$/.test(phone)) {
+            showMasterMessage("⚠️ Please enter a valid phone number (+2547XXXXXXXX, 07XXXXXXXX, or 01XXXXXXXX).", "error");
             return;
         }
 
@@ -156,9 +171,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             });
 
+            if (!res.ok) {
+                try {
+                    const errorData = await res.json();
+                    showMasterMessage("❌ " + (errorData.message || "Payment service is currently unavailable. Please try again later."), "error");
+                } catch {
+                    showMasterMessage("❌ Payment service is currently unavailable. Please try again later.", "error");
+                }
+                return;
+            }
+
             const data = await res.json();
 
-            if (res.ok && data.checkout_request_id) {
+            if (data.checkout_request_id) {
                 masterCheckoutId = data.checkout_request_id;
                 showMasterMessage("✅ STK push sent! Enter your M-Pesa PIN on your phone to complete payment.", "success");
 
@@ -176,3 +201,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
+<!-- BRANDED SUCCESS CTA FOR MASTER CLASS -->
+<div id="masterSuccessCTA"
+     class="hidden fixed inset-0 bg-black/40 z-50
+            flex items-center justify-center px-4">
+
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center
+                shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+
+        <div class="mx-auto mb-4 w-14 h-14 rounded-full bg-[#a04f3f]/10
+                    flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#a04f3f]"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5 13l4 4L19 7" />
+            </svg>
+        </div>
+
+        <h3 class="text-xl font-bold text-gray-800">
+            Thank you for registering!
+        </h3>
+
+        <p class="text-gray-600 mt-2">
+            Your payment has been confirmed. You will be redirected to fill in your details shortly.
+        </p>
+    </div>
+</div>

@@ -34,7 +34,7 @@
         <!-- Phone Input -->
         <div class="mb-4">
             <label class="font-semibold text-sm">M-Pesa Phone Number</label>
-            <input id="mpesaPhone" type="text" placeholder="2547XXXXXXXX"
+            <input id="mpesaPhone" type="text" placeholder="Enter your phone number"
                    class="border rounded-lg w-full p-3 focus:ring-2
                           focus:ring-orange-400 outline-none"/>
         </div>
@@ -52,14 +52,7 @@
                 <li>Enter your PIN</li>
                 <li>You’ll be redirected after payment</li>
             </ol><br>
-            <div class="bg-gray-400 border border-yellow-200 rounded-lg p-4 text-sm text-gray-700 flex items-start">
-                <span class="flex items-center justify-center w-6 h-6 bg-yellow-100 rounded-full mr-3 text-yellow-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </span>
-                <p>Please ensure your M-Pesa PIN is ready and sufficient funds are available.</p>
-            </div>
+          
         </div>
 
         <!-- Pay Button -->
@@ -158,8 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const amount = document.getElementById("payAmount").innerText.replace("KSH","").trim();
 
         // Validate
-        if (!/^2547\d{8}$/.test(phone)) {
-            showMessage("⚠️ Enter a valid M-Pesa phone number (2547XXXXXXXX).", "error");
+        if (!/^(\+2547\d{8}|07\d{8}|01\d{8})$/.test(phone)) {
+            showMessage("⚠️ Enter a valid M-Pesa phone number (+2547XXXXXXXX, 07XXXXXXXX, or 01XXXXXXXX).", "error");
             return;
         }
         if (Number(amount) <= 0) {
@@ -190,7 +183,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (!res.ok) {
-            showMessage("❌ Payment service is currently unavailable. Please try again later.", "error");
+            try {
+                const errorData = await res.json();
+                showMessage("❌ " + (errorData.message || "Payment service is currently unavailable. Please try again later."), "error");
+            } catch {
+                showMessage("❌ Payment service is currently unavailable. Please try again later.", "error");
+            }
             return;
         }
 

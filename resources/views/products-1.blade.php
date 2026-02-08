@@ -65,7 +65,8 @@
     </p>
 
     <!-- Card Grid -->
-         <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Fixed plan</h3>
           <p class="mt-2 text-gray-600">Endownment policies, fixed savings accounts.</p>
@@ -77,20 +78,18 @@
         </div>
       </div>
 
-       <!-- Education Funds -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Education Funds</h3>
           <p class="mt-2 text-gray-600">Secure your child’s academic future with structured savings.</p>
         </div>
-      <div class="mt-4">
+        <div class="mt-4">
             <button data-product="Education Funds" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
                 Select
             </button>
         </div>
       </div>
-    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Unit Trusts -->
+
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Unit Trusts</h3>
@@ -103,7 +102,6 @@
         </div>
       </div>
 
-      <!-- Pension Fund -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Pension Fund</h3>
@@ -115,8 +113,18 @@
             </button>
         </div>
       </div>
-
-      <!-- NSSF Tier 2 -->
+ <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-semibold text-[#a04f3f]">Special Funds</h3>
+          <p class="mt-2 text-gray-600">Special funds are professionally managed investment funds created to grow money for a specific financial goal,
+ e.g Mansa X</p>
+        </div>
+        <div class="mt-4">
+            <button data-product="Special Funds" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
+        </div>
+      </div>
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">NSSF Tier II</h3>
@@ -128,28 +136,38 @@
             </button>
         </div>
       </div>
-
-      
-  
-
-     
     </div>
     
   </div>
   
 </section>
-
+<section class="bg-[#f9f7f4] py-16 px-6 ">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-extrabold text-[#a04f3f]  "><span class="border-b-4 border-yellow-700">Legacy Planning</span></h2>
+          <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-semibold text-[#a04f3f]">Trust Funds</h3>
+          <p class="mt-2 text-gray-600">A trust fund is a legal arrangement where a trustee holds and manages money or property for the benefit of others.</p>
+        </div>
+        <div class="mt-4">
+            <button data-product="Trust Fund" class="select-product inline-block px-4 py-2 bg-[#a04f3f] text-white rounded-lg shadow hover:bg-[#823c32] transition">
+                Select
+            </button>
+        </div>
+      </div>
+    </div>
+</section>
 
 <!-- INSURANCE -->
 <section class="bg-[#f9f7f4] py-16 px-6 ">
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl font-extrabold text-[#a04f3f]  "><span class="border-b-4 border-yellow-70">Insurance Solutions</span></h2>
+    <h2 class="text-3xl font-extrabold text-[#a04f3f]  "><span class="border-b-4 border-yellow-700">Insurance Solutions</span></h2>
     <p class="mt-2 text-gray-600 max-w-2xl">
       Protect what matters most with our wide range of tailored insurance plans for individuals and businesses.
     </p>
 
     <!-- Card Grid -->
-     <!-- Life Insurance -->
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Life Insurance</h3>
@@ -161,9 +179,7 @@
             </button>
         </div>
       </div>
-      
-    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Motor Insurance -->
+
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Motor Insurance</h3>
@@ -176,7 +192,6 @@
         </div>
       </div>
 
-      <!-- Health Insurance -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Health Insurance</h3>
@@ -189,7 +204,6 @@
         </div>
       </div>
 
-      <!-- Business Insurance -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Business Insurance</h3>
@@ -202,7 +216,6 @@
         </div>
       </div>
 
-      <!-- Travel Insurance -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Travel Insurance</h3>
@@ -215,9 +228,6 @@
         </div>
       </div>
 
-      
-
-      <!-- Contractors All Risk -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Contractors All Risk</h3>
@@ -230,7 +240,6 @@
         </div>
       </div>
 
-      <!-- WIBA & Personal Accident -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">WIBA & Personal Accident</h3>
@@ -243,7 +252,6 @@
         </div>
       </div>
 
-      <!-- Marine Insurance -->
       <div class="bg-[#f9f7f4] rounded-xl shadow-md p-6 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold text-[#a04f3f]">Marine Insurance</h3>

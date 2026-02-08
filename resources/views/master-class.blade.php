@@ -7,7 +7,7 @@
 
             <!-- Left Side - Image -->
             <div>
-                <img src="{{ asset('images/2.jpg') }}"
+                <img src="{{ asset('images/mj.jpg') }}"
                      alt="Financial Freedom Master Class"
                      class="rounded-xl shadow-md w-full h-60 object-cover">
             </div>
@@ -60,25 +60,10 @@
                     designed for individuals and professionals seeking practical wealth strategies,
                     smart investing techniques, and long-term financial clarity.
                 </p>
+                
 
                 <!-- Available Dates -->
-                <div class="mb-6">
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">
-                        Select Available Date
-                    </label>
-                    <select
-                        class="w-full border border-gray-300 rounded-lg p-3
-                               focus:ring-2 focus:ring-[#a04f3f] focus:border-[#a04f3f]">
-                        <option value="">-- Choose a date --</option>
-                        <option value="2026-01-20">10th January 2026 (9:00 – 11:00 AM)</option>
-                        <option value="2026-01-27">10th Febuary 2026 (9:00  – 11:00 AM)</option>
-                        <option value="2026-02-03">10th March 2026 (9:00  – 11:00 AM)</option>
-                    </select>
-                    <p class="text-xs text-gray-500 mt-2">
-                        Google Meet link will be shared after successful registration.
-                    </p>
-                </div>
-
+                
             </div>
         </div>
     </div>
@@ -115,7 +100,7 @@
             <a href="#"
                class="inline-block w-full text-center bg-gray-900 text-white
                       font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-800 transition mb-6"
-                      onclick="openMasterclassPaymentModal(' Master Class', 3000)">
+                      onclick="openMasterclassPaymentModal(' Master Class', 3,000)">
                 Register Now
             </a>
 
@@ -130,7 +115,9 @@
                               d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </span>
-                <p>All payments are non-refundable once processed.</p>
+                 
+                <p>Google Meet link will be sent to your email after successful registration.
+                    All payments are non-refundable once processed.</p>
             </div>
         </div>
 
