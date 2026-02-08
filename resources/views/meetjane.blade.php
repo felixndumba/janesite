@@ -44,7 +44,7 @@
         My Certifications & Awards
       </h3>
 
-      <p class="text-gray-700 text-lg leading-relaxed italic">
+      <p class="text-gray-700 text-lg leading-relaxed ">
         Certified by IRA, CMA, and RBA, our firm has consistently demonstrated adherence
         to the highest industry standards. We have been honored with four distinguished
         awards in the financial sector, recognizing our commitment to excellence,
@@ -82,7 +82,7 @@
         My Portfolio
       </h3>
 
-      <p class="text-gray-700 text-lg leading-relaxed italic">
+      <p class="text-gray-700 text-lg leading-relaxed ">
         With a portfolio of 3,200+ individuals, 22+ corporate partners, 14+ business
         clients, and 17+ chamas, we deliver strategic financial solutions that consistently
         drive performance, stability, and confident decision-making.
@@ -99,7 +99,7 @@
         My Videos & Podcasts
       </h3>
 
-      <p class="text-gray-700 leading-relaxed text-lg italic">
+      <p class="text-gray-700 leading-relaxed text-lg ">
         Discover insightful videos and podcasts covering financial literacy, smart
         investment strategies, wealth-building frameworks, and long-term financial
         security tips.

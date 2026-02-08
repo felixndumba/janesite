@@ -154,7 +154,17 @@
 
         <!-- Financial Accountability Partner Options -->
         <div x-show="selected === 'accountability'" class="mt-10 space-y-6">
-            
+            <div class="mb-8 flex items-center justify-center space-x-6">
+                <label class="inline-flex items-center">
+                    <input type="radio" value="individual" x-model="isCouple" checked class="accent-[#b25d4c]">
+                    <span class="ml-2 text-lg font-medium text-black">Individual</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input type="radio" value="couple" x-model="isCouple" class="accent-[#b25d4c]">
+                    <span class="ml-2 text-lg font-medium text-black">Couples</span>
+                </label>
+            </div>
+
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Monthly Sessions -->
                 <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
@@ -165,9 +175,9 @@
                         <label class="block text-gray-800 mb-2">Select number of sessions</label>
                         <input type="number" x-model="numSessions" min="1" class="w-full p-2 border border-gray-300 rounded">
                     </div>
-                    <p class="text-xl text-black mt-4" x-text="'Price: ' + 'KSH' + (numSessions * 7500) + '  per session'"></p>
+                    <p class="text-xl text-black mt-4" x-text="'Price: ' + 'KSH' + (numSessions * (isCouple === 'couple' ? 11250 : 7500)) + '  per session'"></p>
                     <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-                        @click="openPaymentModal('Monthly Sessions (' + numSessions + ' sessions)', numSessions * 7500, 'https://calendly.com/janendichu1/financial-accountability-partner')">
+                        @click="openPaymentModal('Monthly Sessions (' + numSessions + ' sessions)' + (isCouple === 'couple' ? ' (Couple)' : ''), numSessions * (isCouple === 'couple' ? 11250 : 7500), 'https://calendly.com/janendichu1/financial-accountability-partner')">
                         Select Package
                     </button>
                 </div>
@@ -178,9 +188,9 @@
                         QUARTERLY PACKAGE
                     </div>
                     <p class="mt-8 text-gray-800">After every 3 months</p>
-                    <p class="text-xl text-black mt-4"> KSH 25,500 </p>
+                    <p class="text-xl text-black mt-4" x-text="isCouple === 'couple' ? 'KSH 38,250' : 'KSH 25,500'"></p>
                     <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-                        @click="openPaymentModal('Quarterly Package', 25500, 'https://calendly.com/janendichu1/financial-accountability-partner')">
+                        @click="openPaymentModal('Quarterly Package' + (isCouple === 'couple' ? ' (Couple)' : ''), isCouple === 'couple' ? 38250 : 25500, 'https://calendly.com/janendichu1/financial-accountability-partner')">
                         Select Package
                     </button>
                 </div>
@@ -191,9 +201,9 @@
                         HALF YEARLY
                     </div>
                     <p class="mt-8 text-gray-800">After every 6 months</p>
-                    <p class="text-xl text-black mt-4">KSH 12,750 </p>
+                    <p class="text-xl text-black mt-4" x-text="isCouple === 'couple' ? 'KSH 19,125' : 'KSH 12,750'"></p>
                     <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-                        @click="openPaymentModal('Half Yearly Package', 12750, 'https://calendly.com/janendichu1/financial-accountability-partner')">
+                        @click="openPaymentModal('Half Yearly Package' + (isCouple === 'couple' ? ' (Couple)' : ''), isCouple === 'couple' ? 19125 : 12750, 'https://calendly.com/janendichu1/financial-accountability-partner')">
                       Select Package
                     </button>
                 </div>
