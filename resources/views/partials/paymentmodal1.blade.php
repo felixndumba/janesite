@@ -220,11 +220,11 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <h3 class="text-xl font-bold text-gray-800">
-            Thank you for registering!
+            Thank you for registering for master class!
         </h3>
 
         <p class="text-gray-600 mt-2">
-            Your payment has been confirmed. You will be redirected to fill in your details shortly.
+            Your payment has been confirmed. You will be redirected to fill in your details shortly.See you there!
         </p>
     </div>
 </div>

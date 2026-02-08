@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Validate
         if (!/^(\+2547\d{8}|07\d{8}|01\d{8})$/.test(phone)) {
-            showMessage("⚠️ Enter a valid M-Pesa phone number (+2547XXXXXXXX, 07XXXXXXXX, or 01XXXXXXXX).", "error");
+            showMessage("⚠️ Enter a valid M-Pesa phone number.", "error");
             return;
         }
         if (Number(amount) <= 0) {
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             });
         } catch {
-            showMessage("❌ Cannot reach server. Check your connection and try again.", "error");
+            showMessage("❌Check your connection and try again.", "error");
             return;
         }
 
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             data = await res.json();
         } catch {
-            showMessage("❌ Unexpected response. Please try again.", "error");
+            showMessage("❌ Please try again.", "error");
             return;
         }
 
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (data.status === "error") {
             showMessage("❌ " + data.message, "error");
         } else {
-            showMessage("❌ Unable to initiate payment. Please try again.", "error");
+            showMessage("❌. Please try again.", "error");
         }
     });
 

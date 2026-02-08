@@ -1,3 +1,5 @@
-- [x] Add a thank you CTA after master class payment confirmation
-- [x] Modify paymentmodal1.blade.php to include success CTA div
-- [ ] Update JavaScript to show success CTA on payment success and auto-redirect to Google form after 3 seconds
+# TODO: Redirect About Us to Home Page About Section
+
+- [ ] Update desktop navigation "About Us" link href to "/#about"
+- [ ] Update mobile menu "About Us" link href to "/#about"
+- [ ] Update mobile menu "About Us" active state to highlight when on home page (request()->is('/'))
