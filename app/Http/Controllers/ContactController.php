@@ -11,7 +11,7 @@ class ContactController extends Controller
     {
         $data = $request->validate([
             'name'    => 'required|string|max:100',
-            'email'   => 'required|email',
+            'email'   => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/',
             'subject' => 'nullable|string|max:255',
             'message' => 'required|string|max:2000',
         ]);

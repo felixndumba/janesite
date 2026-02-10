@@ -1,6 +1,7 @@
-# TODO: Move Financial Accountability Partner Card to Initial Grid
+# TODO: Fix Email Validation in Contact Form
 
-- [x] Change initial grid from 2 columns to 3 columns and add Financial Accountability Partner card
-- [x] Remove "• Financial accountability partner" from Personal Financial Advisor card list
-- [x] Remove Financial Accountability Partner card from paid packages grid
-- [x] Change paid packages grid from 3 columns to 2 columns
+## Tasks
+- [ ] Update ContactController.php to add regex validation for @gmail.com in email field
+- [ ] Update contact.blade.php to display validation errors for email field using @error directive
+- [ ] Add JavaScript for real-time client-side email validation in contact.blade.php
+- [ ] Test the changes to ensure validation works properly

@@ -69,7 +69,10 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
                         <label for="email" class="block text-sm font-medium text-gray-700">YOUR EMAIL <span class="text-red-500">*</span></label>
                         <input type="email" name="email" id="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                             class="w-full p-3 border  focus:ring focus:ring-blue-300">
-                        <div id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email address.</div>
+                        @error('email')
+                            <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                        @enderror
+                        <div id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid Gmail address (e.g., example@gmail.com).</div>
                     </div>
 
                     <!-- Subject -->
@@ -97,5 +100,35 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+
+    emailInput.addEventListener('input', function() {
+        const emailValue = emailInput.value;
+        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+        if (emailValue && !gmailRegex.test(emailValue)) {
+            emailError.classList.remove('hidden');
+        } else {
+            emailError.classList.add('hidden');
+        }
+    });
+
+    // Form submission validation
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        const emailValue = emailInput.value;
+        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+        if (!gmailRegex.test(emailValue)) {
+            e.preventDefault();
+            emailError.classList.remove('hidden');
+            emailInput.focus();
+        }
+    });
+});
+</script>
 @endsection
 
