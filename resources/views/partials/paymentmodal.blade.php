@@ -151,8 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const amount = document.getElementById("payAmount").innerText.replace("KSH","").trim();
 
         // Validate
-        if (!/^(\+2547\d{8}|07\d{8}|01\d{8})$/.test(phone)) {
-            showMessage("⚠️ Enter a valid M-Pesa phone number.", "error");
+        if (!/^(\+254[17]\d{8}|0[17]\d{8})$/.test(phone)) {
+            showMessage("⚠️ Enter a valid M-Pesa phone number (01, 07, +2541, or +2547).", "error");
             return;
         }
         if (Number(amount) <= 0) {

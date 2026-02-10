@@ -1,4 +1,4 @@
-<section 
+it <section 
   data-aos="zoom-in-left" 
   data-aos-delay="400" 
   data-aos-duration="1200"
@@ -12,8 +12,8 @@
 
         <!-- Left Image (Circular) -->
         <div class="flex justify-center" data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-            <div class="relative w-90 h-90 md:w-96 md:h-96 overflow-hidden rounded-full shadow-xl border-[10px] border-[#f9f7f4]">
-                <img src="{{ asset('images/one.jpeg') }}" alt="Hero Image" class="object-cover w-full h-full" />
+            <div class="relative w-90 h-90 md:w-96 md:h-97 overflow-hidden rounded-full shadow-xl border-[10px] border-[#f9f7f4]">
+                <img src="{{ asset('images/one.jpeg') }}" alt="Hero Image" class="object-cover object-top w-full h-full" />
             </div>
         </div>
 

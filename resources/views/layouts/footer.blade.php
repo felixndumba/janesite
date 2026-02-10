@@ -45,7 +45,7 @@
                 <a href="https://www.instagram.com/janendichu_?utm_source=qr&igsh=OG5jMzkzYXh0ZXE0"><i class="fab fa-instagram hover:text-[#6b3b31] transition"></i></a>
                  <a href="https://www.tiktok.com/@janendichu_?_r=1&_t=ZS-93cV2EV9Pa4"><i class="fab fa-tiktok hover:text-[#6b3b31] transition"></i></a>
                  <a href="https://www.linkedin.com/in/jane-ndichu-1732a9164?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin hover:text-[#6b3b31] transition"></i></a>
-                 <a href=https://wa.me/254702531073"><i class="fab fa-whatsapp hover:text-[#6b3b31] transition"></i></a>
+                 <a href="https://wa.me/254702531073"><i class="fab fa-whatsapp hover:text-[#6b3b31] transition"></i></a>
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
 
         <!-- Right Side: Contact Form (overlay style, taller than image) -->
         <div class="relative flex flex-col justify-center px-6 py-12">
-            
+
             <!-- Creative Intro Message -->
      <div class="mb-6  p-5  ">
     <p class="font-[Figtree] text-lg text-gray-800 leading-relaxed tracking-wide mb-4">
@@ -26,14 +26,14 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
     <ul class="font-[Figtree] text-gray-700 space-y-3">
         <li>
             <i class="fas fa-envelope text-blue-500 mr-2"></i>
-            <strong>Email:</strong> 
+            <strong>Email:</strong>
             <a href="mailto:consult@thediadvisors.co.ke" class="text-blue-600 hover:underline">
                 consult@thediadvisors.co.ke
             </a>
         </li>
         <li>
             <i class="fas fa-phone text-blue-500 mr-2"></i>
-            <strong>Call:</strong> 
+            <strong>Call:</strong>
             <span class="text-gray-800">+254 702 531 073</span>        </li>
     </ul>
 </div>
@@ -50,31 +50,32 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
             <!-- Contact Form Card -->
             <div class="relative lg:-ml-20 bg-blue-50 shadow-lg p-8 mt-1 w-full max-w-md mx-auto">
 
-                
+
                 <!-- Contact Title -->
                 <h2 class="text-5xl font-bold text-gray-800 mb-6 text-center">Contact</h2>
 
                 <!-- Form -->
-                <form method="POST" action="{{ route('contact.send') }}" class="space-y-4">
+                <form method="POST" action="{{ route('contact.send') }}" class="space-y-4" id="contact-form">
                     @csrf
                     <!-- Name -->
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">YOUR NAME  <span class="text-red-500">*</span></label>
-                        <input type="text" name="name" id="name" required 
+                        <input type="text" name="name" id="name" required
                             class="w-full p-3 border  focus:ring focus:ring-blue-300">
                     </div>
 
                     <!-- Email -->
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">YOUR EMAIL <span class="text-red-500">*</span></label>
-                        <input type="email" name="email" id="email" required 
+                        <input type="email" name="email" id="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                             class="w-full p-3 border  focus:ring focus:ring-blue-300">
+                        <div id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email address.</div>
                     </div>
 
                     <!-- Subject -->
                     <div>
                         <label for="subject" class="block text-sm font-medium text-gray-700">SUBJECT</label>
-                        <input type="text" name="subject" id="subject" 
+                        <input type="text" name="subject" id="subject"
                             class="w-full p-3 border  focus:ring focus:ring-blue-300">
                     </div>
 
@@ -87,7 +88,7 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
 
                     <!-- Submit -->
                     <div>
-                        <button type="submit" 
+                        <button type="submit"
                             class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 transition">
                             SEND MESSAGE
                         </button>

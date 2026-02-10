@@ -1,7 +1,7 @@
 <section class="py-16 "data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     <div class="max-w-7xl mx-auto text-center bg-[#f6f3ef] rounded-2xl shadow-sm p-8 ">
        
-         <h2 class="text-5xl font-extrabold text-center mb-10" style="color: #E2B287;">our Partners</h2>
+         <h2 class="text-5xl font-extrabold text-center mb-10" style="color: #E2B287;">Our Partners</h2>
         
         <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 px-4">
            

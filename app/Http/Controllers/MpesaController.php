@@ -84,7 +84,7 @@ class MpesaController extends Controller
         // Validate request
         $data = $request->validate([
             'amount' => ['required','numeric','min:1'],
-            'phone'  => ['required','regex:/^(\+2547\d{8}|07\d{8}|01\d{8})$/'],
+            'phone'  => ['required','regex:/^(\+254[17]\d{8}|0[17]\d{8})$/'],
             'account_reference' => ['nullable','string','max:20'],
             'description'       => ['nullable','string','max:60'],
         ]);
@@ -116,11 +116,11 @@ class MpesaController extends Controller
         // Normalize phone number
         $normalizedPhone = $this->normalizePhone($data['phone']);
 
-        // Ensure normalized phone starts with 2547 for M-Pesa compatibility
-        if (!preg_match('/^2547\d{8}$/', $normalizedPhone)) {
+        // Ensure normalized phone starts with 2541 or 2547 for M-Pesa compatibility
+        if (!preg_match('/^254[17]\d{8}$/', $normalizedPhone)) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Invalid phone number. Only mobile numbers starting with 07 or +2547 are supported.'
+                'message' => 'Invalid phone number. Only mobile numbers starting with 01, 07, +2541, or +2547 are supported.'
             ], 400);
         }
 
@@ -166,7 +166,7 @@ class MpesaController extends Controller
 
             return response()->json([
                 'status' => 'pending',
-                'message' => 'Payment request sent! Check your M-Pesa app and enter your PIN.',
+                'message' => ' Check your M-Pesa app and enter your PIN.',
                 'checkout_request_id' => $json['CheckoutRequestID'] ?? null
             ]);
 
