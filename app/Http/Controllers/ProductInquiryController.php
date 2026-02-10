@@ -12,7 +12,7 @@ class ProductInquiryController extends Controller
         $data = $request->validate([
             'product' => 'required|string|max:255',
             'name'    => 'required|string|max:100',
-            'email'   => 'required|email',
+            'email'   => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/',
             'phone'   => 'nullable|string|max:20',
             'message' => 'required|string|max:2000',
         ]);

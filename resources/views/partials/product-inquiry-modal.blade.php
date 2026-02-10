@@ -37,8 +37,12 @@
 
             <div>
                 <label class="text-sm font-medium text-gray-700">Email *</label>
-                <input type="email" name="email" required
+                <input type="email" name="email" id="product-email" required
                        class="w-full mt-1 px-5 py-2 border rounded-xl focus:ring-2 focus:ring-[#a04f3f]">
+                @error('email')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                @enderror
+                <div id="product-email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid Gmail address (e.g., example@gmail.com).</div>
             </div>
 
             <div>
