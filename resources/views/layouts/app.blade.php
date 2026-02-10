@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description" content="Thedi Advisors provides expert consulting and advisory services in Kenya. Contact us today for professional solutions.">
-        <title>Thedi Advisors |r Professional Financial Advisors</title>
+        <title>Thedi Advisors | Professional Financial Advisors</title>
 
         <!-- Fonts -->
         <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">

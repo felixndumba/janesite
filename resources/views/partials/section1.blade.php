@@ -1,4 +1,4 @@
-it <section 
+ <section 
   data-aos="zoom-in-left" 
   data-aos-delay="400" 
   data-aos-duration="1200"
