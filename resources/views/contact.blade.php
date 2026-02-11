@@ -72,7 +72,7 @@ data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
                         @error('email')
                             <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                         @enderror
-                        <div id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid Gmail address (e.g., example@gmail.com).</div>
+                        <div id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email address.</div>
                     </div>
 
                     <!-- Subject -->
@@ -106,26 +106,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('email');
     const emailError = document.getElementById('email-error');
 
-    emailInput.addEventListener('input', function() {
-        const emailValue = emailInput.value;
-        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-
-        if (emailValue && !gmailRegex.test(emailValue)) {
-            emailError.classList.remove('hidden');
-        } else {
-            emailError.classList.add('hidden');
-        }
-    });
-
     // Form submission validation
     document.getElementById('contact-form').addEventListener('submit', function(e) {
         const emailValue = emailInput.value;
-        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|outlook|hotmail|aol|icloud|gmx|yahoo)\.com$/;
 
-        if (!gmailRegex.test(emailValue)) {
+        if (!emailRegex.test(emailValue)) {
             e.preventDefault();
             emailError.classList.remove('hidden');
             emailInput.focus();
+        } else {
+            emailError.classList.add('hidden');
         }
     });
 });

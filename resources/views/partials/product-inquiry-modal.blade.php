@@ -174,6 +174,21 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
+        const emailInput = document.getElementById('product-email');
+        const emailError = document.getElementById('product-email-error');
+        const emailValue = emailInput.value;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|outlook|hotmail|aol|icloud|gmx|yahoo)\.com$/;
+
+        // Reset error
+        emailError.classList.add('hidden');
+        emailError.textContent = "Please enter a valid email address.";
+
+        if (!emailRegex.test(emailValue)) {
+            emailError.classList.remove('hidden');
+            emailInput.focus();
+            return;
+        }
+
         fetch("{{ route('product.inquiry') }}", {
             method: "POST",
             body: new FormData(form),
@@ -193,7 +208,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Something went wrong. Please try again.");
             }
         })
-        .catch(() => alert("Network error. Please try again."));
+        .catch(() => {
+            emailError.textContent = "Network error. Please try again.";
+            emailError.classList.remove('hidden');
+        });
     });
 
     /* ================= EXPOSE CLOSE ================= */
