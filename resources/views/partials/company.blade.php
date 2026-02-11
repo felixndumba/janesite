@@ -7,7 +7,7 @@
 
         <!-- Free Package -->
         <div class="relative border-2 border-[#c45b1f] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#c45b1f]">
-            <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
+            <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
                 FREE PACKAGE
             </div>
             <ul class="mt-8 space-y-3 text-gray-700">
@@ -27,7 +27,7 @@
 
         <!-- Premium Package -->
         <div class="relative border-2 border-[#c45b1f] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#c45b1f]">
-            <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold rounded-full px-6 py-2 shadow">
+            <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
                 PREMIUM PACKAGE
             </div>
             <ul class="mt-8 space-y-3 text-gray-700">

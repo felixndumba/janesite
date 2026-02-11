@@ -17,7 +17,7 @@
                     <li>• Child Education fund</li>
                      <li>•NSSF Tier II</li>
                       <li>• Pension Schemes || Annuities</li>
-                    <li>• All insuarance solutions, medical, motor, etc...</li>
+                    <li>• All insurance solutions, medical, motor, etc...</li>
                 </ul>
 
                 <div class="mt-6">
@@ -41,7 +41,7 @@
                     <li>• Wealth creation || Passive income</li>
                     <li>•Build an investment portfolio</li>
                     <li>• Bonds,stocks,REITS,special Funds</li>
-                    <li>• Business consult</li>
+                   
                 </ul>
 
                 <div class="mt-6">
@@ -59,7 +59,6 @@
                 </div>
                 <ul class="mt-10 space-y-3 text-gray-800">
                     <li>• 90mins session</li>
-                    <li>• Available in physical and online session.</li>
                     <li>• Structured Money Check-Ins</li>
                     <li>• Goal Tracking & Action Accountability</li>
                     <li>• Budget Reviews</li>
@@ -67,6 +66,7 @@
                     <li>• Savings, Investment & Debt Review.</li>
                     <li>• Real-Life Financial Decision Support</li>
                     <li>• Consistent Guidance & Support</li>
+                      <li>• Available in physical and online session.</li>
                 </ul>
 
                 <div class="mt-6">
@@ -129,11 +129,11 @@
                         <ul class="mt-8 space-y-2 text-gray-700">
                             <li>• 3 comprehensive sessions</li>
                              <li>• 2 hrs per sessions</li>
-                             <li>• Available in physical and online session.</li>
-                            <li>• All basic package features</li>
+                             <li>• All basic package features</li>
                             <li>• Advanced wealth creation strategies</li>
                             <li>• Ongoing financial accountability</li>
                             <li>• Priority support & follow-ups</li>
+                             <li>• Available in physical and online session.</li>
                         </ul>
                         <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '38,250 KSH' : '25,500 KSH'"></p>
                       <button
