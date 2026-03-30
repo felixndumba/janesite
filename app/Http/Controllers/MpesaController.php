@@ -166,7 +166,8 @@ class MpesaController extends Controller
 
             return response()->json([
                 'status' => 'pending',
-                'message' => ' Check your M-Pesa app and enter your PIN.',
+                'message' => ' 
+                Check your M-Pesa app and enter your PIN.',
                 'checkout_request_id' => $json['CheckoutRequestID'] ?? null
             ]);
 

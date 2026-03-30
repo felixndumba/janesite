@@ -10,14 +10,14 @@
                 </div>
                 <ul class="mt-8 space-y-3 text-gray-800">
                     <li>• Savings Accounts.</li>
-                    <li>• Retirement || Pension Planning</li>
-                    <li>• Setting up an Emergency fund || MMFs</li>
-                    <li>• Setting up Sinking funds</li>
+                    <li>• Retirement || Pension || Annuities.</li>
+                    <li>• Emergency fund || Money Market.</li>
+                    <li>• Sinking funds || Endowment Plans.</li>
                     <li>• Generational wealth || Trust fund</li>
                     <li>• Child Education fund</li>
-                     <li>•NSSF Tier II</li>
-                      <li>• Pension Schemes || Annuities</li>
-                    <li>• All insurance solutions, medical, motor, etc...</li>
+                    <li>•Special funds,Equity funds, Balanced funds and Fixed income funds</li>
+                    <li>•NSSF Tier II</li>
+                    <li>• All insurance solutions, medical, motor,travel, business, etc...</li>
                 </ul>
 
                 <div class="mt-6">
@@ -39,8 +39,10 @@
                     <li>• Debt management</li>
                     <li>• Mapping your financial freedom journey</li>
                     <li>• Wealth creation || Passive income</li>
-                    <li>•Build an investment portfolio</li>
-                    <li>• Bonds,stocks,REITS,special Funds</li>
+                    <li>•Build an investment portfolio|Government Bonds, Bills, local&International Stocks, RIETS. </li>
+                    <li>•Business consultation</li>
+                     <li>•Chama || Group Consultation</li>
+                    
                    
                 </ul>
 
