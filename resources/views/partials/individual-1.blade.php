@@ -40,7 +40,7 @@
                     <li>• Mapping your financial freedom journey</li>
                     <li>• Wealth creation || Passive income</li>
                     <li>•Build an investment portfolio|Government Bonds, Bills, local&International Stocks, RIETS. </li>
-                    <li>•Business consultation</li>
+                    <li>•Business Consultation</li>
                      <li>•Chama || Group Consultation</li>
                     
                    
