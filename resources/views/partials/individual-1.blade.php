@@ -39,7 +39,7 @@
                     <li>• Debt management</li>
                     <li>• Mapping your financial freedom journey</li>
                     <li>• Wealth creation || Passive income</li>
-                    <li>•Build an investment portfolio|Governmentxzzzzzzzzzzzzzzb  Bonds, Bills, local&International Stocks, RIETS. </li>
+                    <li>•Build an investment portfolio|Government  Bonds, Bills, local&International Stocks, RIETS. </li>
                     <li>•Business Consultation</li>
                      <li>•Chama || Group Consultation</li>
                     
@@ -59,7 +59,7 @@
                 <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
                     FINANCIAL ACCOUNTABILITY PARTNER
                 </div>
-                <ul class="mt-10 space-y-3 text-gray-800">
+                <ul class="mt-10 space-y-3 text-gray-800"><br>
                     <li>• 90mins session</li>
                     <li>• Structured Money Check-Ins</li>
                     <li>• Goal Tracking & Action Accountability</li>
