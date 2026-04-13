@@ -33,15 +33,14 @@
                 <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
                     PERSONAL FINANCIAL ADVISOR
                 </div>
-                <ul class="mt-8 space-y-3 text-gray-800"><br><br>
+                <ul class="mt-8 space-y-3 text-gray-800"><br>
                     <li>• Budgeting</li>
                     <li>• Goals setting</li>
                     <li>• Debt management</li>
                     <li>• Mapping your financial freedom journey</li>
                     <li>• Wealth creation || Passive income</li>
-                    <li>•Build an investment portfolio|Government  Bonds, Bills, local&International Stocks, RIETS. </li>
-                    <li>•Business Consultation</li>
-                     <li>•Chama || Group Consultation</li>
+                    <li>•Build an investment portfolio || Government  Bonds, Bills, local & International Stocks, RIETS. </li>
+                    
                     
                    
                 </ul>
