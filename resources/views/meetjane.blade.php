@@ -25,7 +25,7 @@
       </h3>
 
       <p class="text-gray-700 leading-relaxed  text-lg">
-        Jane is a 4-time Top-Award–winning Financial Advisor with 8 years of experience,
+        Jane is a 5-time Top-Award–winning Financial Advisor with 8 years of experience,
         certified by IRA, CMA, and RBA. She founded Thedi Advisors with a clear mission—to
         provide personalized, research-driven financial guidance that empowers clients
         to build lasting wealth. Through her friendly yet results-driven approach, she
