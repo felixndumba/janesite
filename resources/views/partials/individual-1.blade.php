@@ -207,9 +207,9 @@
                         HALF YEARLY
                     </div>
                     <p class="mt-8 text-gray-800">After every 6 months</p>
-                    <p class="text-xl text-black mt-4" x-text="isCouple === 'couple' ? 'KSH 19,125' : 'KSH 1'"></p>
+                    <p class="text-xl text-black mt-4" x-text="isCouple === 'couple' ? 'KSH 19,125' : 'KSH 12,750'"></p>
                     <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-                        @click="openPaymentModal('Half Yearly Package' + (isCouple === 'couple' ? ' (Couple)' : ''), isCouple === 'couple' ? 19125 : 1, 'https://calendly.com/janendichu1/financial-accountability-partner')">
+                        @click="openPaymentModal('Half Yearly Package' + (isCouple === 'couple' ? ' (Couple)' : ''), isCouple === 'couple' ? 19125 : 12750, 'https://calendly.com/janendichu1/financial-accountability-partner')">
                       Select Package
                     </button>
                 </div>
