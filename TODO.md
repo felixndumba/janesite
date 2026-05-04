@@ -1,10 +1,13 @@
-# TODO: Fix Email Validation in Contact Form and Product Inquiry Form
+# Payment Redirect Fix Progress
 
-## Tasks
-- [x] Update ContactController.php to add regex validation for @gmail.com in email field
-- [x] Update contact.blade.php to display validation errors for email field using @error directive
-- [x] Add JavaScript for real-time client-side email validation in contact.blade.php
-- [ ] Update ProductInquiryController.php to add regex validation for @gmail.com in email field
-- [ ] Update product-inquiry-modal.blade.php to display validation errors for email field
-- [ ] Add JavaScript for real-time client-side email validation in product-inquiry-modal.blade.php
-- [ ] Test the changes to ensure validation works properly on both forms
+## Plan Steps:
+1. [x] Create TODO.md
+2. [x] Edit resources/views/partials/paymentmodal.blade.php:
+   - Update openPaymentModal to accept optional redirectUrl
+   - Store in window.currentRedirectUrl (with default fallback)
+   - Use window.currentRedirectUrl in success redirect
+   - Reset in closePaymentModal
+3. [ ] Test payment flow from individual-1.blade.php buttons
+4. [ ] Complete task
+
+Current status: Edits complete. Test recommended.

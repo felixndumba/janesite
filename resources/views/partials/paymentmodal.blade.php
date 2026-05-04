@@ -76,7 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const card  = document.getElementById("mpesaCard");
 
     /* ================= OPEN MODAL ================= */
-    window.openPaymentModal = function(packageName, amount) {
+window.openPaymentModal = function(packageName, amount, redirectUrl = null) {
+        window.currentRedirectUrl = redirectUrl || 'https://calendly.com/janendichu1/personal-financial-advisor';
         document.getElementById("modalPackage").innerText = packageName;
         document.getElementById("modalAmount").innerText = "KSH " + amount;
         document.getElementById("payAmount").innerText = "KSH " + amount;
@@ -90,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ================= CLOSE MODAL ================= */
     window.closePaymentModal = function() {
+        window.currentRedirectUrl = null;
         card.classList.add("scale-95","opacity-0");
         card.classList.remove("scale-100","opacity-100");
         setTimeout(() => modal.classList.add("hidden"), 200);
@@ -126,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 showMessage("🎉 Payment confirmed! Redirecting...", "success");
                 clearInterval(pollingInterval);
                 setTimeout(() => {
-                    window.location.href = "https://calendly.com/janendichu1/personal-financial-advisor";
+                    window.location.href = window.currentRedirectUrl || 'https://calendly.com/janendichu1/personal-financial-advisor';
                 }, 1500);
             }
 
