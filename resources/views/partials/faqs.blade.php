@@ -19,8 +19,8 @@
                 <h3 class="font-bold text-lg mb-2" style="color: #8B3A23;">2. How long are the sessions?</h3>
                 <ul class="list-disc pl-6 space-y-1 text-gray-700">
                     <li>For free sessions: 60mins max.</li>
-                    <li>For personal advisory sessions: 2 hrs max.</li>
-                    <li>For personal accountability parter 90mins max.</li>
+                    <li>For personal financial advisory sessions: 2 hrs max.</li>
+                    <li>For personal financial accountability partner 90mins max.</li>
                 </ul>
             </div>
 
