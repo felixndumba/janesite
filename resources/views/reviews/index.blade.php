@@ -51,17 +51,14 @@
 
 <section class="py-20 relative overflow-hidden bg-[#f8f7f5]">
 
-    <!-- FLOATING DOTS -->
-    <div class="absolute top-20 left-10 w-4 h-4 bg-blue-400 rounded-full"></div>
-    <div class="absolute top-40 left-32 w-3 h-3 bg-green-400 rounded-full"></div>
-    <div class="absolute top-24 right-40 w-4 h-4 bg-red-400 rounded-full"></div>
+   
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
         <!-- HEADER -->
         <div class="text-center mb-14">
 
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-5">
+            <h1 class="text-5xl font-extrabold text-center mb-10" style="color: #E2B287;">
                 WHAT OUR CLIENTS SAY
             </h1>
 
