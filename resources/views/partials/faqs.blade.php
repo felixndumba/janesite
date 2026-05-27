@@ -9,7 +9,7 @@
                 <h3 class="font-bold text-lg mb-2" style="color: #8B3A23;">1. How to book a session?</h3>
                 <ul class="list-disc pl-6 space-y-1 text-gray-700">
                     <li>For free sessions, just add your availability time to my calendar and leave a note if applicable.</li>
-                    <li>For personal financial advisor sessions, pay for the package you choose on the Till number, then add your availability to the calendar.</li>
+                    <li>For personal financial advisor sessions and financial accountability sessions, pay for the package you choose then add your availability to the calender.</li>
                 </ul>
             </div>
 
@@ -18,8 +18,9 @@
              data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
                 <h3 class="font-bold text-lg mb-2" style="color: #8B3A23;">2. How long are the sessions?</h3>
                 <ul class="list-disc pl-6 space-y-1 text-gray-700">
-                    <li>For free sessions: 1 hr max.</li>
+                    <li>For free sessions: 60mins max.</li>
                     <li>For personal advisory sessions: 2 hrs max.</li>
+                    <li>For personal accountability parter 90mins max.</li>
                 </ul>
             </div>
 
@@ -37,7 +38,7 @@
             <div class="bg-white rounded-lg shadow-md border border-orange-200 p-6 hover:shadow-lg transition-shadow duration-300"
              data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
                 <h3 class="font-bold text-lg mb-2" style="color: #8B3A23;">4. Do you offer virtual sessions?</h3>
-                <p class="text-gray-700">Yes, all sessions can be conducted virtually via Zoom or Google Meet for convenience.</p>
+                <p class="text-gray-700">We offer both physical and virtual sessions depending on your preference.</p>
             </div>
 
             {{-- Extra FAQ --}}
