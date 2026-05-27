@@ -233,7 +233,7 @@
                                 line-clamp-5
                             "
                             style="display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;">
-                            {{ $review->message }}
+                            “{{ $review->message }}”
 
                         <!-- USER -->
                         <div class="flex items-center gap-3">
