@@ -8,7 +8,7 @@ Route::get('/reviews', [ReviewController::class, 'index']);
 
 Route::post('/reviews', [ReviewController::class, 'store']);
 
-Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
+
 // Home page (GET)
 Route::get('/', function () {
     $reviews = \App\Models\Review::latest()->get();
