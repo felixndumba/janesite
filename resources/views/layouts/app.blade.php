@@ -15,7 +15,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'], buildDirectory: true)
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialias bg-[#f9f7f4]">
 
@@ -37,17 +37,14 @@
                 @include('layouts.footer')
             </footer>
 
-          
-            </div>
-
-            
-        </div>
         <script>
-    AOS.init({
-        duration: 1200,
-        once: true,
-        mirror: true
-    });
+            AOS.init({
+
+                duration: 1200,
+                once: true,
+                mirror: true
+            });
+
 </script>
 <a href="https://calendly.com/janendichu1/free_discovery_call"
    target="_blank"
@@ -65,8 +62,5 @@
 @include('partials.paymentmodal1')
 
 </body>
-
-</div>
-
-        
 </html>
+

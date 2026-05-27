@@ -3,16 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ReviewController;
+Route::get('/reviews', [ReviewController::class, 'index']);
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
+Route::post('/reviews', [ReviewController::class, 'store']);
 
+Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
 // Home page (GET)
 Route::get('/', function () {
-    return view('main');
+    $reviews = \App\Models\Review::latest()->get();
+    return view('main', compact('reviews'));
 });
 
 // Optional: handle POST on homepage if needed

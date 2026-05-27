@@ -32,7 +32,7 @@
    
     <div id="reviews"
     data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-        @include('partials.reviews')
+        @include('reviews.index')
     </div>
     <div id="faqs">
         @include('partials.faqs')
