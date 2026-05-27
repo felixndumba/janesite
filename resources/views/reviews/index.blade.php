@@ -174,10 +174,17 @@
                             snap-start
                             flex-shrink-0
 
-                            w-[88vw]
-                            sm:w-[75vw]
-                            md:w-[48%]
-                            lg:w-[31%]
+                            w-[320px]
+                            min-w-[320px]
+
+                            sm:w-[420px]
+                            sm:min-w-[420px]
+
+                            md:w-[460px]
+                            md:min-w-[460px]
+
+                            lg:w-[360px]
+                            lg:min-w-[360px]
 
                             bg-white
                             rounded-3xl
