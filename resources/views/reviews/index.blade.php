@@ -227,7 +227,6 @@
                             "
                             style="display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;">
                             {{ $review->message }}
-                        </p>
 
                         <!-- USER -->
                         <div class="flex items-center gap-3">
@@ -276,7 +275,7 @@
     id="reviewModal"
     class="fixed inset-0 bg-black/60 hidden justify-center items-center z-50 p-4">
 
-    <div class="bg-white w-full max-w-lg rounded-2xl p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+    <div class="bg-white w-full max-w-lg rounded-2xl p-6 sm:p-8 relative shadow-2xl">
 
         <!-- CLOSE -->
         <button
