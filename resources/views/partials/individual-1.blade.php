@@ -13,7 +13,7 @@
                     <li>• Retirement || Pension || Annuities.</li>
                     <li>• Emergency fund || Money Market.</li>
                     <li>• Sinking funds || Endowment Plans.</li>
-                    <li>• Generational wealth || Trust fund</li>
+                    <li>• Generational wealth || Trust fund || Whole life cover/</li>
                     <li>• Child Education fund</li>
                     <li>•Special funds,Equity funds, Balanced funds and Fixed income funds</li>
                     <li>•NSSF Tier II</li>
@@ -21,7 +21,7 @@
                 </ul>
 
                 <div class="mt-6">
-                                <a href="https://calendly.com/janendichu1/free_discovery_call" target="_blank"
+                                <a href="https://calendly.com/janendichu1/free-package" target="_blank"
   class="inline-block bg-[#b25d4c] text-white px-6 py-2 rounded-full hover:bg-[#8a4638] transition">
    Book Now
 </a>
