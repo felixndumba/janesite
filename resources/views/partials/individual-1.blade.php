@@ -13,7 +13,7 @@
                     <li>• Retirement || Pension || Annuities.</li>
                     <li>• Emergency fund || Money Market.</li>
                     <li>• Sinking funds || Endowment Plans.</li>
-                    <li>• Generational wealth || Trust fund || Whole life cover/</li>
+                    <li>• Generational wealth || Trust fund || Whole life cover</li>
                     <li>• Child Education fund</li>
                     <li>•Special funds,Equity funds, Balanced funds and Fixed income funds</li>
                     <li>•NSSF Tier II</li>
