@@ -79,8 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
 window.openPaymentModal = function(packageName, amount, redirectUrl = null) {
         window.currentRedirectUrl = redirectUrl || 'https://calendly.com/janendichu1/personal-financial-advisor';
         document.getElementById("modalPackage").innerText = packageName;
-        document.getElementById("modalAmount").innerText = "KSH " + amount;
-        document.getElementById("payAmount").innerText = "KSH " + amount;
+        const formattedAmount = Number(amount).toLocaleString('en-US');
+        document.getElementById("modalAmount").innerText = "KSH " + formattedAmount;
+        document.getElementById("payAmount").innerText = "KSH " + formattedAmount;
 
         modal.classList.remove("hidden");
         setTimeout(() => {
@@ -150,11 +151,12 @@ window.openPaymentModal = function(packageName, amount, redirectUrl = null) {
     document.getElementById("payButton").addEventListener("click", async () => {
 
         const phone = document.getElementById("mpesaPhone").value.trim();
-        const amount = document.getElementById("payAmount").innerText.replace("KSH","").trim();
+        const amountText = document.getElementById("payAmount").innerText;
+        const amount = Number(amountText.replace(/[^0-9.]/g, ""));
 
         // Validate
         if (!/^(\+254[17]\d{8}|0[17]\d{8})$/.test(phone)) {
-            showMessage("⚠️ Enter a valid M-Pesa phone number (01, 07, +2541, or +2547).", "error");
+            showMessage("⚠️ Enter a valid M-Pesa phone number.", "error");
             return;
         }
         if (Number(amount) <= 0) {

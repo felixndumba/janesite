@@ -17,7 +17,7 @@
                 <li class="flex items-center gap-2"><span class="text-[#c45b1f]">•</span> Available online and physical</li>
             </ul><br>
             <p class="text-xl  text-black mt-2">KSH 12,000</p>
-            <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]" onclick="openPaymentModal(`Basic Package`, `11,500`)">
+            <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]" onclick="openPaymentModal(`Basic Package`, `12,000`)">
                 Select Package
             </button>
         </div>

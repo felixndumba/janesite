@@ -1,4 +1,4 @@
-<section x-data="{ selected: null, isCouple: 'individual', numSessions: 1 }" class="py-16 bg-[#f9f7f4]">
+<section x-data="{ selected: null, isCouple: 'individual', numSessions: 1, packageChoice: null, purchaseType: null, giftType: null, openPackageChoice(packageName, amount) { this.packageChoice = { name: packageName + (this.isCouple === 'couple' ? ' (Couple)' : ''), baseAmount: amount }; this.purchaseType = null; this.giftType = null; this.selected = 'package-choice'; } }" class="py-16 bg-[#f9f7f4]" style="display:block;">
     <div class="max-w-5xl mx-auto px-4">
 
         <!-- Initial 3 Cards -->
@@ -82,7 +82,89 @@
         <!-- Paid Packages (Basic + Premium) -->
          <div>
             
-             <div x-show="selected === 'paid'" class="mt-10 space-y-6">
+            <div class="mt-10 space-y-6">
+
+             <!-- Package choice popup for Basic + Premium -->
+             <div x-show="selected === 'package-choice'" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100000] px-4">
+                <div class="bg-white rounded-2xl p-6 w-full max-w-xl shadow-2xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="font-bold text-lg text-gray-800">Choose how you want to purchase</h4>
+                        <button class="text-gray-500 hover:text-gray-700" @click="purchaseType = null; giftType = null; packageChoice = null; selected = null">✕</button>
+                    </div>
+
+                    <div class="space-y-5">
+                        <div x-show="purchaseType === null" class="space-y-3">
+                            <p class="text-gray-700 font-semibold">Step 1: Purchase type</p>
+                            <div class="grid md:grid-cols-2 gap-4">
+<button class="w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
+                                        @click="purchaseType='buy'; giftType=null; selected='package-choice'">
+                                    Buy for myself
+                                </button>
+                                <button class="w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
+                                        @click="purchaseType='gift'; giftType=null; selected='package-choice'">
+                                    Gift a voucher
+                                </button>
+                            </div>
+                        </div>
+
+                        <div x-show="purchaseType === 'gift' && giftType === null" class="space-y-3">
+                            <p class="text-gray-700 font-semibold">Step 2: Voucher type (for gift)</p>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <button class="w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]" @click="giftType='evoucher'">
+                                    E-voucher
+                                </button>
+                                <button class="w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]" @click="giftType='physical'">
+                                    Physical voucher (+KSH 500 delivery)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border rounded-lg p-4 bg-gray-50" x-show="packageChoice">
+                            <p class="text-gray-700 font-semibold">Package</p>
+                            <p class="text-gray-900"> <span x-text="(packageChoice?.name || '')"></span></p>
+
+                            <div class="mt-2 text-sm text-gray-600" x-show="purchaseType==='buy'">
+                                Amount: <span x-text="'KSH ' + Number(packageChoice?.baseAmount ?? 0).toLocaleString('en-US')"></span>
+                            </div>
+
+                            <div class="mt-2 text-sm text-gray-600" x-show="purchaseType==='gift' && giftType==='evoucher'">
+                                Amount: <span x-text="'KSH ' + Number(packageChoice?.baseAmount ?? 0).toLocaleString('en-US')"></span>
+                            </div>
+
+                            <div class="mt-2 text-sm text-gray-600" x-show="purchaseType==='gift' && giftType==='physical'">
+                                Amount: <span x-text="'KSH ' + (Number(packageChoice?.baseAmount ?? 0) + 500).toLocaleString('en-US')"></span>
+
+                                <div class="text-xs mt-1">Delivery fee already included (+KSH 500).</div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end gap-3" x-show="purchaseType !== null">
+                            <button class="bg-gray-500 text-white px-5 py-2 rounded-lg hover:bg-gray-600" @click="selected='paid'; purchaseType=null; giftType=null; packageChoice=null;">
+                                Cancel
+                            </button>
+
+<button x-show="purchaseType==='buy' && packageChoice" class="bg-[#a04f3f] text-white px-5 py-2 rounded-lg hover:bg-[#8b3f30]" @click="openPaymentModal(packageChoice?.name ?? '', Number(packageChoice?.baseAmount ?? 0)); selected=null; purchaseType=null; giftType=null; packageChoice=null;">
+
+                                Continue to Payment
+                            </button>
+
+<button x-show="purchaseType==='gift' && giftType==='evoucher' && packageChoice" class="bg-[#a04f3f] text-white px-5 py-2 rounded-lg hover:bg-[#8b3f30]" @click="openPaymentModal(packageChoice?.name ?? '', Number(packageChoice?.baseAmount ?? 0), 'https://docs.google.com/forms/d/e/1FAIpQLSe-KjLRfwPGtImgTgr9Mb5fO5cgFVLCdr4IdzaYasKmIu1Y8w/viewform?usp=publish-editor'); selected=null; purchaseType=null; giftType=null; packageChoice=null;">
+
+                                Continue to Payment
+                            </button>
+
+<button x-show="purchaseType==='gift' && giftType==='physical' && packageChoice" class="bg-[#a04f3f] text-white px-5 py-2 rounded-lg hover:bg-[#8b3f30]" @click="openDeliveryPaymentModal(packageChoice?.name ?? '', Number(packageChoice?.baseAmount ?? 0) + 500, 'https://docs.google.com/forms/d/e/1FAIpQLSeExZEYr8yQIeOEo0a5GYHPjsikEOgM9Hq_dJEEczUxVkJgCw/viewform?usp=header'); selected=null; purchaseType=null; giftType=null; packageChoice=null;">
+
+                                Continue to Physical Voucher Payment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             
+             <!-- show paid grid only when not in popup -->
+             <div x-show="selected === 'paid' && selected !== 'package-choice'" class="space-y-6">
+
                 <div class="mb-8 flex items-center justify-center space-x-6">
                     <label class="inline-flex items-center">
                         <input type="radio" value="individual" x-model="isCouple" checked class="accent-[#b25d4c]">
@@ -95,7 +177,7 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Basic -->    <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
+                     <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
                         <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
                             BASIC PACKAGE
                         </div>
@@ -111,10 +193,7 @@
                         <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '15000 KSH' : '10,000 KSH'"></p>
                       <button
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-    @click="openPaymentModal(
-        'Basic Package' + (isCouple === 'couple' ? ' (Couple)' : ''),
-        isCouple === 'couple' ? 15000 : 10000
-    )"
+@click="openPackageChoice('Basic Package', isCouple === 'couple' ? 15000 : 10000)"
 >
     Select Package
 </button>
@@ -139,10 +218,7 @@
                         <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '38,250 KSH' : '25,500 KSH'"></p>
                       <button
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-    @click="openPaymentModal(
-        'Premium Package' + (isCouple === 'couple' ? ' (Couple)' : ''),
-        isCouple === 'couple' ? 38250 : 25500
-    )"
+@click="openPackageChoice('Premium Package', isCouple === 'couple' ? 38250 : 25500)"
 >
     Select Package
 </button>

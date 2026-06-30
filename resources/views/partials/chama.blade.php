@@ -118,9 +118,5 @@
         input.focus();
     }
 
-    // Dummy function (replace with your real payment modal)
-    function openPaymentModal(packageName, amount) {
-        console.log('Package:', packageName);
-        console.log('Amount:', amount);
-    }
+
 </script>

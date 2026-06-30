@@ -37,15 +37,7 @@
                 @include('layouts.footer')
             </footer>
 
-        <script>
-            AOS.init({
 
-                duration: 1200,
-                once: true,
-                mirror: true
-            });
-
-</script>
 <a href="https://calendly.com/janendichu1/free_discovery_call"
    target="_blank"
    class="fixed bottom-20 right-6 bg-[#a04f3f] text-white font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#8b3f30] transition-all z-50">
@@ -60,6 +52,7 @@
 
 @include('partials.paymentmodal')
 @include('partials.paymentmodal1')
+@include('partials.paymentmodal_delivery')
 
 </body>
 </html>
