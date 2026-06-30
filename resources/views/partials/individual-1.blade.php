@@ -98,7 +98,7 @@
                             <div class="grid md:grid-cols-2 gap-4">
 <button class="w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
                                         @click="purchaseType='buy'; giftType=null; selected='package-choice'">
-                                    Buy for myself
+                                    Book Now
                                 </button>
                                 <button class="w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
                                         @click="purchaseType='gift'; giftType=null; selected='package-choice'">
@@ -155,7 +155,7 @@
 
 <button x-show="purchaseType==='gift' && giftType==='physical' && packageChoice" class="bg-[#a04f3f] text-white px-5 py-2 rounded-lg hover:bg-[#8b3f30]" @click="openDeliveryPaymentModal(packageChoice?.name ?? '', Number(packageChoice?.baseAmount ?? 0) + 500, 'https://docs.google.com/forms/d/e/1FAIpQLSeExZEYr8yQIeOEo0a5GYHPjsikEOgM9Hq_dJEEczUxVkJgCw/viewform?usp=header'); selected=null; purchaseType=null; giftType=null; packageChoice=null;">
 
-                                Continue to Physical Voucher Payment
+                                Continue to Payment
                             </button>
                         </div>
                     </div>
