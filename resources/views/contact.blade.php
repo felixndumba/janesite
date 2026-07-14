@@ -1,23 +1,22 @@
 @extends('layouts.app')
 
+@section('title', 'Contact | Thedi Advisors')
+@section('meta_description', 'Contact Thedi Advisors for expert financial consulting and advisory services in Kenya.')
+
 @section('content')
 <div class="min-h-screen flex items-center justify-center  py-12 px-4"
 data-aos="zoom-in-left" data-aos-delay="400" data-aos-duration="1200">
+
     <div class="relative max-w-6xl ml-10 w-full   overflow-hidden grid grid-cols-1 md:grid-cols-2">
 
         <!-- Left Side: Image with Social Icons -->
         <div class="relative flex flex-col justify-between ">
             <img src="{{ asset('images/cntc.jpg') }}" alt="Contact" class="w-full h-64 md:h-80 lg:h-96 object-cover">
-
-            <!-- Social Media Icons at bottom of image -->
-
-        </div>
+    </div>
 
         <!-- Right Side: Contact Form (overlay style, taller than image) -->
-        <div class="relative flex flex-col justify-center px-6 py-12">
-
-            <!-- Creative Intro Message -->
-     <div class="mb-6  p-5  ">
+    <div class="relative flex flex-col justify-center px-6 py-12">
+    <div class="mb-6  p-5  ">
     <p class="font-[Figtree] text-lg text-gray-800 leading-relaxed tracking-wide mb-4">
         <i class="fas fa-comments text-blue-500 mr-2"></i>
         Connect with us today, we’re here to provide answers, guidance, and the support you or your business deserves.

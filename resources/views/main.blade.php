@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 
+@section('title', 'Home | Thedi Advisors')
+@section('meta_description', 'Thedi Advisors provides expert consulting and advisory services in Kenya. Build sustainable wealth with confidence.')
+
 @section('content')
+
 <main >
-    <!-- Hero Section -->
-   <div
+    <div
    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     @include('partials.section1')
    </div>

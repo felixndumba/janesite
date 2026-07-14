@@ -1,4 +1,6 @@
+
 <section class="py-20 px-6 md:px-20">
+
     <div class="max-w-5xl mx-auto">
 
         <!-- Subheading -->
