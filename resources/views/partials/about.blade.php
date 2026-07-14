@@ -10,8 +10,9 @@
 
         <!-- Main Heading -->
         <h2 class="text-4xl md:text-5xl font-bold text-[#a04f3f] leading-tight mb-6">
-            Who We Are
+            Financial Advisors in Kenya
         </h2>
+
 
         <!-- Body Text -->
         <p class="text-black text-lg leading-relaxed mb-10 ">

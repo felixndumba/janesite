@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
+@section('title', 'Services | Thedi Advisors')
+@section('meta_description', 'Explore financial advisory services by Thedi Advisors: savings, investments, insurance, retirement planning, and risk management in Kenya.')
+@section('canonical_url', url('/services'))
+@section('og_image', asset('images/texture1.jpg'))
+
 @section('content')
+
 <section class="relative">
   <!-- Background -->
   <div class="absolute inset-0">

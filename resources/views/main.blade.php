@@ -2,11 +2,15 @@
 
 
 @section('title', 'Home | Thedi Advisors')
-@section('meta_description', 'Thedi Advisors provides expert consulting and advisory services in Kenya. Build sustainable wealth with confidence.')
+@section('meta_description', 'Thedi Advisors provides expert financial consulting and advisory services in Kenya. Build sustainable wealth with confidence.')
+@section('canonical_url', url('/'))
+@section('og_image', asset('images/jane1.jpg'))
+
 
 @section('content')
 
-<main >
+<main>
+
     <div
    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     @include('partials.section1')

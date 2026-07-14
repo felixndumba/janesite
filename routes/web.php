@@ -38,6 +38,10 @@ Route::get('/Master-class', function () {
     return view('master-class');
 })->name('master');
 
+// Optional SEO: keep only one canonical URL for master class.
+// (We rely on per-page meta in the view.)
+
+
 Route::get('/service-individual-free', function () {
     return view('partials.individual-free');
 })->name('individual-free');

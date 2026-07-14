@@ -5,10 +5,44 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="description" content="@yield('meta_description', 'Thedi Advisors provides expert consulting and advisory services in Kenya. Contact us today for professional solutions.')">
-        <title>@yield('title', 'Thedi Advisors | Professional Financial Advisors')</title>
+        @php
+            $defaultTitle = 'Thedi Advisors | Professional Financial Advisors';
+            $defaultDescription = 'Thedi Advisors provides expert consulting and advisory services in Kenya. Build sustainable wealth with confidence.';
 
-       <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+            $pageTitle = trim($__env->yieldContent('title'));
+            $pageDescription = trim($__env->yieldContent('meta_description'));
+
+            $finalTitle = $pageTitle !== '' ? $pageTitle : $defaultTitle;
+            $finalDescription = $pageDescription !== '' ? $pageDescription : $defaultDescription;
+
+            $canonicalUrl = trim($__env->yieldContent('canonical_url'));
+            $canonicalHref = $canonicalUrl !== '' ? $canonicalUrl : url()->current();
+
+            $ogImage = trim($__env->yieldContent('og_image'));
+            $ogImageHref = $ogImage !== '' ? $ogImage : asset('images/jane1.jpg');
+        @endphp
+
+        <meta name="description" content="{{ $finalDescription }}">
+        <link rel="canonical" href="{{ $canonicalHref }}">
+        <title>{{ $finalTitle }}</title>
+
+
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ $finalTitle }}">
+        <meta property="og:description" content="{{ $finalDescription }}">
+        <meta property="og:url" content="{{ $canonicalHref }}">
+        <meta property="og:image" content="{{ $ogImageHref }}">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ $finalTitle }}">
+        <meta name="twitter:description" content="{{ $finalDescription }}">
+        <meta name="twitter:image" content="{{ $ogImageHref }}">
+
+        {{-- Basic SEO defaults --}}
+        <meta name="robots" content="index,follow">
+
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">

@@ -49,6 +49,15 @@
     }
 </style>
 
+@extends('layouts.app')
+
+@section('title', 'Reviews | Thedi Advisors')
+@section('meta_description', 'Read client reviews and testimonials for Thedi Advisors, a financial consulting and advisory firm in Kenya.')
+@section('canonical_url', url('/reviews'))
+@section('og_image', asset('images/jane1.jpg'))
+
+@section('content')
+
 <section class="py-20 relative overflow-hidden bg-[#f8f7f5]">
 
    
@@ -628,3 +637,4 @@
     }
 
 </script>
+@endsection

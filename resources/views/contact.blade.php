@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('title', 'Contact | Thedi Advisors')
-@section('meta_description', 'Contact Thedi Advisors for expert financial consulting and advisory services in Kenya.')
+@section('meta_description', 'Contact Thedi Advisors for expert financial consulting and advisory services in Kenya. Book a call and get tailored guidance.')
+@section('canonical_url', url('/contact'))
+@section('og_image', asset('images/cntc.jpg'))
+
 
 @section('content')
 <div class="min-h-screen flex items-center justify-center  py-12 px-4"
