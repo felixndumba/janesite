@@ -120,7 +120,7 @@ class MpesaController extends Controller
         if (!preg_match('/^254[17]\d{8}$/', $normalizedPhone)) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Invalid phone number. Only mobile numbers starting with 01, 07, +2541, or +2547 are supported.'
+                'message' => 'Invalid phone number. '
             ], 400);
         }
 

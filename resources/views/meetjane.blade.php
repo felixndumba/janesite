@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Meet Jane | Thedi Advisors')
+@section('meta_description', 'Meet Jane, a top-award winning financial advisor in Kenya. Learn about her certifications, approach, and how she helps clients build lasting wealth.')
+@section('canonical_url', url('/meet-jane'))
+@section('og_image', asset('images/two.jpeg'))
+
 <br><br>
 
 <!-- ABOUT SECTION (ALTERNATING LAYOUT) -->
+
 <section class="py-16 px-6 md:px-12 space-y-20">
 
   <!-- 01 Meet Jane (Image Left, Text Right) -->

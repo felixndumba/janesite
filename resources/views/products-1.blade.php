@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
+@section('title', 'Products | Thedi Advisors')
+@section('meta_description', 'Discover savings, investment, insurance, and legacy planning options with Thedi Advisors. Choose the right financial product for your goals.')
+@section('canonical_url', url('/products'))
+@section('og_image', asset('images/one.jpeg'))
+
 @section('content')
+
 <div class="relative  text-grey/20">
     <!-- Background Image with Gradient Overlay -->
    <div class="absolute inset-0">

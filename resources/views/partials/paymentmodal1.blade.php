@@ -39,11 +39,11 @@
         <!-- Instructions -->
         <div class="bg-gray-100 rounded-lg p-4 border text-sm text-gray-700 space-y-1 mb-4">
             <p class="font-semibold">Payment Instructions:</p>
-            <ol class="list-decimal pl-5 space-y-1">
+<ol class="list-decimal pl-5 space-y-1">
                 <li>Enter your M-Pesa phone number</li>
                 <li>Wait for STK push</li>
                 <li>Enter your PIN</li>
-                <li>You’ll be redirected to a form, fill your details</li>
+                <li>Choose how you'd like to watch after payment</li>
             </ol>
         </div>
 
@@ -64,8 +64,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("mpesaModalMaster");
     const card  = document.getElementById("mpesaCardMaster");
 
-    /* ================= OPEN MODAL ================= */
-    window.openMasterclassPaymentModal = function(packageName, amount) {
+/* ================= OPEN MODAL ================= */
+    window.openMasterclassPaymentModal = function(packageName, amount, youtubeId = null, accent = '#8C3E32') {
+        // Store the video details so the delivery popup can act on them.
+        window.masterclassVideo = {
+            title: packageName,
+            youtube_id: youtubeId,
+            accent: accent,
+        };
+
         document.getElementById("masterPackage").innerText = packageName;
         document.getElementById("masterAmount").innerText = "KSH " + amount;
         document.getElementById("masterPayAmount").innerText = "KSH " + amount;
@@ -105,13 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
         box.classList.remove("hidden");
     }
 
-    /* ================= OPEN SUCCESS CTA ================= */
-    function openMasterSuccessCTA() {
-        const successCTA = document.getElementById("masterSuccessCTA");
-        successCTA.classList.remove("hidden");
+/* ================= OPEN DELIVERY POPUP ================= */
+    function openMasterDeliveryPopup() {
+        const deliveryPopup = document.getElementById("masterDeliveryPopup");
+        deliveryPopup.classList.remove("hidden");
 
-        const card = successCTA.querySelector("div");
+        const card = deliveryPopup.querySelector("div");
         card.classList.add("scale-95","opacity-0");
+
+        // Reset the email form state each time it opens.
+        const emailForm = document.getElementById("masterEmailForm");
+        emailForm.classList.add("hidden");
+        const emailMsg  = document.getElementById("masterEmailMsg");
+        emailMsg.classList.add("hidden");
+        document.getElementById("masterEmailInput").value = "";
 
         setTimeout(() => {
             card.classList.remove("scale-95","opacity-0");
@@ -128,16 +142,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (data.status === "success") {
                 clearInterval(masterPolling);
                 closeMasterclassPaymentModal();
-                openMasterSuccessCTA();
-
-                setTimeout(() => {
-                    window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScPrR3iEDVY0aO0nwg09jkceNMlcKCAFgdGlk_73kkl3Ow5RQ/viewform?usp=publish-editor";
-                }, 3000);
+                openMasterDeliveryPopup();
             } else if (data.status === "failed") {
                 showMasterMessage("❌ Payment could not be completed. Please try again or contact support.", "error");
                 clearInterval(masterPolling);
             } else {
-                showMasterMessage("⏳ Payment is being processed. Please complete the STK push on your phone.", "info");
+                showMasterMessage("✅ STK push sent! Enter your M-Pesa PIN on your phone to complete payment.", "success");
             }
         } catch (err) {
             showMasterMessage("⚠️ Unable to check payment status. Retrying...", "error");
@@ -157,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showMasterMessage("⏳ Sending payment request...", "info");
 
         try {
-            const res = await fetch("{{ route('mpesa.initiate') }}", {
+            const res = await fetch("/api/mpesa/stk/initiate", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -202,17 +212,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<!-- BRANDED SUCCESS CTA FOR MASTER CLASS -->
-<div id="masterSuccessCTA"
+<!-- HOW WOULD YOU LIKE TO WATCH? DELIVERY POPUP -->
+<div id="masterDeliveryPopup"
      class="hidden fixed inset-0 bg-black/40 z-50
             flex items-center justify-center px-4">
 
     <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center
                 shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
 
-        <div class="mx-auto mb-4 w-14 h-14 rounded-full bg-[#a04f3f]/10
+        <div class="mx-auto mb-4 w-14 h-14 rounded-full bg-green-100
                     flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#a04f3f]"
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-600"
                  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M5 13l4 4L19 7" />
@@ -220,11 +230,134 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <h3 class="text-xl font-bold text-gray-800">
-            Thank you for registering for master class!
+            Payment Successful! 🎉
         </h3>
 
         <p class="text-gray-600 mt-2">
-            Your payment has been confirmed. You will be redirected to fill in your details shortly.See you there!
+            How would you like to watch your masterclass?
         </p>
+
+        <div class="mt-6 space-y-3">
+            <!-- Watch Now -->
+            <button type="button" onclick="watchNowFromDelivery()"
+                    class="w-full bg-[#a04f3f] text-white font-bold py-3 rounded-full
+                           hover:bg-[#8b3f30] transition flex items-center justify-center gap-2">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+                Watch Now
+            </button>
+
+            <!-- Email me the link -->
+            <button type="button" onclick="showMasterEmailForm()"
+                    class="w-full bg-gray-900 text-white font-bold py-3 rounded-full
+                           hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" />
+                    <path d="M22 6l-10 7L2 6" />
+                </svg>
+                Email me the link
+            </button>
+        </div>
+
+        <!-- Email form (revealed after clicking "Email me the link") -->
+        <div id="masterEmailForm" class="hidden mt-5 text-left">
+            <label class="font-semibold text-sm text-gray-700">Email Address</label>
+            <input id="masterEmailInput" type="email" placeholder="you@example.com"
+                   class="border rounded-lg w-full p-3 mt-1 mb-3 focus:ring-2
+                          focus:ring-orange-400 outline-none"/>
+            <button type="button" onclick="sendMasterEmailLink()"
+                    class="w-full bg-[#8C6D31] text-white font-bold py-3 rounded-full
+                           hover:bg-[#7a5f2b] transition">
+                Send Link
+            </button>
+        </div>
+
+        <!-- Email status message -->
+        <div id="masterEmailMsg"
+             class="hidden mt-4 p-3 rounded-lg text-sm font-medium"></div>
+
+        <button type="button" onclick="closeMasterDeliveryPopup()"
+                class="mt-6 text-sm font-semibold text-gray-400 hover:text-gray-600 transition">
+            Close
+        </button>
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ============ DELIVERY POPUP CONTROLS ============ */
+
+    window.showMasterEmailForm = function() {
+        document.getElementById("masterEmailForm").classList.remove("hidden");
+        document.getElementById("masterEmailMsg").classList.add("hidden");
+    };
+
+    window.closeMasterDeliveryPopup = function() {
+        const popup = document.getElementById("masterDeliveryPopup");
+        const card = popup.querySelector("div");
+        card.classList.add("scale-95","opacity-0");
+        card.classList.remove("scale-100","opacity-100");
+        setTimeout(() => popup.classList.add("hidden"), 200);
+    };
+
+    window.watchNowFromDelivery = function() {
+        const video = window.masterclassVideo || {};
+        closeMasterDeliveryPopup();
+
+        // Let the Alpine masterclass component play the purchased video directly.
+        window.dispatchEvent(new CustomEvent("masterclass:watch", {
+            detail: video
+        }));
+    };
+
+    window.sendMasterEmailLink = async function() {
+        const input = document.getElementById("masterEmailInput");
+        const email = input.value.trim();
+        const msgBox = document.getElementById("masterEmailMsg");
+
+        msgBox.classList.remove("hidden");
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            msgBox.className = "hidden mt-4 p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700";
+            msgBox.innerText = "⚠️ Please enter a valid email address.";
+            return;
+        }
+
+        const video = window.masterclassVideo || {};
+        msgBox.className = "hidden mt-4 p-3 rounded-lg text-sm font-medium bg-blue-100 text-blue-700";
+        msgBox.innerText = "⏳ Sending your video link...";
+
+        try {
+            const res = await fetch("/masterclass/send-link", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+                },
+                body: JSON.stringify({
+                    email: email,
+                    title: video.title || "Masterclass",
+                    youtube_id: video.youtube_id || ""
+                })
+            });
+
+            const data = await res.json();
+
+            if (data.status === "success") {
+                msgBox.className = "hidden mt-4 p-3 rounded-lg text-sm font-medium bg-green-100 text-green-700";
+                msgBox.innerText = "✅ " + (data.message || "The video link has been sent to your email.");
+                input.value = "";
+            } else {
+                msgBox.className = "hidden mt-4 p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700";
+                msgBox.innerText = "❌ " + (data.message || "Something went wrong. Please try again.");
+            }
+        } catch {
+            msgBox.className = "hidden mt-4 p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700";
+            msgBox.innerText = "❌ Network error. Please try again.";
+        }
+    };
+});
+</script>

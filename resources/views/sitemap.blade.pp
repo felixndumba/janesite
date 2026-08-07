@@ -30,4 +30,9 @@
 <lastmod>2026-01-17T11:18:41+00:00</lastmod>
 <priority>0.80</priority>
 </url>
+<url>
+<loc>https://www.thediadvisors.co.ke/reviews</loc>
+<lastmod>2026-01-17T11:18:41+00:00</lastmod>
+<priority>0.70</priority>
+</url>
 </urlset>
