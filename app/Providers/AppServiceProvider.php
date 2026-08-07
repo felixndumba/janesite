@@ -18,14 +18,15 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot()
-    {
-        // Force HTTPS when on production or ngrok tunnel
-         $appUrl = config('app.url');
+      public function boot(): void
+{
+    $host = request()->getHost();
 
-        // Force HTTPS when in production OR when using ngrok (secure tunnels)
-        if (config('app.env') === 'production' || str_starts_with($appUrl, 'https://') || str_contains(request()->getHost(), 'ngrok')) {
-            \URL::forceScheme('https');
-        }
+    if (
+        app()->environment('production') ||
+        str_contains($host, 'ngrok')
+    ) {
+        URL::forceScheme('https');
     }
+}
 }

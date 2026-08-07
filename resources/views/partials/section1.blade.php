@@ -29,11 +29,13 @@
                 we empower individuals and businesses to thrive.
             </p>
 
-            <a href="{{ url('/contact') }}"
+            <a href="https://calendly.com/janendichu1/free_discovery_call"
+                target="_blank"
                class="inline-block bg-white text-black font-semibold px-8 py-3 rounded-full shadow-md hover:scale-105 hover:bg-gray-100 transition-all duration-300 ease-in-out">
-                ENQUIRIES
+               BOOK FREE DISCOVERY CALL 
             </a>
         </div>
+          <a href="{{ url('/contact') }}"
 
     </div>
 </section>

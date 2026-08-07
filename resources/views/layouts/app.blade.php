@@ -71,11 +71,11 @@
             </footer>
 
 
-<a href="https://calendly.com/janendichu1/free_discovery_call"
-   target="_blank"
+<a href="{{ url('/contact') }}"
    class="fixed bottom-20 right-6 bg-[#a04f3f] text-white font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#8b3f30] transition-all z-50">
-   Book a Free  Call
+  Enquire Now
 </a>
+
 
 
 <a href="{{ route('services') }}"
@@ -86,7 +86,7 @@
 @include('partials.paymentmodal')
 @include('partials.paymentmodal1')
 @include('partials.paymentmodal_delivery')
-
+@stack('scripts')
 </body>
 </html>
 

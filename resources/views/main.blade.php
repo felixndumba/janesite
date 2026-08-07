@@ -21,7 +21,7 @@
     </div>
      <div id="#"
      data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-        @include('partials.counter')
+        @include('partials.financialimpact')
     </div>
     <div data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
         @include('partials.servicessupport')
@@ -33,13 +33,13 @@
      
     <div id="partners"
     data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-        @include('partials.partner')
+        @include('partials.financialpartner')
     </div>
     
    
     <div id="reviews"
     data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-        @include('reviews.index')
+        @include('partials.reviews-section')
     </div>
     <div id="faqs">
         @include('partials.faqs')

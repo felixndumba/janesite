@@ -103,7 +103,7 @@
             <div x-show="activeTab === 'individual-1'">
             
                
-            @include('partials.individual-1')
+            @include('partials.financialservices')
             </div>
 
 

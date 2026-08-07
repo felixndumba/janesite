@@ -4,16 +4,17 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ReviewController;
-Route::get('/reviews', [ReviewController::class, 'index']);
+
+
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
 
 Route::post('/reviews', [ReviewController::class, 'store']);
-
-
 
 Route::get('/', function () {
     $reviews = \App\Models\Review::latest()->get();
     return view('main', compact('reviews'));
 });
+
 
 Route::post('/', function(Request $request) {
     $data = $request->all();
@@ -24,7 +25,7 @@ Route::post('/', function(Request $request) {
 });
 
 
-Route::get('/services', function () {
+Route::get('/financial-services', function () {
     return view('services'); // Choose the correct view
 })->name('services');
 
@@ -35,16 +36,18 @@ Route::get('/explore-more', function () {
 
 
 Route::get('/Master-class', function () {
-    return view('master-class');
+    return view('partials.masterpartial');
 })->name('master');
+
+
 
 // Optional SEO: keep only one canonical URL for master class.
 // (We rely on per-page meta in the view.)
 
 
 Route::get('/service-individual-free', function () {
-    return view('partials.individual-free');
-})->name('individual-free');
+    return view('partials.financialservices');
+})->name('financialservices');
 
 
 Route::get('/contact', function () {
@@ -73,3 +76,8 @@ use App\Http\Controllers\ProductInquiryController;
 
 Route::post('/product/inquiry', [ProductInquiryController::class, 'send'])
     ->name('product.inquiry');
+
+use App\Http\Controllers\MasterclassController;
+
+Route::post('/masterclass/send-link', [MasterclassController::class, 'sendLink'])
+    ->name('masterclass.send-link');
