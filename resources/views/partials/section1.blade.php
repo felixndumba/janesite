@@ -1,4 +1,4 @@
- <section 
+<section 
   data-aos="zoom-in-left" 
   data-aos-delay="400" 
   data-aos-duration="1200"
@@ -13,7 +13,10 @@
         <!-- Left Image (Circular) -->
         <div class="flex justify-center" data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
             <div class="relative w-90 h-90 md:w-96 md:h-97 overflow-hidden rounded-full shadow-xl border-[10px] border-[#f9f7f4]">
-                <img src="{{ asset('images/one.jpeg') }}" alt="Hero Image" class="object-cover object-top w-full h-full" />
+                <img src="{{ asset('images/one.jpeg') }}" 
+                     alt="Jane Ndichu - Personal Financial Advisor in Kenya providing financial planning and coaching" 
+                     class="object-cover object-top w-full h-full" 
+                     loading="eager" />
             </div>
         </div>
 
@@ -21,21 +24,24 @@
         <div data-aos="zoom-in-left" data-aos-delay="300" data-aos-duration="1000">
             <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6 tracking-tight text-white">
                 Guiding You to Financial<br>
-                <span class="text-white">Freedom & Growth</span>
+                <span class="text-white">Freedom & Wealth Growth</span>
             </h1>
 
             <p class="text-lg mb-8 leading-relaxed text-white">
-                Discover the power of smart financial planning. With tailored advice and hands-on mentorship,
-                we empower individuals and businesses to thrive.
+                Discover the power of smart financial planning in Kenya. With tailored personal financial coaching and hands-on investment guidance, we empower individuals, businesses, and chamas to thrive.
             </p>
 
-            <a href="https://calendly.com/janendichu1/free_discovery_call"
-                target="_blank"
-               class="inline-block bg-white text-black font-semibold px-8 py-3 rounded-full shadow-md hover:scale-105 hover:bg-gray-100 transition-all duration-300 ease-in-out">
-               BOOK FREE DISCOVERY CALL 
-            </a>
+            <!-- Grouped Action Buttons -->
+            <div class="flex flex-wrap gap-4">
+                <a href="https://calendly.com"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="inline-block bg-white text-black font-semibold px-8 py-3 rounded-full shadow-md hover:scale-105 hover:bg-gray-100 transition-all duration-300 ease-in-out">
+                   Book a Free Financial Discovery Call 
+                </a>
+               
+            </div>
         </div>
-          <a href="{{ url('/contact') }}"
 
     </div>
 </section>

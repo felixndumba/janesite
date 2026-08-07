@@ -39,11 +39,11 @@
             a life of purpose, peace, and financial independence.
         </p>
 
-        <!-- CTA Button -->
-        <a href="{{ route('meet-jane') }}"
-           class="inline-block bg-[#a04f3f] text-white px-8 py-3 text-lg rounded-lg shadow-md transition">
-            Meet the Chief FA
-        </a>
+       
+        <a href="{{ route('meet-jane') }}" class="inline-block text-[#a04f3f]  underline hover:text-blue-800 transition">
+    Meet Jane, Our Chief Financial Analyst
+</a>
+
 
     </div>
 </section>
