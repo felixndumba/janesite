@@ -35,7 +35,7 @@ Route::get('/explore-more', function () {
 })->name('explore');
 
 
-Route::get('/Master-class', function () {
+Route::get('/master-class', function () {
     return view('partials.masterpartial');
 })->name('master');
 
@@ -56,12 +56,12 @@ Route::get('/contact', function () {
 
 
 
-Route::get('/products', function () {
+Route::get('/financial-products', function () {
     return view('products-1');
 })->name('products');
 
 
-Route::get('/meet-jane', function () {
+Route::get('/chief-financial-advisor', function () {
     return view('meetjane');
 })->name('meet-jane');
 

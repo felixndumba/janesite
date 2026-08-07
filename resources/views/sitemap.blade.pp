@@ -11,7 +11,7 @@
 <priority>0.80</priority>
 </url>
 <url>
-<loc>https://www.thediadvisors.co.ke/services</loc>
+<loc>https://www.thediadvisors.co.ke/financial-services</loc>
 <lastmod>2026-01-17T11:18:41+00:00</lastmod>
 <priority>0.80</priority>
 </url>
