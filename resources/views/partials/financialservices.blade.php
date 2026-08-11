@@ -286,7 +286,7 @@
                     <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
                         MONTHLY SESSIONS
                     </div>
-                   ````html
+                 
 <div class="mt-8">
     <label class="block text-gray-800 mb-2">Select number of sessions</label>
 
