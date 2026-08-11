@@ -231,7 +231,7 @@
                             <li>• Priority support & follow-ups</li>
                              <li>• Available in physical and online session.</li>
                         </ul>
-                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '38,000 KSH' : '25,000 KSH'"></p>
+                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '38,000 KSH' : '30,000 KSH'"></p>
 <button
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
     @click="openPackageChoice(
@@ -240,7 +240,7 @@
     )"
 >
     <span class="block text-sm text-white/70 line-through">
-        KSh <span x-text="isCouple === 'couple' ? '38,250' : '25,500'"></span>
+        KSh <span x-text="isCouple === 'couple' ? '38,250' : '30,000'"></span>
     </span>
 
     <span class="block text-lg font-bold">
