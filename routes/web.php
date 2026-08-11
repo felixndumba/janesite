@@ -36,13 +36,11 @@ Route::get('/explore-more', function () {
 
 
 Route::get('/master-class', function () {
-    return view('partials.masterpartial');
+    return view('master-class');
 })->name('master');
 
 
 
-// Optional SEO: keep only one canonical URL for master class.
-// (We rely on per-page meta in the view.)
 
 
 Route::get('/service-individual-free', function () {
@@ -58,12 +56,12 @@ Route::get('/contact', function () {
 
 Route::get('/financial-products', function () {
     return view('products-1');
-})->name('products');
+})->name('financial-products');
 
 
 Route::get('/chief-financial-advisor', function () {
     return view('meetjane');
-})->name('meet-jane');
+})->name('chief-financial-advisor');
 
 Route::get('/sitemap.xml', function () {
     return response()->view('sitemap')->header('Content-Type', 'text/xml');
@@ -75,7 +73,7 @@ Route::post('/contact/send', [ContactController::class, 'send'])
 use App\Http\Controllers\ProductInquiryController;
 
 Route::post('/product/inquiry', [ProductInquiryController::class, 'send'])
-    ->name('product.inquiry');
+    ->name('products');
 
 use App\Http\Controllers\MasterclassController;
 

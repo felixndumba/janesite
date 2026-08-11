@@ -285,79 +285,220 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+window.showMasterEmailForm = function() {
+    const form = document.getElementById("masterEmailForm");
+    const msg = document.getElementById("masterEmailMsg");
+    if (form) form.classList.remove("hidden");
+    if (msg) msg.classList.add("hidden");
+};
 
-    /* ============ DELIVERY POPUP CONTROLS ============ */
+window.closeMasterDeliveryPopup = function() {
+    const popup = document.getElementById("masterDeliveryPopup");
+    if (!popup) return;
 
-    window.showMasterEmailForm = function() {
-        document.getElementById("masterEmailForm").classList.remove("hidden");
-        document.getElementById("masterEmailMsg").classList.add("hidden");
-    };
-
-    window.closeMasterDeliveryPopup = function() {
-        const popup = document.getElementById("masterDeliveryPopup");
-        const card = popup.querySelector("div");
+    const card = popup.querySelector("div");
+    if (card) {
         card.classList.add("scale-95","opacity-0");
         card.classList.remove("scale-100","opacity-100");
-        setTimeout(() => popup.classList.add("hidden"), 200);
-    };
+    }
 
-    window.watchNowFromDelivery = function() {
-        const video = window.masterclassVideo || {};
-        closeMasterDeliveryPopup();
+    setTimeout(() => {
+        if (popup) popup.classList.add("hidden");
+    }, 200);
+};
 
-        // Let the Alpine masterclass component play the purchased video directly.
-        window.dispatchEvent(new CustomEvent("masterclass:watch", {
+window.watchNowFromDelivery = function() {
+    const video = window.masterclassVideo || {};
+    const popup = document.getElementById("masterDeliveryPopup");
+
+    if (popup) {
+        popup.classList.add("hidden");
+    }
+
+    if (video && video.youtube_id) {
+        const event = new CustomEvent("masterclass:watch", {
             detail: video
-        }));
-    };
+        });
 
-    window.sendMasterEmailLink = async function() {
-        const input = document.getElementById("masterEmailInput");
-        const email = input.value.trim();
-        const msgBox = document.getElementById("masterEmailMsg");
+        window.dispatchEvent(event);
 
-        msgBox.classList.remove("hidden");
-
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            msgBox.className = "hidden mt-4 p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700";
-            msgBox.innerText = "⚠️ Please enter a valid email address.";
-            return;
+        if (window.Alpine && typeof window.Alpine.store === 'function') {
+            const watcher = window.Alpine.store('masterclass');
+            if (watcher && typeof watcher.play === 'function') {
+                watcher.play(video);
+            }
         }
+    } else {
+        console.warn("watchNowFromDelivery() called without a purchased video payload");
+    }
+};
 
-        const video = window.masterclassVideo || {};
-        msgBox.className = "hidden mt-4 p-3 rounded-lg text-sm font-medium bg-blue-100 text-blue-700";
-        msgBox.innerText = "⏳ Sending your video link...";
+window.sendMasterEmailLink = async function() {
+    const input = document.getElementById("masterEmailInput");
+    const email = input.value.trim();
+    const msgBox = document.getElementById("masterEmailMsg");
+
+    if (!msgBox) return;
+
+    msgBox.classList.remove("hidden");
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msgBox.className = "mt-4 p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700";
+        msgBox.innerText = "⚠️ Please enter a valid email address.";
+        return;
+    }
+
+    const video = window.masterclassVideo || {};
+    msgBox.className = "mt-4 p-3 rounded-lg text-sm font-medium bg-blue-100 text-blue-700";
+    msgBox.innerText = "⏳ Sending your video link...";
+
+    try {
+        const res = await fetch("/masterclass/send-link", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')?.getAttribute("content") || ""
+            },
+            body: JSON.stringify({
+                email: email,
+                title: video.title || "Masterclass",
+                youtube_id: video.youtube_id || ""
+            })
+        });
+
+        let data = {};
 
         try {
-            const res = await fetch("/masterclass/send-link", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
-                },
-                body: JSON.stringify({
-                    email: email,
-                    title: video.title || "Masterclass",
-                    youtube_id: video.youtube_id || ""
-                })
-            });
+            data = await res.json();
+        } catch {
+            data = { status: 'error', message: 'Something went wrong. Please try again.' };
+        }
 
+     if (res.ok && (data.status === "success" || data.success === true)) {
+            msgBox.className = "mt-4 p-3 rounded-lg text-sm font-medium bg-green-100 text-green-700";
+            msgBox.innerText = (data.message || "The video link has been sent to your email.");
+            input.value = "";
+
+            setTimeout(() => {
+                const emailForm = document.getElementById("masterEmailForm");
+                if (emailForm) {
+                    emailForm.classList.add("hidden");
+                }
+            }, 900);
+        } else {
+            const errorMessage = (data.message || "Something went wrong. Please try again.");
+            msgBox.className = "mt-4 p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700";
+            msgBox.innerText = "✅ Your masterclass link has been sent to your email. Please check your inbox.";
+        }
+    } catch {
+        msgBox.className = "mt-4 p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700";
+        msgBox.innerText = "❌ Network error. Please try again.";
+    }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("mpesaModalMaster");
+    const card  = document.getElementById("mpesaCardMaster");
+
+    let masterCheckoutId = null;
+    let masterPolling = null;
+
+    function openMasterDeliveryPopup() {
+        const deliveryPopup = document.getElementById("masterDeliveryPopup");
+        deliveryPopup.classList.remove("hidden");
+
+        const card = deliveryPopup.querySelector("div");
+        card.classList.add("scale-95","opacity-0");
+
+        const emailForm = document.getElementById("masterEmailForm");
+        const emailMsg  = document.getElementById("masterEmailMsg");
+
+        if (emailForm) emailForm.classList.add("hidden");
+        if (emailMsg) emailMsg.classList.add("hidden");
+
+        const input = document.getElementById("masterEmailInput");
+        if (input) input.value = "";
+
+        setTimeout(() => {
+            card.classList.remove("scale-95","opacity-0");
+            card.classList.add("scale-100","opacity-100");
+        }, 10);
+    }
+
+    async function pollMasterStatus(id) {
+        try {
+            const res = await fetch(`/api/payment-status/${id}`);
             const data = await res.json();
 
             if (data.status === "success") {
-                msgBox.className = "hidden mt-4 p-3 rounded-lg text-sm font-medium bg-green-100 text-green-700";
-                msgBox.innerText = "✅ " + (data.message || "The video link has been sent to your email.");
-                input.value = "";
+                clearInterval(masterPolling);
+                closeMasterclassPaymentModal();
+                openMasterDeliveryPopup();
+            } else if (data.status === "failed") {
+                showMasterMessage("❌ Payment could not be completed. Please try again or contact support.", "error");
+                clearInterval(masterPolling);
             } else {
-                msgBox.className = "hidden mt-4 p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700";
-                msgBox.innerText = "❌ " + (data.message || "Something went wrong. Please try again.");
+                showMasterMessage("✅ STK push sent! Enter your M-Pesa PIN on your phone to complete payment.", "success");
             }
-        } catch {
-            msgBox.className = "hidden mt-4 p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700";
-            msgBox.innerText = "❌ Network error. Please try again.";
+        } catch (err) {
+            showMasterMessage("⚠️ Unable to check payment status. Retrying...", "error");
         }
-    };
+    }
+
+    document.getElementById("masterPayButton").addEventListener("click", async () => {
+        const phone = document.getElementById("masterPhone").value.trim();
+        const amount = document.getElementById("masterPayAmount").innerText.replace("KSH ","");
+
+        if (!/^(\+2547\d{8}|07\d{8}|01\d{8})$/.test(phone)) {
+            showMasterMessage("⚠️ Please enter a valid phone number.", "error");
+            return;
+        }
+
+        showMasterMessage("⏳ Sending payment request...", "info");
+
+        try {
+            const res = await fetch("/api/mpesa/stk/initiate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                body: JSON.stringify({
+                    phone,
+                    amount: Number(amount),
+                    account_reference: "MASTERCLASS",
+                    description: "Master Class Payment"
+                })
+            });
+
+            if (!res.ok) {
+                try {
+                    const errorData = await res.json();
+                    showMasterMessage("❌ " + (errorData.message || "Payment service is currently unavailable. Please try again later."), "error");
+                } catch {
+                    showMasterMessage("❌ Payment service is currently unavailable. Please try again later.", "error");
+                }
+                return;
+            }
+
+            const data = await res.json();
+
+            if (data.checkout_request_id) {
+                masterCheckoutId = data.checkout_request_id;
+                showMasterMessage("✅ STK push sent! Enter your M-Pesa PIN on your phone to complete payment.", "success");
+
+                masterPolling = setInterval(() => {
+                    pollMasterStatus(masterCheckoutId);
+                }, 3000);
+            } else {
+                const msg = data.message || "❌ Could not initiate payment. Please try again.";
+                showMasterMessage(msg, "error");
+            }
+
+        } catch (err) {
+            showMasterMessage("❌ Unable to send payment request. Check your internet and try again.", "error");
+        }
+    });
 });
 </script>

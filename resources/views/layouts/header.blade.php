@@ -25,7 +25,7 @@
                         Services
                         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full {{ request()->routeIs('services') ? 'w-full' : '' }}"></span>
                     </a>
-                    <a href="/#about" class="relative group block px-4 py-2 text-gray-800 hover:text-[#a04f3f]">
+                    <a href="/about" class="relative group block px-4 py-2 text-gray-800 hover:text-[#a04f3f]">
                         About Us
                         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full"></span>
                     </a>
@@ -34,7 +34,7 @@
                        Master Class
                         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full {{ request()->routeIs('master') ? 'w-full' : '' }}"></span>
                     </a>
-                    <a href="{{ route('products') }}" class="relative group block px-4 py-2 {{ request()->routeIs('products') ? 'text-[#a04f3f]' : 'text-gray-800' }} hover:text-[#a04f3f]">
+                    <a href="{{ route('financial-products') }}" class="relative group block px-4 py-2 {{ request()->routeIs('products') ? 'text-[#a04f3f]' : 'text-gray-800' }} hover:text-[#a04f3f]">
                         Financial Solutions
                         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#a04f3f] transition-all duration-300 group-hover:w-full {{ request()->routeIs('products') ? 'w-full' : '' }}"></span>
                     </a>
@@ -80,8 +80,8 @@
         <a href="/#about" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('/') ? 'bg-[#b25d4c] text-white' : '' }}">About Us</a>
         <a href="{{ route('services') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->routeIs('services') ? 'bg-[#b25d4c] text-white' : '' }}">Services</a>
         <a href="{{ route('master') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->routeIs('master') ? 'bg-[#b25d4c] text-white' : '' }}">Master Class</a>
-        <a href="{{ url('products') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('products') ? 'bg-[#b25d4c] text-white' : '' }}">Financial Solutions</a>
-        <a href="{{ url('/#faqs') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('faqs') ? 'bg-[#b25d4c] text-white' : '' }}">Faqs</a>
+        <a href="{{ url('financial-products') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('products') ? 'bg-[#b25d4c] text-white' : '' }}">Financial Solutions</a>
+        <a href="{{ url('/faqs') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->is('faqs') ? 'bg-[#b25d4c] text-white' : '' }}">Faqs</a>
         <a href="{{ route('reviews') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->routeIs('reviews') ? 'bg-[#b25d4c] text-white' : '' }}">Reviews</a>
         <a href="{{ route('contact') }}" @click="menuOpen = false" class="w-full py-3 px-4 rounded hover:bg-[#b25d4c] hover:text-white {{ request()->routeIs('contact') ? 'bg-[#b25d4c] text-white' : '' }}">Contact Me</a>
    

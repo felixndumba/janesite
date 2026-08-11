@@ -191,13 +191,29 @@
                             <li>• Available online and physical</li>
                         </ul>
                         <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '15000 KSH' : '10,000 KSH'"></p>
-                      <button
+ <button
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-@click="openPackageChoice('Basic Package', isCouple === 'couple' ? 15000 : 10000)"
+    @click="openPackageChoice(
+        'Basic Package',
+        isCouple === 'couple' ? 7500 : 5000
+    )"
 >
-    Select Package
-</button>
+    <span class="block text-sm text-white/70 line-through">
+        KSh <span x-text="isCouple === 'couple' ? '15,000' : '10,000'"></span>
+    </span>
 
+    <span class="block text-lg font-bold">
+        KSh <span x-text="isCouple === 'couple' ? '7,500' : '5,000'"></span>
+    </span>
+
+    <span class="block text-xs text-white/80">
+        50% OFF
+    </span>
+
+    <span class="block mt-1 text-sm">
+        Select Package
+    </span>
+</button>
                     </div>
 
                     <!-- Premium -->
@@ -215,12 +231,29 @@
                             <li>• Priority support & follow-ups</li>
                              <li>• Available in physical and online session.</li>
                         </ul>
-                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '38,250 KSH' : '25,500 KSH'"></p>
-                      <button
+                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '38,000 KSH' : '25,00 KSH'"></p>
+<button
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-@click="openPackageChoice('Premium Package', isCouple === 'couple' ? 38250 : 25500)"
+    @click="openPackageChoice(
+        'Premium Package',
+        isCouple === 'couple' ? 22500: 15000
+    )"
 >
-    Select Package
+    <span class="block text-sm text-white/70 line-through">
+        KSh <span x-text="isCouple === 'couple' ? '38,250' : '25,500'"></span>
+    </span>
+
+    <span class="block text-lg font-bold">
+        KSh <span x-text="isCouple === 'couple' ? '22,500' : '15,000'"></span>
+    </span>
+
+    <span class="block text-xs text-white/80">
+        40% OFF
+    </span>
+
+    <span class="block mt-1 text-sm">
+        Select Package
+    </span>
 </button>
 
                     </div>
@@ -253,50 +286,139 @@
                     <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
                         MONTHLY SESSIONS
                     </div>
-                    <div class="mt-8">
-                        <label class="block text-gray-800 mb-2">Select number of sessions</label>
-                        <input type="number" x-model="numSessions" min="1" class="w-full p-2 border border-gray-300 rounded">
-                    </div>
-                    <p class="text-xl text-black mt-4" x-text="'Price: ' + 'KSH' + (numSessions * (isCouple === 'couple' ? 11250 : 7500)) + '  per session'"></p>
-                    <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-                        @click="openPaymentModal('Monthly Sessions (' + numSessions + ' sessions)' + (isCouple === 'couple' ? ' (Couple)' : ''), numSessions * (isCouple === 'couple' ? 11250 : 7500), 'https://calendly.com/janendichu1/financial-accountability-partner')">
-                        Select Package
-                    </button>
-                </div>
+                   ````html
+<div class="mt-8">
+    <label class="block text-gray-800 mb-2">Select number of sessions</label>
 
-                <!-- Quarterly Package -->
-                <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
-                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
-                        QUARTERLY PACKAGE
-                    </div>
-                    <p class="mt-8 text-gray-800">After every 3 months</p>
-                    <p class="text-xl text-black mt-4" x-text="isCouple === 'couple' ? 'KSH 38,250' : 'KSH 25,500'"></p>
-                    <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-                        @click="openPaymentModal('Quarterly Package' + (isCouple === 'couple' ? ' (Couple)' : ''), isCouple === 'couple' ? 38250 : 25500, 'https://calendly.com/janendichu1/financial-accountability-partner')">
-                        Select Package
-                    </button>
-                </div>
+    <input
+        type="number"
+        x-model="numSessions"
+        min="1"
+        class="w-full p-2 border border-gray-300 rounded"
+    >
+</div>
 
-                <!-- Half Yearly -->
-                <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
-                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
-                        HALF YEARLY
-                    </div>
-                    <p class="mt-8 text-gray-800">After every 6 months</p>
-                    <p class="text-xl text-black mt-4" x-text="isCouple === 'couple' ? 'KSH 19,125' : 'KSH 12,750'"></p>
-                    <button class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
-                        @click="openPaymentModal('Half Yearly Package' + (isCouple === 'couple' ? ' (Couple)' : ''), isCouple === 'couple' ? 19125 : 12750, 'https://calendly.com/janendichu1/financial-accountability-partner')">
-                      Select Package
-                    </button>
-                </div>
-            </div>
+<!-- Monthly Sessions -->
+<div class="mt-4">
+    <!-- Original price crossed out -->
+    <p
+        class="text-sm text-gray-400 line-through"
+        x-text="'Original: KSH ' + (numSessions * (isCouple === 'couple' ? 11250 : 7500)) + ' per session'"
+    ></p>
 
-            <div class="text-center mt-6">
-                <button @click="selected = null" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600">
-                    Back
-                </button>
-            </div>
-        </div>
+    <!-- Discounted price -->
+    <p
+        class="text-xl text-[#b25d4c] font-bold mt-1"
+        x-text="'Offer Price: KSH ' + (numSessions * (isCouple === 'couple' ? 11250 : 3250)) + ' per session'"
+    ></p>
+
+    <span class="inline-block mt-1 text-xs font-bold text-[#b25d4c]">
+        SPECIAL OFFER
+    </span>
+</div>
+
+<button
+    class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
+    @click="openPaymentModal(
+        'Monthly Sessions (' + numSessions + ' sessions)' +
+        (isCouple === 'couple' ? ' (Couple)' : ''),
+        numSessions * (isCouple === 'couple' ? 11250 : 3250),
+        'https://calendly.com/janendichu1/financial-accountability-partner'
+    )"
+>
+    Select Package
+</button>
+</div>
+
+
+<!-- Quarterly Package -->
+<div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
+
+    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
+        QUARTERLY PACKAGE
+    </div>
+
+    <p class="mt-8 text-gray-800">After every 3 months</p>
+
+    <!-- Original price -->
+    <p
+        class="text-sm text-gray-400 mt-4 line-through"
+        x-text="isCouple === 'couple' ? 'KSH 38,250' : 'KSH 25,500'"
+    ></p>
+
+    <!-- Discounted price -->
+    <p
+        class="text-xl text-[#b25d4c] font-bold mt-1"
+        x-text="isCouple === 'couple' ? 'KSH 19,125' : 'KSH 12,750'"
+    ></p>
+
+    <span class="inline-block mt-1 text-xs font-bold text-[#b25d4c]">
+        50% OFF
+    </span>
+
+    <button
+        class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
+        @click="openPaymentModal(
+            'Quarterly Package' +
+            (isCouple === 'couple' ? ' (Couple)' : ''),
+            isCouple === 'couple' ? 19125 : 12750,
+            'https://calendly.com/janendichu1/financial-accountability-partner'
+        )"
+    >
+        Select Package
+    </button>
+</div>
+
+
+<!-- Half Yearly -->
+<div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
+
+    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
+        HALF YEARLY
+    </div>
+
+    <p class="mt-8 text-gray-800">After every 6 months</p>
+
+    <!-- Original price -->
+    <p
+        class="text-sm text-gray-400 mt-4 line-through"
+        x-text="isCouple === 'couple' ? 'KSH 19,125' : 'KSH 12,750'"
+    ></p>
+
+    <!-- Discounted price -->
+    <p
+        class="text-xl text-[#b25d4c] font-bold mt-1"
+        x-text="isCouple === 'couple' ? 'KSH 9,500' : 'KSH 6,375'"
+    ></p>
+
+    <span class="inline-block mt-1 text-xs font-bold text-[#b25d4c]">
+        50% OFF
+    </span>
+
+    <button
+        class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
+        @click="openPaymentModal(
+            'Half Yearly Package' +
+            (isCouple === 'couple' ? ' (Couple)' : ''),
+            isCouple === 'couple' ? 9500 : 6375,
+            'https://calendly.com/janendichu1/financial-accountability-partner'
+        )"
+    >
+        Select Package
+    </button>
+</div>
+
+</div>
+
+<div class="text-center mt-6">
+    <button
+        @click="selected = null"
+        class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600"
+    >
+        Back
+    </button>
+</div>
+       </div>
 
          </div>
        
