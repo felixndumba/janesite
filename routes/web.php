@@ -75,7 +75,4 @@ use App\Http\Controllers\ProductInquiryController;
 Route::post('/product/inquiry', [ProductInquiryController::class, 'send'])
     ->name('products');
 
-use App\Http\Controllers\MasterclassController;
 
-Route::post('/masterclass/send-link', [MasterclassController::class, 'sendLink'])
-    ->name('masterclass.send-link');

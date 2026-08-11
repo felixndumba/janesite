@@ -353,12 +353,14 @@ window.sendMasterEmailLink = async function() {
     msgBox.innerText = "⏳ Sending your video link...";
 
     try {
-        const res = await fetch("/masterclass/send-link", {
+        const masterclassSendLinkUrl = @json(route('masterclass.send-link'));
+
+        const res = await fetch(masterclassSendLinkUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')?.getAttribute("content") || ""
+                "X-Requested-With": "XMLHttpRequest"
             },
             body: JSON.stringify({
                 email: email,

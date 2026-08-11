@@ -12,3 +12,7 @@ Route::get('/payment-status/{checkoutRequestId}', [MpesaController::class, 'chec
 Route::post('/c2b/validation', [MpesaController::class, 'c2bValidation'])->name('mpesa.c2b.validation');
 Route::post('/c2b/confirmation', [MpesaController::class, 'c2bConfirmation'])->name('mpesa.c2b.confirmation');
 
+use App\Http\Controllers\MasterclassController;
+
+Route::post('/masterclass/send-link', [MasterclassController::class, 'sendLink'])
+    ->name('masterclass.send-link');

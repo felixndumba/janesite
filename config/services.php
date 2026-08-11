@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'env' => env('MPESA_ENV', 'sandbox'),
 
     'consumer_key' => env('MPESA_CONSUMER_KEY'),
@@ -11,4 +12,17 @@ return [
     'passkey' => env('MPESA_PASSKEY'),
 
     'callback_url' => env('MPESA_CALLBACK_URL'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Resend
+    |--------------------------------------------------------------------------
+    */
+
+    'resend' => [
+        'api_key' => env('RESEND_API_KEY'),
+        'from_address' => env('RESEND_FROM_ADDRESS'),
+        'from_name' => env('RESEND_FROM_NAME', 'Masterclass'),
+    ],
+
 ];
