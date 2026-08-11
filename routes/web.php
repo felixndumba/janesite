@@ -76,3 +76,11 @@ Route::post('/product/inquiry', [ProductInquiryController::class, 'send'])
     ->name('products');
 
 
+
+use App\Http\Controllers\MasterclassController;
+
+Route::post('/masterclass/save-email', [
+    MasterclassController::class,
+    'saveLinkRequest'
+])->name('masterclass.save-email');
+

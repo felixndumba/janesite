@@ -14,7 +14,7 @@ $categories = [
                 'preview_youtube_id' => 'JUFRw042-Kc',
                 'paid_youtube_id' => 'k1LXQEE6vdQ',
                 'description' => 'The complete two-hour class: what financial freedom actually means, the four levers that move your net worth, and a plan you can start on this week.',
-                'price' => 1,
+                'price' => 2000,
                 'duration' => '2h 13m',
             ],
         ],
