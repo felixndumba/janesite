@@ -18,7 +18,7 @@
                 <li><a href="/" class="hover:text-[#a04f3f]">Home</a></li>
                 <li><a href={{ route('services') }} class="hover:text-[#a04f3f]">Services</a></li>
                 <li><a href={{ route('reviews') }} class="hover:text-[#a04f3f]">Reviews</a></li>
-                <li><a href={{ route('products') }} class="hover:text-[#a04f3f]">Financial Solutions</a></li>
+                <li><a href={{ route('financial-products') }} class="hover:text-[#a04f3f]">Financial Solutions</a></li>
                  <li><a href={{ route('master') }} class="hover:text-[#a04f3f]">Master Class</a></li>
                
                 

@@ -72,8 +72,8 @@ Route::post('/contact/send', [ContactController::class, 'send'])
 
 use App\Http\Controllers\ProductInquiryController;
 
-Route::post('/product/inquiry', [ProductInquiryController::class, 'send'])
-    ->name('products');
+Route::post('/product.inquiry', [ProductInquiryController::class, 'send'])
+    ->name('product.inquiry');
 
 
 
