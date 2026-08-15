@@ -62,7 +62,7 @@ $categories = [
                 'preview_youtube_id' => 'wFibhtyG5ug',
                 'paid_youtube_id' => 'GOq3cT_uWQs',
                 'description' => 'Turning vague money goals into dated, funded targets — plus a simple system for tracking progress month to month.',
-                'price' => 4000,
+                'price' => 2000,
                 'duration' => '47m',
             ],
         ],
