@@ -88,10 +88,7 @@ $allVideos = collect($categories)
 
 <div x-data="masterclassLibrary()" class="bg-[#FAF8F5] min-h-screen">
 
-    {{-- =========================================================
-         HEADER
-    ========================================================== --}}
-    <header class="relative overflow-hidden bg-[#12100F] text-white">
+       <header class="relative overflow-hidden bg-[#12100F] text-white">
 
         <div class="pointer-events-none absolute -top-32 -left-24 h-80 w-80 rounded-full bg-[#8C3E32] opacity-30 blur-3xl"></div>
 

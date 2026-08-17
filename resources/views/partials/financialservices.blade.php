@@ -206,8 +206,6 @@
     </span>
 </button>
                     </div>
-
-                    <!-- Premium -->
                     <div class="relative border-2 border-[#b25d4c] rounded-2xl p-6 bg-white shadow-md transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#b25d4c]">
                         <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#b25d4c] text-white font-bold text-center rounded-full px-6 py-2 shadow">
                             PREMIUM PACKAGE
@@ -222,12 +220,12 @@
                             <li>• Priority support & follow-ups</li>
                              <li>• Available in physical and online session.</li>
                         </ul>
-                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '38,000 KSH' : '25,000 KSH'"></p>
+                        <p class="text-xl  text-black mt-2" x-text="isCouple === 'couple' ? '38,000 KSH' : '25,500 KSH'"></p>
 <button
     class="mt-6 w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638]"
     @click="openPackageChoice(
         'Premium Package',
-        isCouple === 'couple' ? 38000: 25000
+        isCouple === 'couple' ? 38000: 25500
     )"
 >
     <span class="block mt-1 text-sm">
