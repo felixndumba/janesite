@@ -19,8 +19,8 @@
             $canonicalHref = $canonicalUrl !== '' ? $canonicalUrl : url()->current();
 
             $ogImage = trim($__env->yieldContent('og_image'));
-            $ogImageHref = $ogImage !== '' ? $ogImage : asset('images/jane1.jpg');
-        @endphp
+            $ogImageHref = $ogImage !== '' ? $ogImage : asset('favicon.png')
+            @endphp
 
         <meta name="description" content="{{ $finalDescription }}">
         <link rel="canonical" href="{{ $canonicalHref }}">
@@ -32,13 +32,15 @@
         <meta property="og:description" content="{{ $finalDescription }}">
         <meta property="og:url" content="{{ $canonicalHref }}">
         <meta property="og:image" content="{{ $ogImageHref }}">
+        <meta property="og:site_name" content="Thedi Advisors">
+        <meta property="og:locale" content="en_KE">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="{{ $finalTitle }}">
         <meta name="twitter:description" content="{{ $finalDescription }}">
         <meta name="twitter:image" content="{{ $ogImageHref }}">
 
-        {{-- Basic SEO defaults --}}
+        
         <meta name="robots" content="index,follow">
 
         <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">

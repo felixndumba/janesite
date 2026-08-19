@@ -41,7 +41,7 @@
 
        
         <a href="{{ route('chief-financial-advisor') }}" class="inline-block text-[#a04f3f]  underline hover:text-blue-800 transition">
-    Meet Jane, Our Chief Financial Analyst
+    Meet Jane, Our Chief Financial Advisor
 </a>
 
 

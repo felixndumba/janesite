@@ -15,14 +15,15 @@
    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     @include('partials.section1')
    </div>
-    <div id="about"
-    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-        @include('partials.about')
-    </div>
      <div id="#"
      data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
         @include('partials.financialimpact')
     </div>
+    <div id="about"
+    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
+        @include('partials.about')
+    </div>
+   
     <div data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
         @include('partials.servicessupport')
     </div data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
