@@ -80,7 +80,7 @@
 
 
 
-<a href="{{ route('services') }}"
+<a  href="/"
    class="fixed bottom-6 right-6 bg-[#a04f3f] text-white font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#8b3f30] transition-all z-50">
    View Our Services
 </a>

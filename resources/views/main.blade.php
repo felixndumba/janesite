@@ -15,6 +15,17 @@
    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     @include('partials.section1')
    </div>
+  <div 
+    id="packages"
+    data-aos="zoom-in-right" 
+    data-aos-delay="200" 
+    data-aos-duration="1000">
+    @include('partials.packageicons') 
+</div>
+   <div id="reviews"
+    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
+        @include('partials.reviews-section')
+    </div>
      <div id="#"
      data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
         @include('partials.financialimpact')
@@ -23,27 +34,29 @@
     data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
         @include('partials.about')
     </div>
-   
-    <div data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-        @include('partials.servicessupport')
-    </div data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-     <div id="services"
-     data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-        @include('partials.service-1')
-    </div>
-     
     <div id="partners"
     data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
         @include('partials.financialpartner')
     </div>
-    
-   
-    <div id="reviews"
-    data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
-        @include('partials.reviews-section')
-    </div>
+    <div data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
+        @include('partials.servicessupport')
+    </div data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
     <div id="faqs">
         @include('partials.faqs')
     </div>
 </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const packages = document.getElementById('packages');
+
+        if (packages) {
+            setTimeout(() => {
+                packages.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 500);
+        }
+    });
+</script>
 @endsection

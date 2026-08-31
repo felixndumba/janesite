@@ -1,10 +1,12 @@
 <?php
-
+use App\Http\Controllers\BudgetPurchaseController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ReviewController;
-
+use App\Http\Controllers\BudgetTrackerController;
+use App\Http\Controllers\MasterclassController;
+use App\Http\Controllers\ProductInquiryController;
 
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
 
@@ -14,7 +16,6 @@ Route::get('/', function () {
     $reviews = \App\Models\Review::latest()->get();
     return view('main', compact('reviews'));
 });
-
 
 Route::post('/', function(Request $request) {
     $data = $request->all();
@@ -26,7 +27,7 @@ Route::post('/', function(Request $request) {
 
 
 Route::get('/financial-services', function () {
-    return view('services'); // Choose the correct view
+    return view('services'); 
 })->name('services');
 
 
@@ -35,12 +36,11 @@ Route::get('/explore-more', function () {
 })->name('explore');
 
 
+
+
 Route::get('/master-class', function () {
     return view('master-class');
 })->name('master');
-
-
-
 
 
 Route::get('/service-individual-free', function () {
@@ -51,7 +51,6 @@ Route::get('/service-individual-free', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-
 
 
 Route::get('/financial-products', function () {
@@ -70,17 +69,32 @@ Route::get('/sitemap.xml', function () {
 Route::post('/contact/send', [ContactController::class, 'send'])
     ->name('contact.send');
 
-use App\Http\Controllers\ProductInquiryController;
+
 
 Route::post('/product.inquiry', [ProductInquiryController::class, 'send'])
     ->name('product.inquiry');
-
-
-
-use App\Http\Controllers\MasterclassController;
 
 Route::post('/masterclass/save-email', [
     MasterclassController::class,
     'saveLinkRequest'
 ])->name('masterclass.save-email');
 
+Route::get('/budget-tracker', [
+    BudgetTrackerController::class,
+    'index'
+])->name('budget-tracker');
+
+Route::get('/budget-tracker/preview/{product}', [
+    BudgetTrackerController::class,
+    'preview'
+])->name('budget.preview');
+
+Route::get('/budget-tracker/download/{purchase}', [
+    BudgetTrackerController::class,
+    'download'
+])->name('budget.download');
+
+Route::post('/budget-tracker/purchase', [
+    BudgetPurchaseController::class,
+    'purchase'
+])->name('budget.purchase');
