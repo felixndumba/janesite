@@ -25,7 +25,7 @@ class BudgetTrackerController extends Controller
     public function preview()
     {
         $file = storage_path(
-            'app/private/budget-tracker/FINANCIALPLANNERTEMPLATE.xlsx'
+            'app/private/budget-tracker/FINANCIALPLANNER.xlsx'
         );
 
         if (!File::exists($file)) {
