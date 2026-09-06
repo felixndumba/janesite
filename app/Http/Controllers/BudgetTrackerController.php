@@ -42,7 +42,7 @@ class BudgetTrackerController extends Controller
     public function download()
     {
         $file = storage_path(
-            'app\private\budget-tracker\FINANCIAL PLANNERTEMPLATE.xlsx'
+            'app\private\budget-tracker\FINANCIAlPLANNERTEMPLATE.xlsx'
         );
 
         if (!File::exists($file)) {
