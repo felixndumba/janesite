@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\BudgetPurchaseController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContactController;
@@ -84,17 +84,13 @@ Route::get('/budget-tracker', [
     'index'
 ])->name('budget-tracker');
 
-Route::get('/budget-tracker/preview/{product}', [
+Route::get('/budget-tracker/preview', [
     BudgetTrackerController::class,
     'preview'
 ])->name('budget.preview');
 
-Route::get('/budget-tracker/download/{purchase}', [
+Route::get('/budget-tracker/download', [
     BudgetTrackerController::class,
     'download'
 ])->name('budget.download');
 
-Route::post('/budget-tracker/purchase', [
-    BudgetPurchaseController::class,
-    'purchase'
-])->name('budget.purchase');

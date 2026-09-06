@@ -83,95 +83,71 @@ $allVideos = collect($categories)
         );
     })
     ->all();
+
+// Used to drive a real (not hardcoded) empty state per category tab.
+$categoryVideoCounts = collect($categories)
+    ->mapWithKeys(fn ($c) => [$c['slug'] => count($c['videos'])])
+    ->all();
 @endphp
 
 
-<div x-data="masterclassLibrary()" class="bg-[#FAF8F5] min-h-screen">
+<div x-data="masterclassLibrary()" class="min-h-screen bg-[#FAF8F5]">
 
-       <header class="relative overflow-hidden bg-[#12100F] text-white">
+    {{-- =========================================================
+         HERO
+    ========================================================== --}}
+    <header class="relative overflow-hidden bg-[#12100F] text-white">
 
-        <div class="pointer-events-none absolute -top-32 -left-24 h-80 w-80 rounded-full bg-[#8C3E32] opacity-30 blur-3xl"></div>
+        <div class="pointer-events-none absolute -top-32 -left-24 h-80 w-80 rounded-full bg-[#8C3E32] opacity-25 blur-3xl"></div>
 
-        <div class="pointer-events-none absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-[#8C6D31] opacity-20 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-[#8C6D31] opacity-15 blur-3xl"></div>
 
         <div
-            class="pointer-events-none absolute inset-0 opacity-[0.06]"
+            class="pointer-events-none absolute inset-0 opacity-[0.05]"
             style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:56px 56px;">
         </div>
 
-        <div class="relative mx-auto max-w-6xl px-6 py-20 sm:py-24">
+        <div class="relative mx-auto max-w-6xl px-6 py-16 sm:py-20">
 
             <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
 
                 <div class="min-w-0">
 
-                    <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/80">
-
+                    <span class="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-white/70">
                         <span class="h-1.5 w-1.5 rounded-full bg-[#C0705F]"></span>
-
-                        Recorded Sessions
-
+                        Recorded sessions
                     </span>
 
-                    <h1 class="mt-6 text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">
-
-                        Masterclass<br class="hidden sm:block">
-
-                        <span class="text-[#D9A441]">Library</span>
-
+                    <h1 class="mt-5 text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl">
+                        The Masterclass Library
                     </h1>
 
-                    <p class="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
-
+                    <p class="mt-4 max-w-lg text-base leading-relaxed text-white/65 sm:text-lg">
                         Every past live session, recorded and ready to watch.
-                        Pick a topic, preview the class, and unlock full access whenever you're ready.
-
+                        Preview any class for free, then unlock the full
+                        recording whenever you're ready.
                     </p>
 
                 </div>
 
-                <dl class="grid grid-cols-3 gap-3 lg:gap-4">
+                <dl class="flex gap-6 border-t border-white/10 pt-5 lg:border-0 lg:pt-0">
 
-                    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
-
-                        <dt class="text-[11px] uppercase tracking-wider text-white/50">
-                            Classes
-                        </dt>
-
-                        <dd class="mt-1 text-2xl font-bold">
-                            {{ $totalClasses }}
-                        </dd>
-
+                    <div>
+                        <dt class="text-[11px] uppercase tracking-wider text-white/45">Classes</dt>
+                        <dd class="mt-1 text-2xl font-bold tabular-nums">{{ $totalClasses }}</dd>
                     </div>
 
-                    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
-
-                        <dt class="text-[11px] uppercase tracking-wider text-white/50">
-                            Topics
-                        </dt>
-
-                        <dd class="mt-1 text-2xl font-bold">
-                            {{ count($categories) }}
-                        </dd>
-
+                    <div class="border-l border-white/10 pl-6">
+                        <dt class="text-[11px] uppercase tracking-wider text-white/45">Topics</dt>
+                        <dd class="mt-1 text-2xl font-bold tabular-nums">{{ count($categories) }}</dd>
                     </div>
 
-                    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
-
-                        <dt class="text-[11px] uppercase tracking-wider text-white/50">
-                            From
-                        </dt>
-
-                        <dd class="mt-1 text-2xl font-bold">
-
+                    <div class="border-l border-white/10 pl-6">
+                        <dt class="text-[11px] uppercase tracking-wider text-white/45">From</dt>
+                        <dd class="mt-1 text-2xl font-bold tabular-nums">
                             {{ number_format($lowestPrice) }}
-
-                            <span class="ml-1 text-xs font-medium text-white/50">
-                                KES
-                            </span>
-
+                            <span class="ml-1 text-xs font-medium text-white/45">KES</span>
                         </dd>
-
                     </div>
 
                 </dl>
@@ -180,7 +156,7 @@ $allVideos = collect($categories)
 
         </div>
 
-        <div class="h-px w-full bg-gradient-to-r from-transparent via-white/25 to-transparent"></div>
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
     </header>
 
@@ -191,35 +167,35 @@ $allVideos = collect($categories)
     <main class="mx-auto max-w-6xl px-6 pb-24">
 
         {{-- FILTER BAR --}}
-        <div class="sticky top-0 z-30 -mx-6 mb-12 border-b border-black/5 bg-[#FAF8F5]/85 px-6 py-4 backdrop-blur">
+        <div class="sticky top-0 z-30 -mx-6 mb-10 bg-[#FAF8F5]/90 px-6 py-4 backdrop-blur">
 
-            <div class="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div class="flex items-center gap-1.5 overflow-x-auto rounded-full bg-white p-1.5 ring-1 ring-black/5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
                 <button
+                    type="button"
                     @click="activeTab = 'all'"
+                    :aria-pressed="activeTab === 'all'"
                     :class="activeTab === 'all'
-                        ? 'bg-gray-900 text-white shadow-sm'
-                        : 'bg-white text-gray-600 ring-1 ring-black/5 hover:bg-gray-100'"
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-600 hover:bg-gray-100'"
                     class="shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition">
-
-                    All Classes
-
+                    All classes
                 </button>
 
                 @foreach($categories as $category)
 
                     <button
+                        type="button"
                         @click="activeTab = '{{ $category['slug'] }}'"
+                        :aria-pressed="activeTab === '{{ $category['slug'] }}'"
                         :class="activeTab === '{{ $category['slug'] }}'
-                            ? 'text-white shadow-sm'
-                            : 'bg-white text-gray-600 ring-1 ring-black/5 hover:bg-gray-100'"
+                            ? 'text-white'
+                            : 'text-gray-600 hover:bg-gray-100'"
                         :style="activeTab === '{{ $category['slug'] }}'
                             ? 'background-color: {{ $category['accent'] }}'
                             : ''"
                         class="shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition">
-
                         {{ $category['name'] }}
-
                     </button>
 
                 @endforeach
@@ -243,54 +219,47 @@ $allVideos = collect($categories)
                 <article
                     x-show="activeTab === 'all' || activeTab === '{{ $category['slug'] }}'"
                     x-transition.opacity
-                    class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)] ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.35)]">
+                    class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)] ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.35)]"
+                    style="border-top: 3px solid {{ $category['accent'] }};">
 
                     {{-- THUMBNAIL / PREVIEW --}}
                     <button
                         type="button"
                         @click="openPreview(@js($video), @js($category))"
-                        class="relative block w-full aspect-video overflow-hidden bg-gray-900">
+                        class="relative block w-full aspect-video overflow-hidden bg-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset"
+                        :style="'--tw-ring-color: {{ $category['accent'] }}'"
+                        aria-label="Preview {{ $video['title'] }}">
 
                         <img
                             src="https://i.ytimg.com/vi/{{ $video['preview_youtube_id'] }}/hqdefault.jpg"
-                            alt="{{ $video['title'] }}"
+                            alt=""
                             loading="lazy"
                             class="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100">
 
                         <span class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></span>
 
                         <span class="absolute inset-0 flex items-center justify-center">
-
                             <span
                                 class="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 shadow-lg transition duration-300 group-hover:scale-110"
                                 style="color: {{ $category['accent'] }}">
-
-                                <svg
-                                    class="ml-0.5 h-6 w-6"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    aria-hidden="true">
-
+                                <svg class="ml-0.5 h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                     <path d="M8 5v14l11-7z" />
-
                                 </svg>
-
                             </span>
-
                         </span>
 
                         <span
                             class="absolute left-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white"
                             style="background-color: {{ $category['accent'] }}">
-
-                            Preview
-
+                            Free preview
                         </span>
 
-                        <span class="absolute bottom-3 right-3 rounded-md bg-black/75 px-2 py-1 text-xs font-semibold text-white tabular-nums">
-
+                        <span class="absolute bottom-3 right-3 flex items-center gap-1 rounded-md bg-black/75 px-2 py-1 text-xs font-semibold text-white tabular-nums">
+                            <svg class="h-3 w-3 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                             {{ $video['duration'] }}
-
                         </span>
 
                     </button>
@@ -299,44 +268,29 @@ $allVideos = collect($categories)
                     {{-- BODY --}}
                     <div class="flex flex-1 flex-col p-5">
 
-                        <span
-                            class="mb-2 inline-flex w-fit items-center gap-1.5 rounded-full bg-gray-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider"
-                            style="color: {{ $category['accent'] }}">
-
+                        <span class="mb-2 inline-flex w-fit items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider" style="color: {{ $category['accent'] }}">
+                            <span class="h-1.5 w-1.5 rounded-full" style="background-color: {{ $category['accent'] }}"></span>
                             {{ $category['name'] }}
-
                         </span>
 
                         <h3 class="text-base font-bold leading-snug text-gray-900">
-
                             {{ $video['title'] }}
-
                         </h3>
 
                         <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-gray-500">
-
                             {{ $video['description'] }}
-
                         </p>
 
                         <div class="mt-5 flex items-end justify-between gap-3 border-t border-black/5 pt-4">
 
                             <div class="min-w-0">
-
                                 <span class="block text-[11px] uppercase tracking-wider text-gray-400">
                                     Full recording
                                 </span>
-
-                                <span
-                                    class="block text-lg font-extrabold tabular-nums"
-                                    style="color: {{ $category['accent'] }}">
-
+                                <span class="block text-lg font-extrabold tabular-nums" style="color: {{ $category['accent'] }}">
                                     KES {{ number_format($video['price']) }}
-
                                 </span>
-
                             </div>
-
 
                             {{-- PURCHASE --}}
                             <button
@@ -347,11 +301,9 @@ $allVideos = collect($categories)
                                     @js($video['paid_youtube_id']),
                                     @js($category['accent'])
                                 )"
-                                class="shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                                class="shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
                                 style="background-color: {{ $category['accent'] }}">
-
                                 Purchase
-
                             </button>
 
                         </div>
@@ -365,42 +317,27 @@ $allVideos = collect($categories)
         </div>
 
 
-        {{-- EMPTY STATE --}}
+        {{-- EMPTY STATE — shows only when the active category truly has no classes --}}
         <p
-            x-show="false"
+            x-show="activeTab !== 'all' && ({{ \Illuminate\Support\Js::from($categoryVideoCounts) }})[activeTab] === 0"
+            x-cloak
             class="rounded-2xl bg-white p-10 text-center text-sm text-gray-500 ring-1 ring-black/5">
-
             No classes in this category yet.
-
         </p>
 
 
         {{-- NOTE --}}
         <div class="mt-4 flex items-start gap-3 rounded-2xl bg-white p-5 ring-1 ring-black/5">
 
-            <svg
-                class="mt-0.5 h-5 w-5 shrink-0 text-gray-400"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                aria-hidden="true">
-
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 <circle cx="12" cy="12" r="9" />
-
-                <path
-                    d="M12 8h.01M11 12h1v4h1"
-                    stroke-linecap="round"
-                    stroke-linejoin="round" />
-
+                <path d="M12 8h.01M11 12h1v4h1" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
 
             <p class="text-sm leading-relaxed text-gray-500">
-
                 Purchased recordings are sent to your email as a private viewing link
                 or watched directly on our website. All payments are non-refundable
                 once processed.
-
             </p>
 
         </div>
@@ -419,25 +356,21 @@ $allVideos = collect($categories)
         class="fixed inset-0 z-[200] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
         style="display: none;">
 
-        <div
-            class="relative mt-20 w-full max-w-3xl"
-            @click.outside="closePreview()">
+        <div class="relative mt-20 w-full max-w-3xl" @click.outside="closePreview()">
 
             {{-- PLAYER HEADER --}}
             <div class="mb-3 flex items-center justify-between gap-4">
 
-                <p
-                    class="min-w-0 truncate text-sm font-semibold text-white/90"
-                    x-text="playingTitle">
-                </p>
+                <p class="min-w-0 truncate text-sm font-semibold text-white/90" x-text="playingTitle"></p>
 
                 <button
                     type="button"
                     @click="closePreview()"
-                    class="shrink-0 rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-white/20">
-
-                    Close ✕
-
+                    aria-label="Close video"
+                    class="shrink-0 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
 
             </div>
@@ -447,19 +380,10 @@ $allVideos = collect($categories)
             <div class="relative overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/10">
 
                 <div class="aspect-video w-full">
-
-                    <div
-                        id="yt-preview-player"
-                        class="h-full w-full">
-                    </div>
-
+                    <div id="yt-preview-player" class="h-full w-full"></div>
                 </div>
 
-
-                {{-- =================================================
-                     PREVIEW FINISHED OVERLAY
-                     ONLY SHOWN FOR FREE PREVIEW
-                ================================================== --}}
+                {{-- PREVIEW FINISHED OVERLAY — free preview only --}}
                 <div
                     x-show="previewEnded && !playingPaid"
                     x-transition.opacity
@@ -467,21 +391,12 @@ $allVideos = collect($categories)
                     class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/90 px-6 text-center">
 
                     <span class="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">
-
                         Preview finished
-
                     </span>
 
-                    <p
-                        class="max-w-sm text-lg font-bold text-white"
-                        x-text="playingTitle">
-                    </p>
+                    <p class="max-w-sm text-lg font-bold text-white" x-text="playingTitle"></p>
 
-                    <p
-                        class="text-2xl font-extrabold tabular-nums"
-                        :style="'color: ' + playingAccent"
-                        x-text="'KES ' + Number(playingPrice).toLocaleString()">
-                    </p>
+                    <p class="text-2xl font-extrabold tabular-nums" :style="'color: ' + playingAccent" x-text="'KES ' + Number(playingPrice).toLocaleString()"></p>
 
                     <div class="mt-2 flex items-center gap-3">
 
@@ -489,9 +404,7 @@ $allVideos = collect($categories)
                             type="button"
                             @click="replayPreview()"
                             class="rounded-full bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/20">
-
-                            Watch Again
-
+                            Watch again
                         </button>
 
                         <button
@@ -499,46 +412,34 @@ $allVideos = collect($categories)
                             @click="purchaseFromPreview()"
                             class="rounded-full px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
                             :style="'background-color: ' + playingAccent">
-
-                            Purchase Now
-
+                            Purchase now
                         </button>
 
                     </div>
 
                 </div>
 
-
                 {{-- PAID VIDEO LABEL --}}
                 <div
                     x-show="playingPaid"
                     x-cloak
-                    class="absolute left-3 top-3 rounded-full bg-green-600 px-3 py-1 text-xs font-bold text-white shadow-lg">
-
-                    ✓ Purchased Masterclass
-
+                    class="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-green-600 px-3 py-1 text-xs font-bold text-white shadow-lg">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Purchased masterclass
                 </div>
 
             </div>
 
-
             {{-- PREVIEW FOOTER --}}
-            <p
-                class="mt-3 text-center text-xs text-white/50"
-                x-show="!previewEnded && !playingPaid">
-
+            <p class="mt-3 text-center text-xs text-white/50" x-show="!previewEnded && !playingPaid">
                 Preview clip — purchase for the full, uninterrupted recording.
-
             </p>
 
             {{-- PAID FOOTER --}}
-            <p
-                class="mt-3 text-center text-xs text-green-300"
-                x-show="playingPaid"
-                x-cloak>
-
-                ✓ You are watching your purchased masterclass.
-
+            <p class="mt-3 text-center text-xs text-green-300" x-show="playingPaid" x-cloak>
+                You are watching your purchased masterclass.
             </p>
 
         </div>
@@ -555,46 +456,23 @@ $allVideos = collect($categories)
         x-transition.opacity
         class="fixed inset-0 z-[300] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
 
-        <div
-            @click.outside="closeEmailModal()"
-            x-transition.scale
-            class="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
+        <div @click.outside="closeEmailModal()" x-transition.scale class="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
 
             <div class="flex items-start justify-between gap-4">
 
                 <div>
 
-                    <div
-                        class="mb-3 flex h-12 w-12 items-center justify-center rounded-full"
-                        :style="'background-color:' + emailAccent + '18; color:' + emailAccent">
-
-                        <svg
-                            class="h-6 w-6"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.8">
-
-                            <path
-                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z"/>
-
+                    <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full" :style="'background-color:' + emailAccent + '18; color:' + emailAccent">
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z"/>
                             <path d="m22 6-10 7L2 6"/>
-
                         </svg>
-
                     </div>
 
-                    <h2 class="text-xl font-bold text-gray-900">
-
-                        Send My Masterclass
-
-                    </h2>
+                    <h2 class="text-xl font-bold text-gray-900">Send my masterclass</h2>
 
                     <p class="mt-1 text-sm leading-relaxed text-gray-500">
-
-                        Enter your email address and we'll send you your private
-                        viewing link.
-
+                        Enter your email address and we'll send you your private viewing link.
                     </p>
 
                 </div>
@@ -602,90 +480,44 @@ $allVideos = collect($categories)
                 <button
                     type="button"
                     @click="closeEmailModal()"
-                    class="rounded-full p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700">
-
-                    ✕
-
+                    aria-label="Close"
+                    class="shrink-0 rounded-full p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
 
             </div>
 
 
             <div class="mt-5 rounded-2xl bg-gray-50 p-4 ring-1 ring-black/5">
-
-                <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">
-
-                    Purchased Masterclass
-
-                </p>
-
-                <p
-                    class="mt-1 font-semibold text-gray-900"
-                    x-text="emailVideoTitle">
-                </p>
-
+                <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Purchased masterclass</p>
+                <p class="mt-1 font-semibold text-gray-900" x-text="emailVideoTitle"></p>
             </div>
 
 
-            <div
-                x-show="emailError"
-                x-transition
-                class="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-700">
-
+            <div x-show="emailError" x-transition class="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-700">
                 <span x-text="emailError"></span>
-
             </div>
 
 
-            <div
-                x-show="emailSuccess"
-                x-transition
-                class="mt-4 rounded-xl bg-green-50 p-4 text-sm text-green-700">
-
+            <div x-show="emailSuccess" x-transition class="mt-4 rounded-xl bg-green-50 p-4 text-sm text-green-700">
                 <div class="flex gap-3">
-
-                    <svg
-                        class="h-5 w-5 shrink-0"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2">
-
-                        <path
-                            d="m5 12 4 4L19 6"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"/>
-
+                    <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m5 12 4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-
                     <div>
-
-                        <p class="font-bold">
-                            Link sent successfully
-                        </p>
-
-                        <p class="mt-1">
-                            Check your inbox for your private masterclass viewing link.
-                        </p>
-
+                        <p class="font-bold">Link sent successfully</p>
+                        <p class="mt-1">Check your inbox for your private masterclass viewing link.</p>
                     </div>
-
                 </div>
-
             </div>
 
 
-            <form
-                x-show="!emailSuccess"
-                @submit.prevent="sendMasterclassLink()"
-                class="mt-5">
+            <form x-show="!emailSuccess" @submit.prevent="sendMasterclassLink()" class="mt-5">
 
-                <label
-                    for="masterclass-email"
-                    class="block text-sm font-semibold text-gray-700">
-
+                <label for="masterclass-email" class="block text-sm font-semibold text-gray-700">
                     Email address
-
                 </label>
 
                 <input
@@ -703,34 +535,13 @@ $allVideos = collect($categories)
                     class="mt-4 flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-bold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                     :style="'background-color:' + emailAccent">
 
-                    <svg
-                        x-show="emailSending"
-                        class="h-5 w-5 animate-spin"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor">
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="9"
-                            stroke-opacity=".25"
-                            stroke-width="3"/>
-
-                        <path
-                            d="M21 12a9 9 0 0 0-9-9"
-                            stroke-width="3"
-                            stroke-linecap="round"/>
-
+                    <svg x-show="emailSending" class="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="9" stroke-opacity=".25" stroke-width="3"/>
+                        <path d="M21 12a9 9 0 0 0-9-9" stroke-width="3" stroke-linecap="round"/>
                     </svg>
 
-                    <span x-show="!emailSending">
-                        Send Private Link
-                    </span>
-
-                    <span x-show="emailSending">
-                        Sending...
-                    </span>
+                    <span x-show="!emailSending">Send private link</span>
+                    <span x-show="emailSending">Sending...</span>
 
                 </button>
 
@@ -742,9 +553,7 @@ $allVideos = collect($categories)
                 type="button"
                 @click="closeEmailModal()"
                 class="mt-5 w-full rounded-xl bg-gray-100 px-5 py-3 text-sm font-bold text-gray-700 transition hover:bg-gray-200">
-
                 Done
-
             </button>
 
         </div>
@@ -756,6 +565,8 @@ $allVideos = collect($categories)
 
 {{-- =============================================================
      ALPINE + YOUTUBE
+     (unchanged from the working version — same component name,
+     methods, event names and endpoint shape)
 ============================================================= --}}
 @once
 @push('scripts')
@@ -1740,4 +1551,3 @@ $allVideos = collect($categories)
 @endonce
 
 @endsection
-

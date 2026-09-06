@@ -12,14 +12,13 @@
 <main>
 
     <div
-   data-aos="zoom-in-right" data-aos-delay="200" data-aos-duration="1000">
+   data-aos="zoom-in-right" >
     @include('partials.section1')
    </div>
   <div 
     id="packages"
     data-aos="zoom-in-right" 
-    data-aos-delay="200" 
-    data-aos-duration="1000">
+   >
     @include('partials.packageicons') 
 </div>
    <div id="reviews"
