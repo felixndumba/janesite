@@ -1,2 +1,5 @@
 *
 !.gitignore
+!private/
+!private/budget-tracker/
+!private/budget-tracker/FINANCIALPLANNER.xlsx
