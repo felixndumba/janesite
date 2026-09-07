@@ -43,7 +43,7 @@ $categories = [
         'videos' => [
             [
                 'title' => 'Getting Out From Under Mobile Loans & Debt',
-                'preview_youtube_id' => 'wFibhtyG5ug',
+                'preview_youtube_id' => 'cAhnq7B72nM',
                 'paid_youtube_id' => 'UEbeGDj0Tgg',
                 'description' => 'Snowball vs. avalanche compared side by side, how to talk to lenders, and a repayment order for stacked mobile loans.',
                 'price' => 2000,
