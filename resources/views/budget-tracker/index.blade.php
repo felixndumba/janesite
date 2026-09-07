@@ -15,7 +15,7 @@
 
     $budgetProductName = 'Financial Planner ';
 
-    $budgetPrice = 1;
+    $budgetPrice = 500;
 
     $budgetDescription = 'A practical Excel budget tracker designed to help you manage your income, expenses, savings and overall financial progress with ease.';
 
@@ -159,9 +159,7 @@
                         <span class="block text-lg font-bold text-[#3a231c]">
                             KSh {{ number_format($budgetPrice) }}
                         </span>
-                        <span class="block text-[11px] text-[#3a231c]/40">
-                            one-time
-                        </span>
+                       
                     </span>
 
                 </div>
