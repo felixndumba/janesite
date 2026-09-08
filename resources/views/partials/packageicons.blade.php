@@ -3,7 +3,7 @@ $services = [
     [
         'label'       => 'Packages',
         'description' => "1. Individual Financial Planning\n2. Couples Financial Planning\n3. Business Financial Planning\n4. Chama Financial Planning\n5. Corporate Financial Wellness",
-        'cta'         => 'View Packages',
+        'cta'         => 'GET A PACKAGE',
         'href'        => route('services'),
         'tint'        => '#c99786',
     ],
@@ -193,30 +193,30 @@ $services = [
                         {{ $s['description'] }}
                     </p>
 
-                    <!-- CTA -->
-                    <a
-                        href="{{ $s['href'] }}"
-                        class="inline-flex items-center gap-2 self-start rounded-full px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition-all duration-200
-                        {{ ($dark || $masterclass)
-                            ? 'bg-white text-[#a04f3f] hover:bg-white/90 hover:gap-3 hover:shadow-lg'
-                            : 'bg-white/70 text-[#3a231c] hover:bg-white hover:gap-3 hover:shadow-md' }}"
-                    >
+                 <!-- CTA -->
+<a 
+    href="{{ $s['href'] }}" 
+    class="inline-flex items-center gap-2 self-start rounded-full px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition-all duration-200 
+    {{ ($dark || $masterclass) 
+        ? 'bg-white text-[#a04f3f] hover:bg-white/90 hover:gap-3 hover:shadow-lg' 
+        : 'bg-white/70 text-[#3a231c] hover:bg-white hover:gap-3 hover:shadow-md' }}"
+>
+    
+    {{ $s['cta'] }}
 
-                        {{ $s['label'] === 'Packages' ? 'Join ' . $s['label'] : $s['cta'] }}
+    <svg 
+        class="h-3 w-3 transition-transform duration-200" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+    > 
+        <path d="M5 12h14M12 5l7 7-7 7" /> 
+    </svg> 
 
-                        <svg
-                            class="h-3 w-3 transition-transform duration-200"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        >
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-
-                    </a>
+</a>
 
                 </article>
 

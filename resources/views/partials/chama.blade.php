@@ -41,12 +41,16 @@
 
     <div class="mt-6 flex space-x-4">
 
-        <!-- Small group -->
-        <button
-            class="w-1/2 bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638] transition duration-300"
-            onclick="openPaymentModal('Chama Small Group Package', '10000')">
-            Book for Small Group (&lt;5)
-        </button>
+      <!-- Small group -->
+<button 
+    class="w-1/2 bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638] transition duration-300" 
+    onclick="openPaymentModal(
+        'Chama Small Group Package', 
+        '10000', 
+        'https://calendly.com/janendichu1/chama-package'
+    )"> 
+    Book for Small Group (&lt;5) 
+</button>
 
         <!-- Large group -->
         <div class="w-1/2">
@@ -104,7 +108,11 @@
         }
 
         const amount = groupSize * 2000;
-        openPaymentModal('Chama Large Group Package', amount);
+       openPaymentModal(
+    'Chama Large Group Package',
+    amount,
+    'https://calendly.com/janendichu1/chama-package'
+)
     }
 
     function showError(message) {

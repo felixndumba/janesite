@@ -152,7 +152,7 @@
             <div class="flex justify-center md:justify-start">
 
                 <a
-                    href="https://calendly.com"
+                    href="https://calendly.com/janendichu1/free_discovery_call"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="
