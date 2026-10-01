@@ -35,7 +35,7 @@
     <div class="mt-6 p-4 bg-gray-100 rounded-md">
         <h4 class="font-bold text-gray-900">Pricing Structure</h4>
         <p class="text-gray-700">
-            10,000 KSH for groups less than 5 | 2,000 KSH per person for groups above 5
+            15,000 KSH for groups less than 6 | 3,000 KSH per person for groups above 6
         </p>
     </div>
 
@@ -46,10 +46,10 @@
     class="w-1/2 bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638] transition duration-300" 
     onclick="openPaymentModal(
         'Chama Small Group Package', 
-        '10000', 
+        '15000', 
         'https://calendly.com/janendichu1/chama-package'
     )"> 
-    Book for Small Group (&lt;5) 
+    Book for Small Group (&lt;6) 
 </button>
 
         <!-- Large group -->
@@ -70,7 +70,7 @@
             <button
                 class="w-full bg-[#b25d4c] text-white font-semibold py-3 rounded-lg hover:bg-[#8a4638] transition duration-300"
                 onclick="handleLargeGroupBooking()">
-                Book for Large Group (&gt;5)
+                Book for Large Group (&gt;6)
             </button>
         </div>
 
@@ -102,12 +102,12 @@
         errorMessage.textContent = '';
         input.classList.remove('border-red-500', 'animate-shake');
 
-        if (!groupSize || groupSize < 6) {
-            showError('Please enter a valid number of at least 6 people.');
+        if (!groupSize || groupSize < 7) {
+            showError('Please enter a valid number of at least 7 people.');
             return;
         }
 
-        const amount = groupSize * 2000;
+        const amount = groupSize * 3000;
        openPaymentModal(
     'Chama Large Group Package',
     amount,

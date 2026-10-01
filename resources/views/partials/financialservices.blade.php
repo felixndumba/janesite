@@ -289,7 +289,7 @@
     @click="openPaymentModal(
         'Monthly Sessions (' + numSessions + ' sessions)' +
         (isCouple === 'couple' ? ' (Couple)' : ''),
-        numSessions * (isCouple === 'couple' ? 11250 : 3250),
+        numSessions * (isCouple === 'couple' ? 11250 : 7500),
         'https://calendly.com/janendichu1/financial-accountability-partner'
     )"
 >
