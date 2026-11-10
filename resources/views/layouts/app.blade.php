@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         @php
-            $defaultTitle = 'Thedi Advisors | Professional Financial Advisors';
-            $defaultDescription = 'Thedi Advisors provides expert consulting and advisory services in Kenya. Build sustainable wealth with confidence.';
+            $defaultTitle = ' Thedi Advisors|Financial Advisor in Nairobi, Kenya ';
+            $defaultDescription = 'Personal financial planning, budgeting and investment advice for individuals, couples, businesses and chamas in Kenya. Book a free discovery call today!';
 
             $pageTitle = trim($__env->yieldContent('title'));
             $pageDescription = trim($__env->yieldContent('meta_description'));

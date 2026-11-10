@@ -2,7 +2,7 @@
 
 @section('title', 'Meet Jane | Thedi Advisors')
 @section('meta_description', 'Meet Jane, a top-award winning financial advisor in Kenya. Learn about her certifications, approach, and how she helps clients build lasting wealth.')
-@section('canonical_url', url('/meet-jane'))
+@section('canonical_url', url('/chief-financial-advisor'))
 @section('og_image', asset('images/two.jpeg'))
 
 <br><br>

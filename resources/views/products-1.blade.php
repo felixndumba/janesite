@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Products | Thedi Advisors')
+@section('title', 'Financial Portfolio Products | Thedi Advisors')
 @section('meta_description', 'Discover savings, investment, insurance, and legacy planning options with Thedi Advisors. Choose the right financial product for your goals.')
 @section('canonical_url', url('/financial-products'))
 @section('og_image', asset('images/one.jpeg'))

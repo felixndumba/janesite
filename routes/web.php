@@ -30,33 +30,17 @@ Route::get('/financial-services', function () {
     return view('services'); 
 })->name('services');
 
-
-Route::get('/explore-more', function () {
-    return view('contact');
-})->name('explore');
-
-
-
-
 Route::get('/master-class', function () {
     return view('master-class');
 })->name('master');
-
-
-Route::get('/service-individual-free', function () {
-    return view('partials.financialservices');
-})->name('financialservices');
-
 
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-
 Route::get('/financial-products', function () {
     return view('products-1');
 })->name('financial-products');
-
 
 Route::get('/chief-financial-advisor', function () {
     return view('meetjane');
@@ -68,8 +52,6 @@ Route::get('/sitemap.xml', function () {
 
 Route::post('/contact/send', [ContactController::class, 'send'])
     ->name('contact.send');
-
-
 
 Route::post('/product.inquiry', [ProductInquiryController::class, 'send'])
     ->name('product.inquiry');

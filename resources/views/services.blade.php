@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Services | Thedi Advisors')
-@section('meta_description', 'Explore financial advisory services by Thedi Advisors: savings, investments, insurance, retirement planning, and risk management in Kenya.')
-@section('canonical_url', url('/services'))
+@section('title', 'Financial Planning Services in Kenya | Thedi Advisors.')
+@section('meta_description', 'Personal, couples, business and chama financial planning in Kenya. Get expert budgeting, investment and insurance advice. Book a free discovery call.')
+@section('canonical_url', url('/financial-services'))
 @section('og_image', asset('images/texture1.jpg'))
 
 @section('content')
